@@ -37,6 +37,8 @@
 
 #import "UIViewController+BlueSTSDK.h"
 
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
+
 @implementation UIViewController (BlueSTSDK)
 
 -(void)changeViewController:(UIViewController*)newView{
@@ -57,11 +59,17 @@
                                          preferredStyle:UIAlertControllerStyleAlert];
 
 
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"OK",nil)
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
-                                                              if(self.navigationController!=nil && exit)
-                                                                  [self.navigationController popViewControllerAnimated:YES];
+                                                              if(exit) {
+                                                                  if (self.navigationController != nil)
+                                                                      [self.navigationController popViewControllerAnimated:YES];
+                                                                  else if (self.presentingViewController!=nil)
+                                                                      [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                                                                  else
+                                                                      NSLog(@"Impossible close the view controller");
+                                                              }
                                                           }];
     if(alert!=nil){
         [alert addAction:defaultAction];

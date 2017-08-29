@@ -1,0 +1,9 @@
+
+/* Class = "UITextField"; placeholder = "Send"; ObjectID = "kpV-9K-Kbv"; */
+"kpV-9K-Kbv.placeholder" = "Send";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "tC7-CF-X44"; */
+"tC7-CF-X44.title" = "Item";
+
+/* Class = "UIViewController"; title = "Debug Console"; ObjectID = "xR2-FU-wEi"; */
+"xR2-FU-wEi.title" = "Debug Console";

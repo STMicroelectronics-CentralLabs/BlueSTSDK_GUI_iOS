@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xR2-FU-wEi">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Debug Console-->
+        <scene sceneID="2hZ-UB-crV">
+            <objects>
+                <viewController title="Debug Console" id="xR2-FU-wEi" customClass="BlueSTSDKDebugConsoleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g3b-du-lBX"/>
+                        <viewControllerLayoutGuide type="bottom" id="CsN-yM-NI8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="msi-Eo-JCf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Send" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kpV-9K-Kbv">
+                                <rect key="frame" x="16" y="28" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvI-Pi-fa7">
+                                <rect key="frame" x="16" y="66" width="343" height="549"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PvI-Pi-fa7" firstAttribute="trailing" secondItem="msi-Eo-JCf" secondAttribute="trailingMargin" id="3FU-ak-etU"/>
+                            <constraint firstItem="kpV-9K-Kbv" firstAttribute="leading" secondItem="msi-Eo-JCf" secondAttribute="leadingMargin" id="JyA-7v-Zki"/>
+                            <constraint firstItem="kpV-9K-Kbv" firstAttribute="top" secondItem="g3b-du-lBX" secondAttribute="bottom" constant="8" id="NET-uf-LgM"/>
+                            <constraint firstItem="kpV-9K-Kbv" firstAttribute="trailing" secondItem="msi-Eo-JCf" secondAttribute="trailingMargin" id="OkS-8J-Ylr"/>
+                            <constraint firstItem="PvI-Pi-fa7" firstAttribute="top" secondItem="kpV-9K-Kbv" secondAttribute="bottom" constant="8" id="XsT-Hl-9Sj"/>
+                            <constraint firstItem="PvI-Pi-fa7" firstAttribute="leading" secondItem="msi-Eo-JCf" secondAttribute="leadingMargin" id="m7H-gB-sYy"/>
+                            <constraint firstItem="CsN-yM-NI8" firstAttribute="top" secondItem="PvI-Pi-fa7" secondAttribute="bottom" constant="8" id="wS7-kT-piU"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="tC7-CF-X44"/>
+                    <toolbarItems>
+                        <barButtonItem systemItem="action" id="ASY-aH-2j7">
+                            <connections>
+                                <action selector="displayMenu:" destination="xR2-FU-wEi" id="h37-GT-0Ob"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="K4D-D1-LLf"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="console" destination="PvI-Pi-fa7" id="pqr-OF-xN9"/>
+                        <outlet property="mMenuButton" destination="ASY-aH-2j7" id="CPd-HX-qqe"/>
+                        <outlet property="userText" destination="kpV-9K-Kbv" id="wJY-F9-Gxu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b91-RT-UKV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5220" y="307"/>
+        </scene>
+    </scenes>
+</document>

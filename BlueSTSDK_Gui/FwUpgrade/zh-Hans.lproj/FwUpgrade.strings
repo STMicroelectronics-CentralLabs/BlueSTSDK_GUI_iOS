@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Version: "; ObjectID = "1Mh-O6-E0C"; */
+"1Mh-O6-E0C.text" = "Version: ";
+
+/* Class = "UILabel"; text = "Mcu type: "; ObjectID = "2Tf-2q-Ou0"; */
+"2Tf-2q-Ou0.text" = "Mcu type: ";
+
+/* Class = "UILabel"; text = "Loading.."; ObjectID = "fY5-le-UIB"; */
+"fY5-le-UIB.text" = "Loading..";
+
+/* Class = "UIBarButtonItem"; title = "Download & Flash"; ObjectID = "gho-9t-q0o"; */
+"gho-9t-q0o.title" = "Download & Flash";

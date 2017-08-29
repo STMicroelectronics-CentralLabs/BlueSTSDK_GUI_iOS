@@ -35,72 +35,30 @@
  * OF SUCH DAMAGE.
  */
 
-#import "BlueSTSDKAboutViewController.h"
+import Foundation
 
-@interface BlueSTSDKAboutViewController ()<UIWebViewDelegate>
 
-/**
- *  view where display the about page
- */
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+/// Display the file content
+public class BlueSTSDKLibLicenseDetailsViewController : UIViewController{
 
-/**
- *  view where display the about image
- */
-@property (weak, nonatomic) IBOutlet UIImageView *headImage;
-
-/**
- *  label where write the app name
- */
-@property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
-
-/**
- *  label where wirte the app version
- */
-@property (weak, nonatomic) IBOutlet UILabel *appVersionLabel;
-@end
-
-@implementation BlueSTSDKAboutViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+    @IBOutlet weak var mLicenseFileTextView: UITextView!
     
-    NSBundle *bundle = [NSBundle mainBundle];
-    
-    NSString *htmlFile = [_delegate htmlFile];
-    NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-    self.webView.delegate=self;
-    [self.webView loadHTMLString:htmlString baseURL:nil];
-    self.webView.scrollView.scrollEnabled = NO;
-    self.webView.scrollView.bounces = NO;
-    
-    NSString * version = [bundle objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
-    self.appVersionLabel.text = [NSString stringWithFormat:@"Version: %@",version ];
-    
-    self.appNameLabel.text = [bundle objectForInfoDictionaryKey: @"CFBundleDisplayName"];
-    
-    self.headImage.image = [_delegate headImage];
-}
+    /// file path
+    public var licenseFilePath:String?;
 
+    override public func viewDidLoad() {
+        super.viewDidLoad()
 
-/**
- *  open the html link in an external app
- *
- *  @param inWeb     <#inWeb description#>
- *  @param inRequest <#inRequest description#>
- *  @param inType    <#inType description#>
- *
- *  @return <#return value description#>
- */
--(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest
- navigationType:(UIWebViewNavigationType)inType {
-    
-    if ( inType == UIWebViewNavigationTypeLinkClicked ) {
-        [[UIApplication sharedApplication] openURL:[inRequest URL]];
-        return NO;
+        if let textFileUrl = licenseFilePath {
+
+            do {
+                let content = try String(contentsOfFile: textFileUrl, encoding: .utf8);
+                mLicenseFileTextView.text=content;
+            }catch {
+                NSLog("BlueSTSDKLibLicenseDetailsViewController: error opening the license file");
+            }
+
+        }
     }
-    
-    return YES;
-}
 
-@end
+}

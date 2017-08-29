@@ -7,25 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4EDA24238FE1FD4585E02A40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA2F1AE5338228769A193A /* Localizable.strings */; };
+		660C82DF1ECF1EBC0048F831 /* BlueSTSDKLibLicenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C82DE1ECF1EBC0048F831 /* BlueSTSDKLibLicenseTableViewController.swift */; };
+		660C82E31ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C82E21ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift */; };
+		660C82E51ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C82E41ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift */; };
+		662ED6481EC59F1D003F3710 /* BlueSTSDKMainViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = 666706151EC4BB5800E918EE /* BlueSTSDKMainViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		662ED8801F55A1C2001281B1 /* BlueSTSDKFwUpgradeConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979331E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		662ED8931F55A636001281B1 /* FwUpgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDC11EA74920005D8AE9 /* FwUpgrade.storyboard */; };
+		662ED8941F55A639001281B1 /* BlueSTSDKMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDD61EA76EA1005D8AE9 /* BlueSTSDKMainView.storyboard */; };
+		662ED8951F55A63E001281B1 /* DebugConsoleMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDBE1EA74914005D8AE9 /* DebugConsoleMainView.storyboard */; };
 		663979191E2E5D0000FBF696 /* BlueSTSDK_Gui.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979171E2E5D0000FBF696 /* BlueSTSDK_Gui.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6639797D1E2E5D4100FBF696 /* BlueSTSDKDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6639791F1E2E5D4100FBF696 /* BlueSTSDKDemoViewController.m */; };
-		6639797E1E2E5D4100FBF696 /* BlueSTSDKMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663979201E2E5D4100FBF696 /* BlueSTSDKMainView.storyboard */; };
 		6639797F1E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979211E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.h */; };
 		663979801E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979221E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.m */; };
-		663979811E2E5D4100FBF696 /* BlueSTSDKAboutViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979231E2E5D4100FBF696 /* BlueSTSDKAboutViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		663979821E2E5D4100FBF696 /* BlueSTSDKAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979241E2E5D4100FBF696 /* BlueSTSDKAboutViewController.m */; };
 		663979831E2E5D4100FBF696 /* BlueSTSDKDemoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979251E2E5D4100FBF696 /* BlueSTSDKDemoViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		663979841E2E5D4100FBF696 /* st_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 663979261E2E5D4100FBF696 /* st_images.xcassets */; };
-		663979851E2E5D4100FBF696 /* BlueSTSDKMainViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979271E2E5D4100FBF696 /* BlueSTSDKMainViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		663979861E2E5D4100FBF696 /* BlueSTSDKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979281E2E5D4100FBF696 /* BlueSTSDKMainViewController.m */; };
 		663979871E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979291E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.m */; };
 		663979881E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6639792A1E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		663979891E2E5D4100FBF696 /* BlueSTSDKViewControllerMenuDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6639792B1E2E5D4100FBF696 /* BlueSTSDKViewControllerMenuDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6639798A1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6639792D1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.h */; };
 		6639798B1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6639792E1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.m */; };
-		6639798C1E2E5D4100FBF696 /* DebugConsoleMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6639792F1E2E5D4100FBF696 /* DebugConsoleMainView.storyboard */; };
-		6639798D1E2E5D4100FBF696 /* FwUpgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663979311E2E5D4100FBF696 /* FwUpgrade.storyboard */; };
-		6639798E1E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979331E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6639798F1E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979341E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.m */; };
 		663979901E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979351E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.h */; };
 		663979911E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979361E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.m */; };
@@ -41,6 +42,7 @@
 		663979C81E2E5D4100FBF696 /* UIViewController+BlueSTSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 6639797C1E2E5D4100FBF696 /* UIViewController+BlueSTSDK.m */; };
 		663979D41E2E5FA200FBF696 /* BlueSTSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663979D11E2E5F9600FBF696 /* BlueSTSDK.framework */; };
 		663979EA1E2E63AC00FBF696 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663979E91E2E63AC00FBF696 /* UIKit.framework */; };
+		666706161EC4BB5800E918EE /* BlueSTSDKMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666706151EC4BB5800E918EE /* BlueSTSDKMainViewController.swift */; };
 		668A12711E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668A12701E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -62,26 +64,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4EDA2F1AE5338228769A193A /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 2483028224; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		660C82DE1ECF1EBC0048F831 /* BlueSTSDKLibLicenseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKLibLicenseTableViewController.swift; sourceTree = "<group>"; };
+		660C82E21ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKLibLicenseDetailsViewController.swift; sourceTree = "<group>"; };
+		660C82E41ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKAboutViewController.swift; sourceTree = "<group>"; };
 		663979141E2E5D0000FBF696 /* BlueSTSDK_Gui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSTSDK_Gui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		663979171E2E5D0000FBF696 /* BlueSTSDK_Gui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueSTSDK_Gui.h; sourceTree = "<group>"; };
 		663979181E2E5D0000FBF696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6639791F1E2E5D4100FBF696 /* BlueSTSDKDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKDemoViewController.m; sourceTree = "<group>"; };
-		663979201E2E5D4100FBF696 /* BlueSTSDKMainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BlueSTSDKMainView.storyboard; sourceTree = "<group>"; };
 		663979211E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKNodeListViewCell.h; sourceTree = "<group>"; };
 		663979221E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKNodeListViewController.m; sourceTree = "<group>"; };
-		663979231E2E5D4100FBF696 /* BlueSTSDKAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKAboutViewController.h; sourceTree = "<group>"; };
-		663979241E2E5D4100FBF696 /* BlueSTSDKAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKAboutViewController.m; sourceTree = "<group>"; };
 		663979251E2E5D4100FBF696 /* BlueSTSDKDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKDemoViewController.h; sourceTree = "<group>"; };
 		663979261E2E5D4100FBF696 /* st_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = st_images.xcassets; sourceTree = "<group>"; };
-		663979271E2E5D4100FBF696 /* BlueSTSDKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKMainViewController.h; sourceTree = "<group>"; };
-		663979281E2E5D4100FBF696 /* BlueSTSDKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKMainViewController.m; sourceTree = "<group>"; };
 		663979291E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKNodeListViewCell.m; sourceTree = "<group>"; };
 		6639792A1E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKNodeListViewController.h; sourceTree = "<group>"; };
 		6639792B1E2E5D4100FBF696 /* BlueSTSDKViewControllerMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKViewControllerMenuDelegate.h; sourceTree = "<group>"; };
 		6639792D1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKDebugConsoleViewController.h; sourceTree = "<group>"; };
 		6639792E1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKDebugConsoleViewController.m; sourceTree = "<group>"; };
-		6639792F1E2E5D4100FBF696 /* DebugConsoleMainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DebugConsoleMainView.storyboard; sourceTree = "<group>"; };
-		663979311E2E5D4100FBF696 /* FwUpgrade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FwUpgrade.storyboard; sourceTree = "<group>"; };
 		663979331E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKFwUpgradeConsole.h; sourceTree = "<group>"; };
 		663979341E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKFwUpgradeConsole.m; sourceTree = "<group>"; };
 		663979351E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKFwUpgradeConsoleNucleo.h; sourceTree = "<group>"; };
@@ -98,7 +97,13 @@
 		6639797C1E2E5D4100FBF696 /* UIViewController+BlueSTSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BlueSTSDK.m"; sourceTree = "<group>"; };
 		663979CB1E2E5F9600FBF696 /* BlueSTSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlueSTSDK.xcodeproj; path = ../BlueSTSDK/BlueSTSDK/BlueSTSDK.xcodeproj; sourceTree = "<group>"; };
 		663979E91E2E63AC00FBF696 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		666706151EC4BB5800E918EE /* BlueSTSDKMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKMainViewController.swift; sourceTree = "<group>"; };
 		668A12701E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BlueSTSDK_GUI_images.xcassets; sourceTree = "<group>"; };
+		66D5FDC81EA74ADF005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DebugConsoleMainView.storyboard; sourceTree = "<group>"; };
+		66D5FDC91EA74ADF005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FwUpgrade.storyboard; sourceTree = "<group>"; };
+		66D5FDCB1EA74AEA005D8AE9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DebugConsoleMainView.strings"; sourceTree = "<group>"; };
+		66D5FDCC1EA74AF4005D8AE9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FwUpgrade.strings"; sourceTree = "<group>"; };
+		66D5FDD51EA76EA1005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BlueSTSDKMainView.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,19 +142,19 @@
 				668A12701E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets */,
 				663979261E2E5D4100FBF696 /* st_images.xcassets */,
 				663979761E2E5D4100FBF696 /* st_images_LanchScreen.xcassets */,
+				66D5FDD61EA76EA1005D8AE9 /* BlueSTSDKMainView.storyboard */,
 				6639792C1E2E5D4100FBF696 /* DebugConsole */,
 				663979301E2E5D4100FBF696 /* FwUpgrade */,
-				663979201E2E5D4100FBF696 /* BlueSTSDKMainView.storyboard */,
+				666706151EC4BB5800E918EE /* BlueSTSDKMainViewController.swift */,
+				660C82E41ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift */,
+				660C82DE1ECF1EBC0048F831 /* BlueSTSDKLibLicenseTableViewController.swift */,
+				660C82E21ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift */,
 				663979211E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.h */,
 				663979291E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.m */,
 				6639792A1E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.h */,
 				663979221E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.m */,
-				663979231E2E5D4100FBF696 /* BlueSTSDKAboutViewController.h */,
-				663979241E2E5D4100FBF696 /* BlueSTSDKAboutViewController.m */,
 				663979251E2E5D4100FBF696 /* BlueSTSDKDemoViewController.h */,
 				6639791F1E2E5D4100FBF696 /* BlueSTSDKDemoViewController.m */,
-				663979271E2E5D4100FBF696 /* BlueSTSDKMainViewController.h */,
-				663979281E2E5D4100FBF696 /* BlueSTSDKMainViewController.m */,
 				6639792B1E2E5D4100FBF696 /* BlueSTSDKViewControllerMenuDelegate.h */,
 				6639797B1E2E5D4100FBF696 /* UIViewController+BlueSTSDK.h */,
 				6639797C1E2E5D4100FBF696 /* UIViewController+BlueSTSDK.m */,
@@ -157,6 +162,7 @@
 				663979731E2E5D4100FBF696 /* Resources */,
 				663979771E2E5D4100FBF696 /* ThirdParty */,
 				663979181E2E5D0000FBF696 /* Info.plist */,
+				4EDA2F1AE5338228769A193A /* Localizable.strings */,
 			);
 			path = BlueSTSDK_Gui;
 			sourceTree = "<group>";
@@ -164,9 +170,9 @@
 		6639792C1E2E5D4100FBF696 /* DebugConsole */ = {
 			isa = PBXGroup;
 			children = (
+				66D5FDBE1EA74914005D8AE9 /* DebugConsoleMainView.storyboard */,
 				6639792D1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.h */,
 				6639792E1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.m */,
-				6639792F1E2E5D4100FBF696 /* DebugConsoleMainView.storyboard */,
 			);
 			path = DebugConsole;
 			sourceTree = "<group>";
@@ -174,7 +180,7 @@
 		663979301E2E5D4100FBF696 /* FwUpgrade */ = {
 			isa = PBXGroup;
 			children = (
-				663979311E2E5D4100FBF696 /* FwUpgrade.storyboard */,
+				66D5FDC11EA74920005D8AE9 /* FwUpgrade.storyboard */,
 				663979321E2E5D4100FBF696 /* FwUpgradeConsole */,
 				6639793A1E2E5D4100FBF696 /* FwUpgradeManagerViewController.h */,
 				6639793B1E2E5D4100FBF696 /* FwUpgradeManagerViewController.m */,
@@ -261,16 +267,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				663979851E2E5D4100FBF696 /* BlueSTSDKMainViewController.h in Headers */,
+				662ED6481EC59F1D003F3710 /* BlueSTSDKMainViewController.swift in Headers */,
 				663979831E2E5D4100FBF696 /* BlueSTSDKDemoViewController.h in Headers */,
+				662ED8801F55A1C2001281B1 /* BlueSTSDKFwUpgradeConsole.h in Headers */,
 				663979C71E2E5D4100FBF696 /* UIViewController+BlueSTSDK.h in Headers */,
-				663979811E2E5D4100FBF696 /* BlueSTSDKAboutViewController.h in Headers */,
 				663979881E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.h in Headers */,
 				663979941E2E5D4100FBF696 /* FwUpgradeManagerViewController.h in Headers */,
 				663979891E2E5D4100FBF696 /* BlueSTSDKViewControllerMenuDelegate.h in Headers */,
 				663979C51E2E5D4100FBF696 /* MBProgressHUD.h in Headers */,
 				663979191E2E5D0000FBF696 /* BlueSTSDK_Gui.h in Headers */,
-				6639798E1E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.h in Headers */,
 				6639797F1E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.h in Headers */,
 				663979901E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.h in Headers */,
 				6639798A1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.h in Headers */,
@@ -305,12 +310,14 @@
 		6639790B1E2E5D0000FBF696 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = STCentralLab;
 				TargetAttributes = {
 					663979131E2E5D0000FBF696 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 9L4QA9SNQK;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -321,6 +328,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
+				Base,
 			);
 			mainGroup = 6639790A1E2E5D0000FBF696;
 			productRefGroup = 663979151E2E5D0000FBF696 /* Products */;
@@ -360,13 +369,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				662ED8951F55A63E001281B1 /* DebugConsoleMainView.storyboard in Resources */,
+				662ED8931F55A636001281B1 /* FwUpgrade.storyboard in Resources */,
+				662ED8941F55A639001281B1 /* BlueSTSDKMainView.storyboard in Resources */,
 				663979C31E2E5D4100FBF696 /* board_generic.png in Resources */,
-				6639798D1E2E5D4100FBF696 /* FwUpgrade.storyboard in Resources */,
-				6639797E1E2E5D4100FBF696 /* BlueSTSDKMainView.storyboard in Resources */,
-				6639798C1E2E5D4100FBF696 /* DebugConsoleMainView.storyboard in Resources */,
 				663979C41E2E5D4100FBF696 /* st_images_LanchScreen.xcassets in Resources */,
 				663979841E2E5D4100FBF696 /* st_images.xcassets in Resources */,
 				668A12711E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets in Resources */,
+				4EDA24238FE1FD4585E02A40 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,10 +387,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				666706161EC4BB5800E918EE /* BlueSTSDKMainViewController.swift in Sources */,
+				660C82E51ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift in Sources */,
+				660C82E31ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift in Sources */,
+				660C82DF1ECF1EBC0048F831 /* BlueSTSDKLibLicenseTableViewController.swift in Sources */,
 				663979C81E2E5D4100FBF696 /* UIViewController+BlueSTSDK.m in Sources */,
-				663979821E2E5D4100FBF696 /* BlueSTSDKAboutViewController.m in Sources */,
 				663979911E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.m in Sources */,
-				663979861E2E5D4100FBF696 /* BlueSTSDKMainViewController.m in Sources */,
 				6639798F1E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.m in Sources */,
 				663979951E2E5D4100FBF696 /* FwUpgradeManagerViewController.m in Sources */,
 				663979801E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.m in Sources */,
@@ -394,11 +406,41 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		66D5FDBE1EA74914005D8AE9 /* DebugConsoleMainView.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D5FDC81EA74ADF005D8AE9 /* Base */,
+				66D5FDCB1EA74AEA005D8AE9 /* zh-Hans */,
+			);
+			name = DebugConsoleMainView.storyboard;
+			sourceTree = "<group>";
+		};
+		66D5FDC11EA74920005D8AE9 /* FwUpgrade.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D5FDC91EA74ADF005D8AE9 /* Base */,
+				66D5FDCC1EA74AF4005D8AE9 /* zh-Hans */,
+			);
+			name = FwUpgrade.storyboard;
+			sourceTree = "<group>";
+		};
+		66D5FDD61EA76EA1005D8AE9 /* BlueSTSDKMainView.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D5FDD51EA76EA1005D8AE9 /* Base */,
+			);
+			name = BlueSTSDKMainView.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		6639791A1E2E5D0000FBF696 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -450,6 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -484,6 +527,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -494,6 +538,7 @@
 		6639791D1E2E5D0000FBF696 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9L4QA9SNQK;
@@ -503,19 +548,19 @@
 				INFOPLIST_FILE = BlueSTSDK_Gui/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/BlueSTSDK_Gui/LicenseManager/GenerateLicenseCode",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.st.clab.BlueSTSDK-Gui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		6639791E1E2E5D0000FBF696 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9L4QA9SNQK;
@@ -525,13 +570,11 @@
 				INFOPLIST_FILE = BlueSTSDK_Gui/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/BlueSTSDK_Gui/LicenseManager/GenerateLicenseCode",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.st.clab.BlueSTSDK-Gui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

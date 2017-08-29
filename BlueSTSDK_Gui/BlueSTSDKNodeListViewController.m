@@ -35,22 +35,19 @@
  * OF SUCH DAMAGE.
  */
 
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
+
 #import "BlueSTSDKNodeListViewController.h"
 
 #import "MBProgressHUD.h"
 
-#import <BlueSTSDK/BlueSTSDKManager.h>
-#import <BlueSTSDK/BlueSTSDKNode.h>
-#import <BlueSTSDK/BlueSTSDKNodeStatusNSLog.h>
 #import "BlueSTSDKNodeListViewCell.h"
-#import "UIViewController+BlueSTSDK.h"
 #import "BlueSTSDKDemoViewController.h"
 
 #define SEGUE_DEMO_VIEW @"showDemoView"
 //stop the discovery after 10s
 #define DISCOVERY_TIMEOUT (10*1000)
 #define ERROR_MSG_TIMEOUT (3.0)
-
 
 @interface BlueSTSDKNodeListViewController () <BlueSTSDKManagerDelegate,
     BlueSTSDKNodeStateDelegate>
@@ -177,6 +174,8 @@
     dispatch_sync(dispatch_get_main_queue(),^{
         [self setNavigationDiscoveryButton];
     });
+    
+
 }
 
 /**
@@ -203,6 +202,30 @@
     return mNodes.count;
 }
 
+
+-(UIImage*) getBoardImage:(BlueSTSDKNodeType) type{
+    NSBundle *currentBundle = [NSBundle bundleForClass: self.class];
+    switch (type){
+
+        case BlueSTSDKNodeTypeSTEVAL_WESU1:
+            return [UIImage imageNamed:@"logo_steval_wesu1"
+                              inBundle:currentBundle compatibleWithTraitCollection:nil];;
+        case BlueSTSDKNodeTypeSensor_Tile:
+            return [UIImage imageNamed:@"logo_sensorTile"
+                              inBundle:currentBundle compatibleWithTraitCollection:nil];;
+        case BlueSTSDKNodeTypeBlue_Coin:
+            return [UIImage imageNamed:@"logo_blueCoin"
+                              inBundle:currentBundle compatibleWithTraitCollection:nil];;
+        case BlueSTSDKNodeTypeNucleo:
+            return [UIImage imageNamed:@"logo_nucleo"
+                              inBundle:currentBundle compatibleWithTraitCollection:nil];
+        case BlueSTSDKNodeTypeGeneric:
+        default:
+            return [UIImage imageNamed:@"board_generic.png"
+                              inBundle:currentBundle compatibleWithTraitCollection:nil];;
+    }
+}
+
 /*
 *
 * build a castom row for the device,the icon depends from the board type
@@ -224,30 +247,7 @@
     cell.boardDetails.text = (node.address == nil) ? node.tag : node.address;
     cell.boardIsSleepingImage.hidden=!node.isSleeping;
     cell.boardHasExtensionImage.hidden=!node.hasExtension;
-    NSBundle *currentBundle = [NSBundle bundleForClass: self.class];
-    switch(node.type){
-        case BlueSTSDKNodeTypeNucleo:
-            cell.boardImage.image = [UIImage imageNamed:@"board_nucleo"
-                                               inBundle:currentBundle
-                          compatibleWithTraitCollection:nil];
-            break;
-        case BlueSTSDKNodeTypeSTEVAL_WESU1:
-            cell.boardImage.image = [UIImage imageNamed:@"board_steval_wesu1"
-                                               inBundle:currentBundle
-                          compatibleWithTraitCollection:nil];
-            break;
-        case BlueSTSDKNodeTypeSensor_Tile:
-            cell.boardImage.image = [UIImage imageNamed:@"board_sensorTile"
-                                               inBundle:currentBundle
-                          compatibleWithTraitCollection:nil];
-            break;
-        case BlueSTSDKNodeTypeGeneric:
-        default:
-            cell.boardImage.image = [UIImage imageNamed:@"board_generic.png"
-                                               inBundle:currentBundle
-                          compatibleWithTraitCollection:nil];
-            break;
-    }
+    cell.boardImage.image = [self getBoardImage:node.type];
     return cell;
 }
 
@@ -266,7 +266,7 @@
     prevState:(BlueSTSDKNodeState)prevState{
     if(newState == BlueSTSDKNodeStateConnected)
         dispatch_sync(dispatch_get_main_queue(),^{
-            [networkCheckConnHud hide:true];
+            [networkCheckConnHud hideAnimated:true];
             networkCheckConnHud=nil;
             if(_delegate!=nil){
                 mConnectedNode=node;
@@ -275,15 +275,15 @@
             }//if
         });
     else if (newState == BlueSTSDKNodeStateDead || newState == BlueSTSDKNodeStateUnreachable){
-        NSString *str = [NSString stringWithFormat:@"Cannot connect with the device: %@", node.name ];
+        NSString *str = [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Cannot connect with the device: %@",nil), node.name ];
         dispatch_sync(dispatch_get_main_queue(),^{
-            [networkCheckConnHud hide:true];
+            [networkCheckConnHud hideAnimated:true];
             networkCheckConnHud=nil;
             networkCheckConnHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             networkCheckConnHud.mode=MBProgressHUDModeText;
-            networkCheckConnHud.labelText=str;
-            [networkCheckConnHud show:YES];
-            [networkCheckConnHud hide:true afterDelay:ERROR_MSG_TIMEOUT];
+            networkCheckConnHud.label.text=str;
+            [networkCheckConnHud showAnimated:YES];
+            [networkCheckConnHud hideAnimated:true afterDelay:ERROR_MSG_TIMEOUT];
         });
     }//if-else
 }
@@ -299,9 +299,9 @@
         networkCheckConnHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         networkCheckConnHud.mode = MBProgressHUDModeIndeterminate;
         networkCheckConnHud.removeFromSuperViewOnHide = YES;
-        networkCheckConnHud.labelText = @"Connecting";
+        networkCheckConnHud.label.text = BLUESTSDK_LOCALIZE(@"Connecting",nil);
         
-        [networkCheckConnHud show:YES];
+        [networkCheckConnHud showAnimated:YES];
         [node connect];
     }
 }

@@ -36,6 +36,7 @@
  */
 
 #import "BlueSTSDKDebugConsoleViewController.h"
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #define PAUSE_DETECTION_TIME_MS 100 //ms
 #define SENDING_TIME_OUT_MS 100 //s
@@ -123,7 +124,7 @@ typedef NS_ENUM(NSInteger, Type_e){
     [super viewDidAppear:animated];
     [_debugInterface addDebugOutputDelegate:self];
     [_userText becomeFirstResponder];
-    [self appendMessage:@"send ?? for help" type:TypeGeneric eol:YES timestamp:NO];
+    [self appendMessage:BLUESTSDK_LOCALIZE(@"Send 'help' for help",nil) type:TypeGeneric eol:YES timestamp:NO];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -301,15 +302,15 @@ typedef NS_ENUM(NSInteger, Type_e){
 
 
     //hide keyboard
-    alertAction = [UIAlertAction actionWithTitle:@"Send help"
+    alertAction = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"Send help",nil)
                                            style:UIAlertActionStyleDefault
                                          handler:^(UIAlertAction *action) {
-                                             [self sendMessage:@"??" eol:YES];
+                                             [self sendMessage:@"help" eol:YES];
                                          }];
     [alertController addAction:alertAction];
 
     //hide keyboard
-    alertAction = [UIAlertAction actionWithTitle:@"Hide keyboard"
+    alertAction = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"Hide keyboard",nil)
                                            style:UIAlertActionStyleDefault
                                          handler:^(UIAlertAction *action) {
                                              [self.view endEditing:NO];
@@ -317,7 +318,7 @@ typedef NS_ENUM(NSInteger, Type_e){
     [alertController addAction:alertAction];
 
     //clear
-    alertAction = [UIAlertAction actionWithTitle:@"Clear"
+    alertAction = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"Clear",nil)
                                            style:UIAlertActionStyleDefault
                                          handler:^(UIAlertAction *action) {
                                              mDisplayString = [[NSMutableAttributedString alloc] init];
@@ -328,7 +329,7 @@ typedef NS_ENUM(NSInteger, Type_e){
     //on the iphone add the cancel button
     if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad ){
         [alertController addAction:
-                [UIAlertAction actionWithTitle:@"Cancel"
+                [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"Cancel",nil)
                                          style:UIAlertActionStyleCancel
                                        handler:nil]];
     }

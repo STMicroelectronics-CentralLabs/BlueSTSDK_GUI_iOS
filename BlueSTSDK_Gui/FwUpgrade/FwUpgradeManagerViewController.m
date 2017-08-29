@@ -41,19 +41,20 @@
 #import "MBProgressHUD.h"
 
 #import <BlueSTSDK/BlueSTSDKFwVersion.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
-#define READ_VERSION @"Reading firmware version"
-#define UPLOADING_MSG @"Flashing the new firmware"
-#define FORMATTING_MSG @"Formatting..."
-#define FW_UPGRADE_NOT_AVAILABLE_ERR @"Firmware upgrade not available"
-#define FW_UPGRADE_NOT_SUPPORTED_ERR @"Firmware upgrade not supported, please upgrade the firmware"
-#define UPLOAD_COMPLETE_WITH_TIME_MSG @"Upgrade completed in: %.2fs\nThe board is resetting"
-#define CORRUPTED_DATA_ERR  @"Transmitted data are corrupted"
-#define TRANSMISION_ERR @"Error sending the data"
-#define INVALID_FW_FILE_ERR @"Error while opening the file"
-#define UNKNOWN_ERR @"Unknown Error";
-#define ERROR_TITLE @"Error"
-#define SUCCESS_TITLE @"FW Flash done"
+#define READ_VERSION (BLUESTSDK_LOCALIZE(@"Reading firmware version",nil))
+#define UPLOADING_MSG (BLUESTSDK_LOCALIZE(@"Flashing the new firmware",nil))
+#define FORMATTING_MSG (BLUESTSDK_LOCALIZE(@"Formatting...",nil))
+#define FW_UPGRADE_NOT_AVAILABLE_ERR (BLUESTSDK_LOCALIZE(@"Firmware upgrade not available",nil))
+#define FW_UPGRADE_NOT_SUPPORTED_ERR (BLUESTSDK_LOCALIZE(@"Firmware upgrade not supported, please upgrade the firmware",nil))
+#define UPLOAD_COMPLETE_WITH_TIME_MSG (BLUESTSDK_LOCALIZE(@"Upgrade completed in: %.2fs\nThe board is resetting",nil))
+#define CORRUPTED_DATA_ERR  (BLUESTSDK_LOCALIZE(@"Transmitted data are corrupted",nil))
+#define TRANSMISION_ERR (BLUESTSDK_LOCALIZE(@"Error sending the data",nil))
+#define INVALID_FW_FILE_ERR (BLUESTSDK_LOCALIZE(@"Error while opening the file",nil))
+#define UNKNOWN_ERR (BLUESTSDK_LOCALIZE(@"Unknown Error",nil))
+#define ERROR_TITLE (BLUESTSDK_LOCALIZE(@"Error",nil))
+#define SUCCESS_TITLE (BLUESTSDK_LOCALIZE(@"FW Flash done",nil))
 
 static NSArray<BlueSTSDKFwVersion*> *sMinVersion;
 
@@ -113,9 +114,9 @@ static NSArray<BlueSTSDKFwVersion*> *sMinVersion;
     loadVersionHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     loadVersionHud.mode = MBProgressHUDModeIndeterminate;
     loadVersionHud.removeFromSuperViewOnHide = YES;
-    loadVersionHud.labelText = READ_VERSION;
+    loadVersionHud.label.text = READ_VERSION;
 
-    [loadVersionHud show:YES];
+    [loadVersionHud showAnimated:YES];
 }
 
 - (void)viewDidLoad {
@@ -157,7 +158,7 @@ static NSArray<BlueSTSDKFwVersion*> *sMinVersion;
 
 - (void)fwUpgrade:(BlueSTSDKFwUpgradeConsole *)console didVersionRead:(BlueSTSDKFwVersion *)version {
     dispatch_async(dispatch_get_main_queue(),^{
-        [loadVersionHud hide:true];
+        [loadVersionHud hideAnimated:true];
         loadVersionHud=nil;
 
         if(version==nil){
@@ -234,7 +235,7 @@ static NSArray<BlueSTSDKFwVersion*> *sMinVersion;
 
 - (void)updateProgressView:(NSUInteger)load {
     mUploadProgressView.progress=1.0f-load/(float)mFwFileLength;
-    mUploadProgresLabel.text= [NSString stringWithFormat:@"%d/%ld bytes",
+    mUploadProgresLabel.text= [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"%d/%ld bytes",nil),
                                (int)(mFwFileLength-load),(long)mFwFileLength];
 }
 

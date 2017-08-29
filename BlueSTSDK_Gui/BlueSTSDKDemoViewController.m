@@ -39,16 +39,17 @@
 #import "DebugConsole/BlueSTSDKDebugConsoleViewController.h"
 #import "UIViewController+BlueSTSDK.h"
 #import "FwUpgrade/FwUpgradeManagerViewController.h"
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import <MessageUI/MessageUI.h>
 
-#define START_LOG_NAME @"Start Logging"
-#define STOP_LOG_NAME @"Stop Logging"
-#define SHOW_DEBUG_NAME @"Show Debug Console"
-#define SHOW_LICENSE_MANAGER_NAME @"License Manager"
-#define SHOW_FWUPGRADE_MANAGER_NAME @"Firmware Upgrade"
-#define CANCEL_NAME @"Cancel"
-#define MAIL_TITLE @"[BlueSTSDK] Logger data"
+#define START_LOG_NAME BLUESTSDK_LOCALIZE(@"Start Logging",nil)
+#define STOP_LOG_NAME BLUESTSDK_LOCALIZE(@"Stop Logging",nil)
+#define SHOW_DEBUG_NAME BLUESTSDK_LOCALIZE(@"Show Debug Console",nil)
+#define SHOW_LICENSE_MANAGER_NAME BLUESTSDK_LOCALIZE(@"License Manager",nil)
+#define SHOW_FWUPGRADE_MANAGER_NAME BLUESTSDK_LOCALIZE(@"Firmware Upgrade",nil)
+#define CANCEL_NAME BLUESTSDK_LOCALIZE(@"Cancel",nil)
+#define MAIL_TITLE BLUESTSDK_LOCALIZE(@"Logger data",nil)
 
 @interface BlueSTSDKDemoViewController() <MFMailComposeViewControllerDelegate, BlueSTSDKNodeStateDelegate>
 
@@ -225,18 +226,18 @@
     UIAlertController *alert;
     
     if (result == MFMailComposeResultFailed) {
-        alert = [UIAlertController alertControllerWithTitle:@"Message Failed!"
-                                            message:@"Your email was not sent"
+        alert = [UIAlertController alertControllerWithTitle:BLUESTSDK_LOCALIZE(@"Message Failed!",nil)
+                                            message:BLUESTSDK_LOCALIZE(@"Your email was not sent",nil)
                                      preferredStyle:UIAlertControllerStyleAlert];
         
     }else if (result == MFMailComposeResultSent) {
-        alert = [UIAlertController alertControllerWithTitle:@"Message Ok"
-                                                    message:@"Your message has been sent."
+        alert = [UIAlertController alertControllerWithTitle:BLUESTSDK_LOCALIZE(@"Message Ok",nil)
+                                                    message:BLUESTSDK_LOCALIZE(@"Your message has been sent.",nil)
                                              preferredStyle:UIAlertControllerStyleAlert];
         [BlueSTSDKFeatureLogCSV clearLogFolder];
     }
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"OK",nil)
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {}];
     if(alert!=nil){

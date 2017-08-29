@@ -35,35 +35,66 @@
  * OF SUCH DAMAGE.
  */
 
-#import <UIKit/UIKit.h>
+import Foundation
+import UIKit
 
-/**
- *  Delegate used for personalize the about page
- */
-@protocol BlueSTSDKAboutViewControllerDelegate <NSObject>
 
-/**
- *  path where find the html file to display in the about page
- *
- *  @return path for an html file
- */
-- (NSString*) htmlFile;
+/// class showing a list of license used by the application
+public class BlueSTSDKLibLicenseViewController: UITableViewController{
+    
+    /// Segue to see the license details
+    private static let LICENSES_DETAILS_VIEW_CONTROLLER_SEGUE = "bluestsdk_show_lib_licenses_details";
 
-/**
- *  get the image to display on the top part of the about page
- *
- *  @return image to display in the top part of the about page
- */
-- (UIImage*) headImage;
+    /// table cell identifier
+    private static let CELL_IDENTIFIER = "LicenseDetailsTableCell"
 
-@end
+    
+    /// list of license to display
+    public var licensePath:[BlueSTSDKLibLicense]?
+    
+    /// user selected license
+    private var selectedItem:IndexPath?;
 
-/**
- *  Create an about page, it will display an image on the top and the content of
- * an html file. the content can be change using a delegate.
- */
-@interface BlueSTSDKAboutViewController : UIViewController
+    
+    public override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
 
-@property id<BlueSTSDKAboutViewControllerDelegate> delegate;
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let items = licensePath{
+            return items.count;
+        }else {
+            return 0;
+        }
+    }
 
-@end
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: BlueSTSDKLibLicenseViewController.CELL_IDENTIFIER,
+                for: indexPath);
+
+        let index = indexPath.row;
+        if let items = licensePath {
+            cell.textLabel?.text = items[index].libName;
+        }
+
+        return cell;
+    }
+
+    public override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        selectedItem = indexPath;
+        performSegue(withIdentifier: BlueSTSDKLibLicenseViewController.LICENSES_DETAILS_VIEW_CONTROLLER_SEGUE, sender: self)
+    }
+
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == BlueSTSDKLibLicenseViewController.LICENSES_DETAILS_VIEW_CONTROLLER_SEGUE ){
+            let destinationViewController = segue.destination as! BlueSTSDKLibLicenseDetailsViewController;
+            if let items = licensePath, let selected = selectedItem{
+                destinationViewController.title = items[selected.row].libName;
+                destinationViewController.licenseFilePath = items[selected.row].libLicensePath;
+            }
+        }
+    }
+
+
+}
