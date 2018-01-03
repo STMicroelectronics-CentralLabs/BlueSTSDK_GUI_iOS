@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Cep-Ye-2Zt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Cep-Ye-2Zt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Fw Upgrade Manager View Controller-->
+        <!--BlueSTSDK Fw Upgrade Manager View Controller-->
         <scene sceneID="fTP-y7-0ju">
             <objects>
-                <viewController id="Cep-Ye-2Zt" customClass="FwUpgradeManagerViewController" sceneMemberID="viewController">
+                <viewController id="Cep-Ye-2Zt" customClass="BlueSTSDKFwUpgradeManagerViewController" customModule="BlueSTSDK_Gui" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oKE-0f-aEJ"/>
                         <viewControllerLayoutGuide type="bottom" id="blj-fq-tyC"/>
@@ -123,20 +123,20 @@
                     <toolbarItems>
                         <barButtonItem enabled="NO" title="Download &amp; Flash" id="gho-9t-q0o">
                             <connections>
-                                <action selector="onUploadFileClick:" destination="Cep-Ye-2Zt" id="Niu-Ir-Pen"/>
+                                <action selector="onSelectFileButtonPress:" destination="Cep-Ye-2Zt" id="6cM-3X-SD1"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mBoardFwName" destination="fY5-le-UIB" id="q0c-PX-tPV"/>
-                        <outlet property="mFwType" destination="ru6-Ye-QNe" id="v6w-8y-eZ9"/>
-                        <outlet property="mFwVersion" destination="Spe-XQ-RCu" id="xSJ-9V-ngy"/>
-                        <outlet property="mUploadBarButton" destination="gho-9t-q0o" id="CrO-Fp-bJ8"/>
-                        <outlet property="mUploadProgresLabel" destination="qlb-vr-z7I" id="15K-vU-LVM"/>
-                        <outlet property="mUploadProgressView" destination="R6q-mC-8IQ" id="AQ8-o5-q7V"/>
-                        <outlet property="mUploadStatusProgres" destination="msX-xo-dkI" id="KEk-io-5ck"/>
-                        <outlet property="mUploadView" destination="bJR-nn-DvJ" id="L7r-Xc-1id"/>
+                        <outlet property="mBoardFwNameLabel" destination="fY5-le-UIB" id="XGa-VH-6Yt"/>
+                        <outlet property="mFwTypeLabel" destination="ru6-Ye-QNe" id="mNH-kj-1Yj"/>
+                        <outlet property="mFwVersionLabel" destination="Spe-XQ-RCu" id="de3-yD-6Fm"/>
+                        <outlet property="mSelectFileButton" destination="gho-9t-q0o" id="K3D-7R-W8L"/>
+                        <outlet property="mUploadProgressLabel" destination="qlb-vr-z7I" id="vZa-cg-clx"/>
+                        <outlet property="mUploadProgressView" destination="R6q-mC-8IQ" id="kyt-5e-HCt"/>
+                        <outlet property="mUploadStatusProgress" destination="msX-xo-dkI" id="lmr-NJ-BrU"/>
+                        <outlet property="mUploadView" destination="bJR-nn-DvJ" id="zCL-5h-W1R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wqc-a7-bUU" userLabel="First Responder" sceneMemberID="firstResponder"/>

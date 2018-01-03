@@ -67,7 +67,7 @@ public class BlueSTSDKLibLicense : NSObject{
     /// - Parameters:
     ///   - name: library name
     ///   - licenseFile: license location
-    public init(name:String , licenseFile:String){
+    @objc public init(name:String , licenseFile:String){
         libName=name;
         libLicensePath = licenseFile;
     }
@@ -76,7 +76,7 @@ public class BlueSTSDKLibLicense : NSObject{
     /// create an object, the license name is the file name that contains the licenses
     ///
     /// - Parameter licenseFile: path with the license
-    public init(licenseFile:String){
+    @objc public init(licenseFile:String){
         libName = BlueSTSDKLibLicense.extratFileName(path: licenseFile);
         libLicensePath = licenseFile;
     }

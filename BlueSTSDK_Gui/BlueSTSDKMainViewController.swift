@@ -90,9 +90,9 @@ extension BlueSTSDKMainViewControllerDelegate {
     @IBOutlet weak var mAppVersionLabel: UILabel!
 
 
-    public var delegateAbout:BlueSTSDKAboutViewControllerDelegate?=nil;
-    public var delegateMain: BlueSTSDKMainViewControllerDelegate?=nil;
-    public var delegateNodeList:BlueSTSDKNodeListViewControllerDelegate?=nil;
+    @objc public var delegateAbout:BlueSTSDKAboutViewControllerDelegate?=nil;
+    @objc public var delegateMain: BlueSTSDKMainViewControllerDelegate?=nil;
+    @objc public var delegateNodeList:BlueSTSDKNodeListViewControllerDelegate?=nil;
 
     override public func viewDidLoad(){
         super.viewDidLoad();

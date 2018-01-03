@@ -35,10 +35,10 @@
  * OF SUCH DAMAGE.
  */
 
+#import <BlueSTSDK_Gui/BlueSTSDK_Gui-Swift.h>
 #import "BlueSTSDKDemoViewController.h"
 #import "DebugConsole/BlueSTSDKDebugConsoleViewController.h"
 #import "UIViewController+BlueSTSDK.h"
-#import "FwUpgrade/FwUpgradeManagerViewController.h"
 #import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import <MessageUI/MessageUI.h>
@@ -271,7 +271,7 @@
     NSBundle *currentBundle = [NSBundle bundleForClass:self.class];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"FwUpgrade" bundle:currentBundle];
 
-    FwUpgradeManagerViewController *fwUpgradeControlView = [storyBoard instantiateInitialViewController];
+    BlueSTSDKFwUpgradeManagerViewController *fwUpgradeControlView = [storyBoard instantiateInitialViewController];
 
     fwUpgradeControlView.node=self.node;
 

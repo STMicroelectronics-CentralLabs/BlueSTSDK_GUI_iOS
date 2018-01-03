@@ -43,7 +43,7 @@
     id<BlueSTSDKDebugOutputDelegate> mCurrentDelegate;
 }
 + (instancetype)getFwUpgradeConsole:(BlueSTSDKNode *)node {
-    if(node.debugConsole==nil)
+    if(node==nil || node.debugConsole==nil)
         return nil;
     //else
     switch (node.type) {

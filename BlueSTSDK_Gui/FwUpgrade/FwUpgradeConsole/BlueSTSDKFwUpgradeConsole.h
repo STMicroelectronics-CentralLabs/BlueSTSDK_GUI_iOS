@@ -49,18 +49,18 @@
 @interface BlueSTSDKFwUpgradeConsole : NSObject
 
 /* object where send/receve the commands */
-@property (retain) BlueSTSDKDebug *console;
+@property (retain) BlueSTSDKDebug * _Nonnull console;
 /* object where notify the current firmware version */
-@property (retain) id<BlueSTSDKFwUpgradeReadVersionDelegate> delegateReadVersion;
+@property (retain) id<BlueSTSDKFwUpgradeReadVersionDelegate> _Nullable delegateReadVersion;
 /* object where notify the current upload status */
-@property (retain) id<BlueSTSDKFwUpgradeUploadFwDelegate> delegateLoadFw;
+@property (retain) id<BlueSTSDKFwUpgradeUploadFwDelegate> _Nonnull delegateLoadFw;
 
 
 /**
  * create an instance that works with the specific node type
  * @param node node where upload the fiwmare
  */
-+(instancetype) getFwUpgradeConsole:(BlueSTSDKNode *)node;
++(nullable instancetype) getFwUpgradeConsole:(BlueSTSDKNode * _Nullable)node;
 
  /**
   * @return true if the node is already doing a command
@@ -73,14 +73,14 @@
  * set the UpdateConsole became busy. when implement the protocol remeber to call
  * setConsoleDelegate:nil before exec the next command.
  */
--(void)setConsoleDelegate:(id<BlueSTSDKDebugOutputDelegate>)delegate;
+-(void)setConsoleDelegate:(nullable id<BlueSTSDKDebugOutputDelegate>)delegate;
 
 /**
  * read the current firmware version
  * @param delegate object where notify the read fw version
  * @return true if the command is correctly send
  */
--(BOOL)readFwVersion:(id<BlueSTSDKFwUpgradeReadVersionDelegate>) delegate;
+-(BOOL)readFwVersion:(nonnull id<BlueSTSDKFwUpgradeReadVersionDelegate>) delegate;
 
 /**
  * upload the file to the board
@@ -88,20 +88,20 @@
  * @param delegate object where notify the upload progress
  * @return true if the command is correctly send
  */
--(BOOL) loadFwFile:(NSURL *)file delegate:(id<BlueSTSDKFwUpgradeUploadFwDelegate>) delegate;
+-(BOOL) loadFwFile:(NSURL * _Nonnull)file delegate:(nonnull id<BlueSTSDKFwUpgradeUploadFwDelegate>) delegate;
 @end
 
 /**
  * Delegate used to comunicate the firmware version 
  */
-@protocol BlueSTSDKFwUpgradeReadVersionDelegate <NSObject>
+@protocol BlueSTSDKFwUpgradeReadVersionDelegate
 /**
  * function called when the firmware version is read
  * @param console object used for read the versione
  * @param version version read
  */
 @required
-- (void) fwUpgrade:(BlueSTSDKFwUpgradeConsole *)console didVersionRead:(BlueSTSDKFwVersion*)version;
+- (void) fwUpgrade:(BlueSTSDKFwUpgradeConsole * _Nonnull)console didVersionRead:(BlueSTSDKFwVersion* _Nullable)version;
 @end
 
 typedef NS_ENUM(uint8_t, BlueSTSDKFwUpgradeUploadFwError) {
@@ -116,15 +116,14 @@ typedef NS_ENUM(uint8_t, BlueSTSDKFwUpgradeUploadFwError) {
 };
 
 
-@protocol BlueSTSDKFwUpgradeUploadFwDelegate <NSObject>
-
+@protocol BlueSTSDKFwUpgradeUploadFwDelegate
 /**
  * function called when the firmware file is correctly upload to the node 
  * @param console object used to upload the file
  * @param file file upload to the board
  */
 @required
-- (void) fwUpgrade:(BlueSTSDKFwUpgradeConsole *)console onLoadComplite:(NSURL*)file;
+- (void) fwUpgrade:(BlueSTSDKFwUpgradeConsole * _Nonnull)console onLoadComplite:(NSURL* _Nonnull)file;
 
 /**
  * function called when the firmware file had an error during the uploading
@@ -133,7 +132,7 @@ typedef NS_ENUM(uint8_t, BlueSTSDKFwUpgradeUploadFwError) {
  * @param error error that happen during the upload
  */
 @required
-- (void) fwUpgrade:(BlueSTSDKFwUpgradeConsole *)console onLoadError:(NSURL*)file error:(BlueSTSDKFwUpgradeUploadFwError)error;
+- (void) fwUpgrade:(BlueSTSDKFwUpgradeConsole * _Nonnull)console onLoadError:(NSURL* _Nonnull)file error:(BlueSTSDKFwUpgradeUploadFwError)error;
 
 /**
  * function called during the file upload
@@ -142,7 +141,7 @@ typedef NS_ENUM(uint8_t, BlueSTSDKFwUpgradeUploadFwError) {
  * @param load number of bytes loaded into the board
  */
 @required
-- (void) fwUpgrade:(BlueSTSDKFwUpgradeConsole *)console onLoadProgres:(NSURL*)file loadBytes:(NSUInteger)load;
+- (void) fwUpgrade:(BlueSTSDKFwUpgradeConsole * _Nonnull)console onLoadProgres:(NSURL* _Nonnull)file loadBytes:(NSUInteger)load;
 
 @end
 
