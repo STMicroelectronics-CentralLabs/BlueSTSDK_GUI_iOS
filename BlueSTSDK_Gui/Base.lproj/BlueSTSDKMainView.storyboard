@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jcp-lJ-o4E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jcp-lJ-o4E">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,9 +29,9 @@
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHg-8K-fG4">
-                                <rect key="frame" x="528" y="987" width="220" height="29"/>
-                                <string key="text">© Copyright  2017 STMicroelectronics.
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHg-8K-fG4" userLabel="© Copyright  2017 STMicroelectronics. All rights reserved.">
+                                <rect key="frame" x="527.5" y="987" width="220.5" height="29"/>
+                                <string key="text">© Copyright  2018 STMicroelectronics.
 All rights reserved.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -146,7 +147,7 @@ All rights reserved.</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kc-tK-MME">
-                                <rect key="frame" x="20" y="202" width="728" height="778"/>
+                                <rect key="frame" x="20" y="202" width="728" height="747.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </webView>
@@ -172,23 +173,32 @@ All rights reserved.</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Evaluation Only" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTR-SE-TXU">
+                                <rect key="frame" x="650.5" y="957.5" width="109.5" height="14.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Z99-Od-9KY" secondAttribute="trailing" id="0P0-xW-eAJ"/>
+                            <constraint firstAttribute="trailing" secondItem="DTR-SE-TXU" secondAttribute="trailing" constant="8" id="CED-9O-Al0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JAt-pA-mgG" secondAttribute="trailing" id="Dc4-NU-x01"/>
                             <constraint firstItem="jt8-mT-SEy" firstAttribute="leading" secondItem="rTI-Va-jBs" secondAttribute="leadingMargin" id="F3h-D6-reA"/>
                             <constraint firstItem="2Kc-tK-MME" firstAttribute="top" secondItem="JAt-pA-mgG" secondAttribute="bottom" constant="8" id="G0x-gm-awi"/>
                             <constraint firstItem="JAt-pA-mgG" firstAttribute="top" secondItem="Z99-Od-9KY" secondAttribute="bottom" id="Kc6-YX-Je2"/>
                             <constraint firstItem="2Kc-tK-MME" firstAttribute="leading" secondItem="rTI-Va-jBs" secondAttribute="leadingMargin" id="KzB-so-lAW"/>
                             <constraint firstItem="JAt-pA-mgG" firstAttribute="leading" secondItem="rTI-Va-jBs" secondAttribute="leadingMargin" id="Tfs-WG-51M"/>
+                            <constraint firstItem="ZT5-TJ-RVm" firstAttribute="top" secondItem="DTR-SE-TXU" secondAttribute="bottom" constant="8" id="TlV-eo-JkL"/>
                             <constraint firstItem="2Kc-tK-MME" firstAttribute="top" secondItem="m5j-Kg-PxX" secondAttribute="bottom" id="Uap-ee-3zj"/>
                             <constraint firstItem="jt8-mT-SEy" firstAttribute="top" secondItem="m5j-Kg-PxX" secondAttribute="bottom" id="dZu-s6-qZO"/>
-                            <constraint firstItem="ZT5-TJ-RVm" firstAttribute="top" secondItem="2Kc-tK-MME" secondAttribute="bottom" id="dat-aG-Poo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jt8-mT-SEy" secondAttribute="trailing" id="eGf-Jg-Bac"/>
                             <constraint firstItem="Z99-Od-9KY" firstAttribute="top" secondItem="jt8-mT-SEy" secondAttribute="bottom" id="fF6-Oh-waf"/>
                             <constraint firstItem="Z99-Od-9KY" firstAttribute="leading" secondItem="rTI-Va-jBs" secondAttribute="leadingMargin" id="goX-Lf-SxQ"/>
+                            <constraint firstItem="DTR-SE-TXU" firstAttribute="top" secondItem="2Kc-tK-MME" secondAttribute="bottom" constant="8" id="mre-wQ-9Gt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2Kc-tK-MME" secondAttribute="trailing" id="p8L-EG-Lbj"/>
+                            <constraint firstItem="DTR-SE-TXU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rTI-Va-jBs" secondAttribute="leading" constant="8" id="zBe-Hb-goY"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -216,7 +226,7 @@ All rights reserved.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbg-Uu-3rp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4152" y="-221"/>
+            <point key="canvasLocation" x="4151.5625" y="-221.48437499999997"/>
         </scene>
         <!--Library Licenses-->
         <scene sceneID="yiu-Ph-GiB">
@@ -297,39 +307,39 @@ All rights reserved.</string>
         <!--Devices-->
         <scene sceneID="0nK-73-5aT">
             <objects>
-                <tableViewController title="Devices" id="8hC-kF-n1t" customClass="BlueSTSDKNodeListViewController" sceneMemberID="viewController">
+                <tableViewController title="Devices" id="8hC-kF-n1t" customClass="BlueSTSDKNodeListViewController" customModule="BlueSTSDK_Gui" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" id="Aci-29-YcO">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlueSTSDKNetworkTableViewCell" rowHeight="72" id="xi5-WI-ybN" customClass="BlueSTSDKNodeListViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlueSTSDKNetworkTableViewCell" rowHeight="72" id="xi5-WI-ybN" customClass="BlueSTSDKNodeListViewCell" customModule="BlueSTSDK_Gui" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="22" width="768" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xi5-WI-ybN" id="lkU-cx-QWY">
-                                    <rect key="frame" x="0.0" y="0.0" width="702" height="72"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="730" height="71.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="H3b-hh-mRa">
-                                            <rect key="frame" x="16" y="16" width="72" height="39"/>
+                                            <rect key="frame" x="28" y="19" width="72" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="72" id="tq8-sl-BYU"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvd-Ml-EFV">
-                                            <rect key="frame" x="96" y="17" width="623" height="29"/>
+                                            <rect key="frame" x="108" y="20" width="606" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYC-AP-Mn0">
-                                            <rect key="frame" x="112" y="46" width="607" height="20.5"/>
+                                            <rect key="frame" x="124" y="49" width="590" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="cFX-XJ-KTU">
-                                            <rect key="frame" x="695" y="16" width="24" height="48"/>
+                                            <rect key="frame" x="690" y="19" width="24" height="48"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleepIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hoq-jh-Cpu">
                                                     <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -355,11 +365,11 @@ All rights reserved.</string>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="boardDetails" destination="QYC-AP-Mn0" id="wYL-xx-KcM"/>
-                                    <outlet property="boardHasExtensionImage" destination="36E-FR-8sd" id="m0J-RE-9uj"/>
-                                    <outlet property="boardImage" destination="H3b-hh-mRa" id="4Xw-OA-YyO"/>
-                                    <outlet property="boardIsSleepingImage" destination="hoq-jh-Cpu" id="mhn-78-D4h"/>
-                                    <outlet property="boardName" destination="qvd-Ml-EFV" id="lZ8-IT-NUr"/>
+                                    <outlet property="boardDetails" destination="QYC-AP-Mn0" id="Q9f-Mh-eUH"/>
+                                    <outlet property="boardHasExtensionImage" destination="36E-FR-8sd" id="rnr-Cj-IYv"/>
+                                    <outlet property="boardImage" destination="H3b-hh-mRa" id="0Uy-AB-Q1A"/>
+                                    <outlet property="boardIsSleepingImage" destination="hoq-jh-Cpu" id="Ylb-zg-1S5"/>
+                                    <outlet property="boardName" destination="qvd-Ml-EFV" id="wf3-Si-JcR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -379,7 +389,7 @@ All rights reserved.</string>
         <!--BlueSTSDK Demo View Controller-->
         <scene sceneID="gmE-eg-t3t">
             <objects>
-                <viewController id="h8q-pq-kW1" customClass="BlueSTSDKDemoViewController" sceneMemberID="viewController">
+                <viewController id="h8q-pq-kW1" customClass="BlueSTSDKDemoViewController" customModule="BlueSTSDK_Gui" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w8c-7F-vIJ"/>
                         <viewControllerLayoutGuide type="bottom" id="RyE-dV-5mq"/>

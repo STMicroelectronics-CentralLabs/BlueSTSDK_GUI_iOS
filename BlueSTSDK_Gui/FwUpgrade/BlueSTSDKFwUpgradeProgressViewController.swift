@@ -1,43 +1,45 @@
-/*
- * Copyright (c) 2017  STMicroelectronics – All rights reserved
- * The STMicroelectronics corporate logo is a trademark of STMicroelectronics
- *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *
- * - Redistributions of source code must retain the above copyright notice, this list of conditions
- *   and the following disclaimer.
- *
- * - Redistributions in binary form must reproduce the above copyright notice, this list of
- *   conditions and the following disclaimer in the documentation and/or other materials provided
- *   with the distribution.
- *
- * - Neither the name nor trademarks of STMicroelectronics International N.V. nor any other
- *   STMicroelectronics company nor the names of its contributors may be used to endorse or
- *   promote products derived from this software without specific prior written permission.
- *
- * - All of the icons, pictures, logos and other images that are provided with the source code
- *   in a directory whose title begins with st_images may only be used for internal purposes and
- *   shall not be redistributed to any third party or modified in any way.
- *
- * - Any redistributions in binary form shall not include the capability to display any of the
- *   icons, pictures, logos and other images that are provided with the source code in a directory
- *   whose title begins with st_images.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
- * AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER
- * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
- * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
- * OF SUCH DAMAGE.
- */
+ /*
+  * Copyright (c) 2018  STMicroelectronics – All rights reserved
+  * The STMicroelectronics corporate logo is a trademark of STMicroelectronics
+  *
+  * Redistribution and use in source and binary forms, with or without modification,
+  * are permitted provided that the following conditions are met:
+  *
+  * - Redistributions of source code must retain the above copyright notice, this list of conditions
+  *   and the following disclaimer.
+  *
+  * - Redistributions in binary form must reproduce the above copyright notice, this list of
+  *   conditions and the following disclaimer in the documentation and/or other materials provided
+  *   with the distribution.
+  *
+  * - Neither the name nor trademarks of STMicroelectronics International N.V. nor any other
+  *   STMicroelectronics company nor the names of its contributors may be used to endorse or
+  *   promote products derived from this software without specific prior written permission.
+  *
+  * - All of the icons, pictures, logos and other images that are provided with the source code
+  *   in a directory whose title begins with st_images may only be used for internal purposes and
+  *   shall not be redistributed to any third party or modified in any way.
+  *
+  * - Any redistributions in binary form shall not include the capability to display any of the
+  *   icons, pictures, logos and other images that are provided with the source code in a directory
+  *   whose title begins with st_images.
+  *
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
+  * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+  * AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER
+  * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  * OF SUCH DAMAGE.
+  */
 
 import Foundation
 
-public class BlueSTSDKFwUpgradeProgressViewController: BlueSTSDKFwUpgradeUploadFwDelegate{
+ 
+/// Manage the view to display the fw upgrade progress
+public class BlueSTSDKFwUpgradeProgressViewController: BlueSTSDKFwUpgradeConsoleCallback{
     
     
     private static let UPLOADING_MSG:String = {
@@ -90,6 +92,14 @@ public class BlueSTSDKFwUpgradeProgressViewController: BlueSTSDKFwUpgradeUploadF
                                  comment: "Error while opening the file");
     }();
     
+    private static let UNSUPPORTED_OPERATION_ERR:String = {
+        let bundle = Bundle(for: BlueSTSDKFwUpgradeProgressViewController.self);
+        return NSLocalizedString("Unsupported Operation", tableName: nil,
+                                 bundle: bundle,
+                                 value: "Unsupported Operation",
+                                 comment: "Unsupported Operation");
+    }();
+    
     private static let UNKNOWN_ERR:String = {
         let bundle = Bundle(for: BlueSTSDKFwUpgradeProgressViewController.self);
         return NSLocalizedString("Unknown Error", tableName: nil,
@@ -103,12 +113,18 @@ public class BlueSTSDKFwUpgradeProgressViewController: BlueSTSDKFwUpgradeUploadF
     private unowned let mUploadStatusProgress:UILabel;
     private unowned let mUploadProgressView:UIProgressView;
     
-    public weak var mFwUploadDelegate:BlueSTSDKFwUpgradeUploadFwDelegate?=nil;
+    public var mFwUploadDelegate:BlueSTSDKFwUpgradeConsoleCallback?=nil;
     
     private var mFileLength:UInt=0;
     private var mStartUploadDate:Date = Date();
 
-    init( progressLabel:UILabel!, statusLabel:UILabel! ,progressView:UIProgressView! ){
+    
+    ///
+    /// - Parameters:
+    ///   - progressLabel: label where write the upload progress
+    ///   - statusLabel: label where write the fw upgrade status
+    ///   - progressView: prgress view where display the fw upgrade progres
+    init( progressLabel:UILabel, statusLabel:UILabel ,progressView:UIProgressView){
         mUploadProgressLabel = progressLabel;
         mUploadStatusProgress = statusLabel;
         mUploadProgressView = progressView;
@@ -120,9 +136,8 @@ public class BlueSTSDKFwUpgradeProgressViewController: BlueSTSDKFwUpgradeUploadF
      * @param console object used to upload the file
      * @param file file upload to the board
      */
-    
-    public func fwUpgrade(_ console: BlueSTSDKFwUpgradeConsole, onLoadComplite file: URL){
-        mFwUploadDelegate?.fwUpgrade(console, onLoadComplite: file);
+    public func onLoadComplite(file: URL) {
+        mFwUploadDelegate?.onLoadComplite(file: file)
         let time = -mStartUploadDate.timeIntervalSinceNow;
         let message = String(format: BlueSTSDKFwUpgradeProgressViewController.UPLOAD_COMPLETE_FORMAT,
                              time);
@@ -139,10 +154,7 @@ public class BlueSTSDKFwUpgradeProgressViewController: BlueSTSDKFwUpgradeUploadF
      * @param error error that happen during the upload
      */
     
-    public func fwUpgrade(_ console: BlueSTSDKFwUpgradeConsole,
-                          onLoadError file: URL,
-                          error: BlueSTSDKFwUpgradeUploadFwError){
-    
+    public func onLoadError(file: URL, error: BlueSTSDKFwUpgradeError) {
         let errorStr = BlueSTSDKFwUpgradeProgressViewController.getErrorString(error);
         DispatchQueue.main.async {
             self.mUploadStatusProgress.text = errorStr;
@@ -151,36 +163,38 @@ public class BlueSTSDKFwUpgradeProgressViewController: BlueSTSDKFwUpgradeUploadF
     }
     
     
-    private static func getErrorString(_ error:BlueSTSDKFwUpgradeUploadFwError)->String{
+    private static func getErrorString(_ error:BlueSTSDKFwUpgradeError)->String{
         switch(error){
-            case .BLUESTSDK_FWUPGRADE_UPLOAD_CORRUPTED_FILE:
+            case .corruptedFile:
                 return CORRUPTED_DATA_ERR;
-            case .BLUESTSDK_FWUPGRADE_UPLOAD_ERROR_TRANSMISSION:
+            case .trasmissionError:
                 return TRANSMISION_ERR;
-            case .BLUESTSDK_FWUPGRADE_UPLOAD_ERROR_INVALID_FW_FILE:
+            case .invalidFwFile:
                 return INVALID_FW_FILE_ERR;
-            case .BLUESTSDK_FWUPGRADE_UPLOAD_ERROR_UNKNOWN:
+            case .unsupportedOperation:
+                return UNSUPPORTED_OPERATION_ERR;
+            case .unknownError:
                 return UNKNOWN_ERR;
         }//switch
     }
     
     private func updateProgressView( load:UInt){
-        mUploadProgressView.progress = 1.0 - (Float(load))/Float(mFileLength);
+        mUploadProgressView.progress = 1.0 - (Float(load))/Float(mFileLength)
         mUploadProgressLabel.text = String(format: BlueSTSDKFwUpgradeProgressViewController.PROGRESS_FORMAT,
-                                           UInt(mFileLength-load),Int64(mFileLength));
+                                           UInt(mFileLength-load),Int64(mFileLength))
     }
     
-    public func fwUpgrade(_ console: BlueSTSDKFwUpgradeConsole, onLoadProgres file: URL, loadBytes load: UInt){
-        mFwUploadDelegate?.fwUpgrade(console, onLoadProgres: file, loadBytes: load);
+    public func onLoadProgres(file: URL, remainingBytes: UInt) {
+        mFwUploadDelegate?.onLoadProgres(file: file, remainingBytes: remainingBytes)
         if(mFileLength==0){
-            mFileLength = load;
-            mStartUploadDate = Date();
+            mFileLength = remainingBytes
+            mStartUploadDate = Date()
             DispatchQueue.main.async {
-                self.mUploadStatusProgress.text = BlueSTSDKFwUpgradeProgressViewController.UPLOADING_MSG;
+                self.mUploadStatusProgress.text = BlueSTSDKFwUpgradeProgressViewController.UPLOADING_MSG
             }
         }
         DispatchQueue.main.async {
-            self.updateProgressView(load: load);
+            self.updateProgressView(load: remainingBytes)
         }
     }
 }

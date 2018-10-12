@@ -92,14 +92,14 @@ extension BlueSTSDKMainViewControllerDelegate {
 
     @objc public var delegateAbout:BlueSTSDKAboutViewControllerDelegate?=nil;
     @objc public var delegateMain: BlueSTSDKMainViewControllerDelegate?=nil;
-    @objc public var delegateNodeList:BlueSTSDKNodeListViewControllerDelegate?=nil;
+    public var delegateNodeList:BlueSTSDKNodeListViewControllerDelegate?=nil;
 
     override public func viewDidLoad(){
         super.viewDidLoad();
 
         let bundle = Bundle.main;
         let version = bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String;
-        let appName = bundle.object(forInfoDictionaryKey: "CFBundleName") as! String;
+        let appName = bundle.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String;
         mAppNameLabel.text = appName;
         mAppVersionLabel.text?.append(version);
 

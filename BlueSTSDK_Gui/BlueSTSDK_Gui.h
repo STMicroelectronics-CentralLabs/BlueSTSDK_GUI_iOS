@@ -45,10 +45,4 @@ FOUNDATION_EXPORT const unsigned char BlueSTSDK_GuiVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <BlueSTSDK_Gui/PublicHeader.h>
 
-
-#import "BlueSTSDKDemoViewController.h"
-#import "BlueSTSDKNodeListViewController.h"
-#import "BlueSTSDKViewControllerMenuDelegate.h"
-#import "UIViewController+BlueSTSDK.h"
-#import "BlueSTSDKFwUpgradeConsole.h"
 #import "MBProgressHUD.h"

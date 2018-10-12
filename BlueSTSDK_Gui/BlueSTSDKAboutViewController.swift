@@ -191,7 +191,7 @@ extension BlueSTSDKAboutViewControllerDelegate {
     private func setUpAppDetails(){
         let bundle = Bundle.main;
         let version = bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String;
-        let appName = bundle.object(forInfoDictionaryKey: "CFBundleName") as! String;
+        let appName = bundle.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String;
         mAppNameLabel.text = appName;
         mAppVersionLabel.text=version;
     }
@@ -294,8 +294,8 @@ extension BlueSTSDKAboutViewControllerDelegate {
     ///   - request: <#request description#>
     ///   - navigationType: <#navigationType description#>
     /// - Returns: <#return value description#>
-    public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        if ( navigationType == UIWebViewNavigationType.linkClicked){
+    public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+        if ( navigationType == UIWebView.NavigationType.linkClicked){
             UIApplication.shared.openURL(request.url!);
             return false;
         }

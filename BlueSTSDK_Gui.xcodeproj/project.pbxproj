@@ -8,53 +8,60 @@
 
 /* Begin PBXBuildFile section */
 		4EDA24238FE1FD4585E02A40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA2F1AE5338228769A193A /* Localizable.strings */; };
+		66096AA5212BF4FB0079A5B1 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66096AA4212BF4FB0079A5B1 /* images.xcassets */; };
 		660C82DF1ECF1EBC0048F831 /* BlueSTSDKLibLicenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C82DE1ECF1EBC0048F831 /* BlueSTSDKLibLicenseTableViewController.swift */; };
 		660C82E31ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C82E21ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift */; };
 		660C82E51ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C82E41ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift */; };
-		662ED6481EC59F1D003F3710 /* BlueSTSDKMainViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = 666706151EC4BB5800E918EE /* BlueSTSDKMainViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		662ED8801F55A1C2001281B1 /* BlueSTSDKFwUpgradeConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979331E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		662ED8931F55A636001281B1 /* FwUpgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDC11EA74920005D8AE9 /* FwUpgrade.storyboard */; };
-		662ED8941F55A639001281B1 /* BlueSTSDKMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDD61EA76EA1005D8AE9 /* BlueSTSDKMainView.storyboard */; };
-		662ED8951F55A63E001281B1 /* DebugConsoleMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDBE1EA74914005D8AE9 /* DebugConsoleMainView.storyboard */; };
+		660D355C20E25B0B00E73004 /* BlueSTSDKDemoViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D355B20E25B0B00E73004 /* BlueSTSDKDemoViewProtocol.swift */; };
+		660D355E20E25E0300E73004 /* BlueSTSDKViewControllerMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D355D20E25E0300E73004 /* BlueSTSDKViewControllerMenuDelegate.swift */; };
+		660D356020E267E300E73004 /* BlueSTSDKNodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D355F20E267E300E73004 /* BlueSTSDKNodeListViewController.swift */; };
+		660D356920E2812400E73004 /* BlueSTSDKDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D356820E2812400E73004 /* BlueSTSDKDemoViewController.swift */; };
+		6614EB4E20E3743600D991B9 /* BlueSTSDKMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614EB4D20E3743600D991B9 /* BlueSTSDKMainViewController.swift */; };
+		6614EB5020E38C5B00D991B9 /* UIViewController+BlueSTSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614EB4F20E38C5B00D991B9 /* UIViewController+BlueSTSDK.swift */; };
+		6628202320DBCAB400F8B5DE /* BlueSTSDKSTM32CRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6628202220DBCAB400F8B5DE /* BlueSTSDKSTM32CRC.swift */; };
 		663979191E2E5D0000FBF696 /* BlueSTSDK_Gui.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979171E2E5D0000FBF696 /* BlueSTSDK_Gui.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6639797D1E2E5D4100FBF696 /* BlueSTSDKDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6639791F1E2E5D4100FBF696 /* BlueSTSDKDemoViewController.m */; };
-		6639797E1E2E5D4100FBF696 /* BlueSTSDKMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663979201E2E5D4100FBF696 /* BlueSTSDKMainView.storyboard */; };
-		6639797F1E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979211E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.h */; };
-		663979801E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979221E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.m */; };
-		663979811E2E5D4100FBF696 /* BlueSTSDKAboutViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979231E2E5D4100FBF696 /* BlueSTSDKAboutViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		663979821E2E5D4100FBF696 /* BlueSTSDKAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979241E2E5D4100FBF696 /* BlueSTSDKAboutViewController.m */; };
-		663979831E2E5D4100FBF696 /* BlueSTSDKDemoViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979251E2E5D4100FBF696 /* BlueSTSDKDemoViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		663979841E2E5D4100FBF696 /* st_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 663979261E2E5D4100FBF696 /* st_images.xcassets */; };
-		663979871E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979291E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.m */; };
-		663979881E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6639792A1E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		663979891E2E5D4100FBF696 /* BlueSTSDKViewControllerMenuDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6639792B1E2E5D4100FBF696 /* BlueSTSDKViewControllerMenuDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6639798A1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6639792D1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.h */; };
-		6639798B1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6639792E1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.m */; };
-		6639798F1E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979341E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.m */; };
-		663979901E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979351E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.h */; };
-		663979911E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979361E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.m */; };
-		663979921E2E5D4100FBF696 /* BlueSTSDKStm32Crc.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979381E2E5D4100FBF696 /* BlueSTSDKStm32Crc.h */; };
-		663979931E2E5D4100FBF696 /* BlueSTSDKStm32Crc.m in Sources */ = {isa = PBXBuildFile; fileRef = 663979391E2E5D4100FBF696 /* BlueSTSDKStm32Crc.m */; };
-		663979941E2E5D4100FBF696 /* FwUpgradeManagerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6639793A1E2E5D4100FBF696 /* FwUpgradeManagerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		663979951E2E5D4100FBF696 /* FwUpgradeManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6639793B1E2E5D4100FBF696 /* FwUpgradeManagerViewController.m */; };
 		663979C31E2E5D4100FBF696 /* board_generic.png in Resources */ = {isa = PBXBuildFile; fileRef = 663979751E2E5D4100FBF696 /* board_generic.png */; };
 		663979C41E2E5D4100FBF696 /* st_images_LanchScreen.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 663979761E2E5D4100FBF696 /* st_images_LanchScreen.xcassets */; };
 		663979C51E2E5D4100FBF696 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979791E2E5D4100FBF696 /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		663979C61E2E5D4100FBF696 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6639797A1E2E5D4100FBF696 /* MBProgressHUD.m */; };
-		663979C71E2E5D4100FBF696 /* UIViewController+BlueSTSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 6639797B1E2E5D4100FBF696 /* UIViewController+BlueSTSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		663979C81E2E5D4100FBF696 /* UIViewController+BlueSTSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 6639797C1E2E5D4100FBF696 /* UIViewController+BlueSTSDK.m */; };
 		663979D41E2E5FA200FBF696 /* BlueSTSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663979D11E2E5F9600FBF696 /* BlueSTSDK.framework */; };
 		663979EA1E2E63AC00FBF696 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663979E91E2E63AC00FBF696 /* UIKit.framework */; };
 		663FDA861F5E9670001481BC /* BlueSTSDKDownloadFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663FDA851F5E9670001481BC /* BlueSTSDKDownloadFileViewController.swift */; };
 		663FDA891F5EF568001481BC /* BlueSTSDKFwUpgradeManagerViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = 665D325A1F5D80F900D76AEA /* BlueSTSDKFwUpgradeManagerViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		664AD5DE215A79EC0039F417 /* BlueSTSDKNode+typeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664AD5DD215A79EC0039F417 /* BlueSTSDKNode+typeImage.swift */; };
+		665A2E2920DD2557003088DD /* BlueSTSDKFwVersionReadConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665A2E2720DD2557003088DD /* BlueSTSDKFwVersionReadConsole.swift */; };
+		665A2E2A20DD2557003088DD /* BlueSTSDKFwVersionReadConsoleNucleo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665A2E2820DD2557003088DD /* BlueSTSDKFwVersionReadConsoleNucleo.swift */; };
+		665A2E2C20DD2564003088DD /* BlueSTSDKFwConsoleUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665A2E2B20DD2564003088DD /* BlueSTSDKFwConsoleUtil.swift */; };
 		665D32571F5D468700D76AEA /* BlueSTSDKFwUpgradeProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D32561F5D468700D76AEA /* BlueSTSDKFwUpgradeProgressViewController.swift */; };
 		665D325B1F5D80F900D76AEA /* BlueSTSDKFwUpgradeManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D325A1F5D80F900D76AEA /* BlueSTSDKFwUpgradeManagerViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		666706161EC4BB5800E918EE /* BlueSTSDKMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666706151EC4BB5800E918EE /* BlueSTSDKMainViewController.swift */; };
-		666EFE401F8CF27600961F57 /* libGenerateLicenseCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 666EFE3F1F8CF27600961F57 /* libGenerateLicenseCode.a */; };
+		666A246B20EB39C300632764 /* BlueSTSDKDebugConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666A246A20EB39C300632764 /* BlueSTSDKDebugConsoleViewController.swift */; };
+		666F79CC20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666F79CB20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift */; };
+		666F79D020E0DBD300A482C9 /* BlueSTSDKFwUpgradeConsoleNucleo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666F79CF20E0DBD300A482C9 /* BlueSTSDKFwUpgradeConsoleNucleo.swift */; };
 		668A12711E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668A12701E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets */; };
+		66C9DFB5212AFAE9005B5633 /* STM32WBThreadRebootFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9DFB4212AFAE9005B5633 /* STM32WBThreadRebootFeature.swift */; };
 		66D5FDBC1EA74914005D8AE9 /* DebugConsoleMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDBE1EA74914005D8AE9 /* DebugConsoleMainView.storyboard */; };
 		66D5FDBF1EA74920005D8AE9 /* FwUpgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDC11EA74920005D8AE9 /* FwUpgrade.storyboard */; };
 		66D5FDD41EA76EA1005D8AE9 /* BlueSTSDKMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDD61EA76EA1005D8AE9 /* BlueSTSDKMainView.storyboard */; };
+		66F7B43B21133199000FD126 /* BlueSTSDKFwReadVersionConsoleSTM32WB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B42421133199000FD126 /* BlueSTSDKFwReadVersionConsoleSTM32WB.swift */; };
+		66F7B43C21133199000FD126 /* BlueSTSDKFwUpgradeConsoleSTM32WB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B42521133199000FD126 /* BlueSTSDKFwUpgradeConsoleSTM32WB.swift */; };
+		66F7B43D21133199000FD126 /* BlueSTSDKSTM32OTAUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B42621133199000FD126 /* BlueSTSDKSTM32OTAUtils.swift */; };
+		66F7B43E21133199000FD126 /* BlueSTSDKSTM32WBOTAControlFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B42821133199000FD126 /* BlueSTSDKSTM32WBOTAControlFeature.swift */; };
+		66F7B43F21133199000FD126 /* BlueSTSDKSTM32WBOtaUploadFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B42921133199000FD126 /* BlueSTSDKSTM32WBOtaUploadFeature.swift */; };
+		66F7B44021133199000FD126 /* BlueSTSDKSTM32WBOTAWillRebootFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B42A21133199000FD126 /* BlueSTSDKSTM32WBOTAWillRebootFeature.swift */; };
+		66F7B44121133199000FD126 /* BlueSTSDKSTM32WBRebootOtaModeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B42B21133199000FD126 /* BlueSTSDKSTM32WBRebootOtaModeFeature.swift */; };
+		66F7B44221133199000FD126 /* BlueSTSDKSeachOtaNodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B42D21133199000FD126 /* BlueSTSDKSeachOtaNodeViewController.swift */; };
+		66F7B44321133199000FD126 /* BlueSTSDKStartOtaConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B42F21133199000FD126 /* BlueSTSDKStartOtaConfigViewController.swift */; };
+		66F7B44421133199000FD126 /* STM32WBOta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66F7B43021133199000FD126 /* STM32WBOta.storyboard */; };
+		66F7B44521133199000FD126 /* STM32WBControlLedFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B43321133199000FD126 /* STM32WBControlLedFeature.swift */; };
+		66F7B44621133199000FD126 /* STM32WBNetworkStatusFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B43421133199000FD126 /* STM32WBNetworkStatusFeature.swift */; };
+		66F7B44721133199000FD126 /* STM32WBPeer2PeerDemoConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B43521133199000FD126 /* STM32WBPeer2PeerDemoConfiguration.swift */; };
+		66F7B44821133199000FD126 /* STM32WBSwitchStatusFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B43621133199000FD126 /* STM32WBSwitchStatusFeature.swift */; };
+		66F7B44921133199000FD126 /* STM32LedButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B43721133199000FD126 /* STM32LedButtonViewController.swift */; };
+		66F7B44A21133199000FD126 /* STM32LedNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B43821133199000FD126 /* STM32LedNetworkViewController.swift */; };
+		66F7B44B21133199000FD126 /* STM32RSSIUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F7B43921133199000FD126 /* STM32RSSIUpdateViewController.swift */; };
+		66F7B44C21133199000FD126 /* STM32WB_P2PDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66F7B43A21133199000FD126 /* STM32WB_P2PDemo.storyboard */; };
+		66F7B45021133800000FD126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66F7B44F21133800000FD126 /* Assets.xcassets */; };
+		66F7B45221133DAD000FD126 /* st_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66F7B45121133DAC000FD126 /* st_images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,51 +83,63 @@
 
 /* Begin PBXFileReference section */
 		4EDA2F1AE5338228769A193A /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 2483028224; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		66096AA4212BF4FB0079A5B1 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		660C82DE1ECF1EBC0048F831 /* BlueSTSDKLibLicenseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKLibLicenseTableViewController.swift; sourceTree = "<group>"; };
 		660C82E21ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKLibLicenseDetailsViewController.swift; sourceTree = "<group>"; };
 		660C82E41ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKAboutViewController.swift; sourceTree = "<group>"; };
+		660D355B20E25B0B00E73004 /* BlueSTSDKDemoViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKDemoViewProtocol.swift; sourceTree = "<group>"; };
+		660D355D20E25E0300E73004 /* BlueSTSDKViewControllerMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKViewControllerMenuDelegate.swift; sourceTree = "<group>"; };
+		660D355F20E267E300E73004 /* BlueSTSDKNodeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKNodeListViewController.swift; sourceTree = "<group>"; };
+		660D356820E2812400E73004 /* BlueSTSDKDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKDemoViewController.swift; sourceTree = "<group>"; };
+		6614EB4D20E3743600D991B9 /* BlueSTSDKMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlueSTSDKMainViewController.swift; path = BlueSTSDK_Gui/BlueSTSDKMainViewController.swift; sourceTree = SOURCE_ROOT; };
+		6614EB4F20E38C5B00D991B9 /* UIViewController+BlueSTSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BlueSTSDK.swift"; sourceTree = "<group>"; };
+		6628202220DBCAB400F8B5DE /* BlueSTSDKSTM32CRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKSTM32CRC.swift; sourceTree = "<group>"; };
 		663979141E2E5D0000FBF696 /* BlueSTSDK_Gui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSTSDK_Gui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		663979171E2E5D0000FBF696 /* BlueSTSDK_Gui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueSTSDK_Gui.h; sourceTree = "<group>"; };
 		663979181E2E5D0000FBF696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6639791F1E2E5D4100FBF696 /* BlueSTSDKDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKDemoViewController.m; sourceTree = "<group>"; };
-		663979211E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKNodeListViewCell.h; sourceTree = "<group>"; };
-		663979221E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKNodeListViewController.m; sourceTree = "<group>"; };
-		663979231E2E5D4100FBF696 /* BlueSTSDKAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKAboutViewController.h; sourceTree = "<group>"; };
-		663979241E2E5D4100FBF696 /* BlueSTSDKAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKAboutViewController.m; sourceTree = "<group>"; };
-		663979251E2E5D4100FBF696 /* BlueSTSDKDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKDemoViewController.h; sourceTree = "<group>"; };
-		663979261E2E5D4100FBF696 /* st_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = st_images.xcassets; sourceTree = "<group>"; };
-		663979291E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKNodeListViewCell.m; sourceTree = "<group>"; };
-		6639792A1E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKNodeListViewController.h; sourceTree = "<group>"; };
-		6639792B1E2E5D4100FBF696 /* BlueSTSDKViewControllerMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKViewControllerMenuDelegate.h; sourceTree = "<group>"; };
-		6639792D1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKDebugConsoleViewController.h; sourceTree = "<group>"; };
-		6639792E1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKDebugConsoleViewController.m; sourceTree = "<group>"; };
-		663979331E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKFwUpgradeConsole.h; sourceTree = "<group>"; };
-		663979341E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKFwUpgradeConsole.m; sourceTree = "<group>"; };
-		663979351E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKFwUpgradeConsoleNucleo.h; sourceTree = "<group>"; };
-		663979361E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKFwUpgradeConsoleNucleo.m; sourceTree = "<group>"; };
-		663979381E2E5D4100FBF696 /* BlueSTSDKStm32Crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSTSDKStm32Crc.h; sourceTree = "<group>"; };
-		663979391E2E5D4100FBF696 /* BlueSTSDKStm32Crc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueSTSDKStm32Crc.m; sourceTree = "<group>"; };
-		6639793A1E2E5D4100FBF696 /* FwUpgradeManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwUpgradeManagerViewController.h; sourceTree = "<group>"; };
-		6639793B1E2E5D4100FBF696 /* FwUpgradeManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwUpgradeManagerViewController.m; sourceTree = "<group>"; };
 		663979751E2E5D4100FBF696 /* board_generic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board_generic.png; sourceTree = "<group>"; };
 		663979761E2E5D4100FBF696 /* st_images_LanchScreen.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = st_images_LanchScreen.xcassets; sourceTree = "<group>"; };
 		663979791E2E5D4100FBF696 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		6639797A1E2E5D4100FBF696 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		6639797B1E2E5D4100FBF696 /* UIViewController+BlueSTSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BlueSTSDK.h"; sourceTree = "<group>"; };
-		6639797C1E2E5D4100FBF696 /* UIViewController+BlueSTSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BlueSTSDK.m"; sourceTree = "<group>"; };
 		663979CB1E2E5F9600FBF696 /* BlueSTSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlueSTSDK.xcodeproj; path = ../BlueSTSDK/BlueSTSDK/BlueSTSDK.xcodeproj; sourceTree = "<group>"; };
 		663979E91E2E63AC00FBF696 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		663FDA851F5E9670001481BC /* BlueSTSDKDownloadFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKDownloadFileViewController.swift; sourceTree = "<group>"; };
+		664AD5DD215A79EC0039F417 /* BlueSTSDKNode+typeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlueSTSDKNode+typeImage.swift"; sourceTree = "<group>"; };
+		665A2E2720DD2557003088DD /* BlueSTSDKFwVersionReadConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwVersionReadConsole.swift; sourceTree = "<group>"; };
+		665A2E2820DD2557003088DD /* BlueSTSDKFwVersionReadConsoleNucleo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwVersionReadConsoleNucleo.swift; sourceTree = "<group>"; };
+		665A2E2B20DD2564003088DD /* BlueSTSDKFwConsoleUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwConsoleUtil.swift; sourceTree = "<group>"; };
 		665D32561F5D468700D76AEA /* BlueSTSDKFwUpgradeProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwUpgradeProgressViewController.swift; sourceTree = "<group>"; };
 		665D325A1F5D80F900D76AEA /* BlueSTSDKFwUpgradeManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwUpgradeManagerViewController.swift; sourceTree = "<group>"; };
-		666706151EC4BB5800E918EE /* BlueSTSDKMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKMainViewController.swift; sourceTree = "<group>"; };
-		666EFE3F1F8CF27600961F57 /* libGenerateLicenseCode.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGenerateLicenseCode.a; sourceTree = "<group>"; };
+		666A246A20EB39C300632764 /* BlueSTSDKDebugConsoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKDebugConsoleViewController.swift; sourceTree = "<group>"; };
+		666F79CB20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwUpgradeConsole.swift; sourceTree = "<group>"; };
+		666F79CF20E0DBD300A482C9 /* BlueSTSDKFwUpgradeConsoleNucleo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwUpgradeConsoleNucleo.swift; sourceTree = "<group>"; };
 		668A12701E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BlueSTSDK_GUI_images.xcassets; sourceTree = "<group>"; };
+		66C9DFB4212AFAE9005B5633 /* STM32WBThreadRebootFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STM32WBThreadRebootFeature.swift; sourceTree = "<group>"; };
 		66D5FDC81EA74ADF005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DebugConsoleMainView.storyboard; sourceTree = "<group>"; };
 		66D5FDC91EA74ADF005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FwUpgrade.storyboard; sourceTree = "<group>"; };
 		66D5FDCB1EA74AEA005D8AE9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DebugConsoleMainView.strings"; sourceTree = "<group>"; };
 		66D5FDCC1EA74AF4005D8AE9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FwUpgrade.strings"; sourceTree = "<group>"; };
 		66D5FDD51EA76EA1005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BlueSTSDKMainView.storyboard; sourceTree = "<group>"; };
+		66F7B42421133199000FD126 /* BlueSTSDKFwReadVersionConsoleSTM32WB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwReadVersionConsoleSTM32WB.swift; sourceTree = "<group>"; };
+		66F7B42521133199000FD126 /* BlueSTSDKFwUpgradeConsoleSTM32WB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwUpgradeConsoleSTM32WB.swift; sourceTree = "<group>"; };
+		66F7B42621133199000FD126 /* BlueSTSDKSTM32OTAUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKSTM32OTAUtils.swift; sourceTree = "<group>"; };
+		66F7B42821133199000FD126 /* BlueSTSDKSTM32WBOTAControlFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKSTM32WBOTAControlFeature.swift; sourceTree = "<group>"; };
+		66F7B42921133199000FD126 /* BlueSTSDKSTM32WBOtaUploadFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKSTM32WBOtaUploadFeature.swift; sourceTree = "<group>"; };
+		66F7B42A21133199000FD126 /* BlueSTSDKSTM32WBOTAWillRebootFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKSTM32WBOTAWillRebootFeature.swift; sourceTree = "<group>"; };
+		66F7B42B21133199000FD126 /* BlueSTSDKSTM32WBRebootOtaModeFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKSTM32WBRebootOtaModeFeature.swift; sourceTree = "<group>"; };
+		66F7B42D21133199000FD126 /* BlueSTSDKSeachOtaNodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKSeachOtaNodeViewController.swift; sourceTree = "<group>"; };
+		66F7B42F21133199000FD126 /* BlueSTSDKStartOtaConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKStartOtaConfigViewController.swift; sourceTree = "<group>"; };
+		66F7B43021133199000FD126 /* STM32WBOta.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = STM32WBOta.storyboard; sourceTree = "<group>"; };
+		66F7B43321133199000FD126 /* STM32WBControlLedFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STM32WBControlLedFeature.swift; sourceTree = "<group>"; };
+		66F7B43421133199000FD126 /* STM32WBNetworkStatusFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STM32WBNetworkStatusFeature.swift; sourceTree = "<group>"; };
+		66F7B43521133199000FD126 /* STM32WBPeer2PeerDemoConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STM32WBPeer2PeerDemoConfiguration.swift; sourceTree = "<group>"; };
+		66F7B43621133199000FD126 /* STM32WBSwitchStatusFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STM32WBSwitchStatusFeature.swift; sourceTree = "<group>"; };
+		66F7B43721133199000FD126 /* STM32LedButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STM32LedButtonViewController.swift; sourceTree = "<group>"; };
+		66F7B43821133199000FD126 /* STM32LedNetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STM32LedNetworkViewController.swift; sourceTree = "<group>"; };
+		66F7B43921133199000FD126 /* STM32RSSIUpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STM32RSSIUpdateViewController.swift; sourceTree = "<group>"; };
+		66F7B43A21133199000FD126 /* STM32WB_P2PDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = STM32WB_P2PDemo.storyboard; sourceTree = "<group>"; };
+		66F7B44F21133800000FD126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66F7B45121133DAC000FD126 /* st_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = st_images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +158,8 @@
 		6639790A1E2E5D0000FBF696 = {
 			isa = PBXGroup;
 			children = (
+				66F7B45121133DAC000FD126 /* st_images.xcassets */,
+				66F7B42221133199000FD126 /* STM32WB */,
 				663979161E2E5D0000FBF696 /* BlueSTSDK_Gui */,
 				663979151E2E5D0000FBF696 /* Products */,
 				663979CA1E2E5F9500FBF696 /* Frameworks */,
@@ -156,26 +177,22 @@
 		663979161E2E5D0000FBF696 /* BlueSTSDK_Gui */ = {
 			isa = PBXGroup;
 			children = (
+				66096AA4212BF4FB0079A5B1 /* images.xcassets */,
 				668A12701E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets */,
-				663979261E2E5D4100FBF696 /* st_images.xcassets */,
 				663979761E2E5D4100FBF696 /* st_images_LanchScreen.xcassets */,
 				66D5FDD61EA76EA1005D8AE9 /* BlueSTSDKMainView.storyboard */,
 				6639792C1E2E5D4100FBF696 /* DebugConsole */,
 				663979301E2E5D4100FBF696 /* FwUpgrade */,
-				663979201E2E5D4100FBF696 /* BlueSTSDKMainView.storyboard */,
-				666706151EC4BB5800E918EE /* BlueSTSDKMainViewController.swift */,
 				660C82E41ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift */,
+				6614EB4D20E3743600D991B9 /* BlueSTSDKMainViewController.swift */,
 				660C82DE1ECF1EBC0048F831 /* BlueSTSDKLibLicenseTableViewController.swift */,
 				660C82E21ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift */,
-				663979211E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.h */,
-				663979291E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.m */,
-				6639792A1E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.h */,
-				663979221E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.m */,
-				663979251E2E5D4100FBF696 /* BlueSTSDKDemoViewController.h */,
-				6639791F1E2E5D4100FBF696 /* BlueSTSDKDemoViewController.m */,
-				6639792B1E2E5D4100FBF696 /* BlueSTSDKViewControllerMenuDelegate.h */,
-				6639797B1E2E5D4100FBF696 /* UIViewController+BlueSTSDK.h */,
-				6639797C1E2E5D4100FBF696 /* UIViewController+BlueSTSDK.m */,
+				660D355B20E25B0B00E73004 /* BlueSTSDKDemoViewProtocol.swift */,
+				660D355D20E25E0300E73004 /* BlueSTSDKViewControllerMenuDelegate.swift */,
+				660D355F20E267E300E73004 /* BlueSTSDKNodeListViewController.swift */,
+				660D356820E2812400E73004 /* BlueSTSDKDemoViewController.swift */,
+				6614EB4F20E38C5B00D991B9 /* UIViewController+BlueSTSDK.swift */,
+				664AD5DD215A79EC0039F417 /* BlueSTSDKNode+typeImage.swift */,
 				663979171E2E5D0000FBF696 /* BlueSTSDK_Gui.h */,
 				663979731E2E5D4100FBF696 /* Resources */,
 				663979771E2E5D4100FBF696 /* ThirdParty */,
@@ -189,8 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				66D5FDBE1EA74914005D8AE9 /* DebugConsoleMainView.storyboard */,
-				6639792D1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.h */,
-				6639792E1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.m */,
+				666A246A20EB39C300632764 /* BlueSTSDKDebugConsoleViewController.swift */,
 			);
 			path = DebugConsole;
 			sourceTree = "<group>";
@@ -200,6 +216,8 @@
 			children = (
 				66D5FDC11EA74920005D8AE9 /* FwUpgrade.storyboard */,
 				663979321E2E5D4100FBF696 /* FwUpgradeConsole */,
+				665A2E2620DD2557003088DD /* FwVersionRead */,
+				665A2E2B20DD2564003088DD /* BlueSTSDKFwConsoleUtil.swift */,
 				665D325A1F5D80F900D76AEA /* BlueSTSDKFwUpgradeManagerViewController.swift */,
 				665D32561F5D468700D76AEA /* BlueSTSDKFwUpgradeProgressViewController.swift */,
 				663FDA851F5E9670001481BC /* BlueSTSDKDownloadFileViewController.swift */,
@@ -210,11 +228,9 @@
 		663979321E2E5D4100FBF696 /* FwUpgradeConsole */ = {
 			isa = PBXGroup;
 			children = (
-				663979331E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.h */,
-				663979341E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.m */,
-				663979351E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.h */,
-				663979361E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.m */,
 				663979371E2E5D4100FBF696 /* util */,
+				666F79CB20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift */,
+				666F79CF20E0DBD300A482C9 /* BlueSTSDKFwUpgradeConsoleNucleo.swift */,
 			);
 			path = FwUpgradeConsole;
 			sourceTree = "<group>";
@@ -222,8 +238,7 @@
 		663979371E2E5D4100FBF696 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				663979381E2E5D4100FBF696 /* BlueSTSDKStm32Crc.h */,
-				663979391E2E5D4100FBF696 /* BlueSTSDKStm32Crc.m */,
+				6628202220DBCAB400F8B5DE /* BlueSTSDKSTM32CRC.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -279,6 +294,90 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		665A2E2620DD2557003088DD /* FwVersionRead */ = {
+			isa = PBXGroup;
+			children = (
+				665A2E2720DD2557003088DD /* BlueSTSDKFwVersionReadConsole.swift */,
+				665A2E2820DD2557003088DD /* BlueSTSDKFwVersionReadConsoleNucleo.swift */,
+			);
+			path = FwVersionRead;
+			sourceTree = "<group>";
+		};
+		66F7B42221133199000FD126 /* STM32WB */ = {
+			isa = PBXGroup;
+			children = (
+				66F7B44F21133800000FD126 /* Assets.xcassets */,
+				66F7B42321133199000FD126 /* fwUpgrade */,
+				66F7B43121133199000FD126 /* p2pDemo */,
+			);
+			path = STM32WB;
+			sourceTree = "<group>";
+		};
+		66F7B42321133199000FD126 /* fwUpgrade */ = {
+			isa = PBXGroup;
+			children = (
+				66F7B42421133199000FD126 /* BlueSTSDKFwReadVersionConsoleSTM32WB.swift */,
+				66F7B42521133199000FD126 /* BlueSTSDKFwUpgradeConsoleSTM32WB.swift */,
+				66F7B42621133199000FD126 /* BlueSTSDKSTM32OTAUtils.swift */,
+				66F7B42721133199000FD126 /* feature */,
+				66F7B42C21133199000FD126 /* searchOtaNode */,
+				66F7B42E21133199000FD126 /* startOtaConfig */,
+				66F7B43021133199000FD126 /* STM32WBOta.storyboard */,
+			);
+			path = fwUpgrade;
+			sourceTree = "<group>";
+		};
+		66F7B42721133199000FD126 /* feature */ = {
+			isa = PBXGroup;
+			children = (
+				66F7B42821133199000FD126 /* BlueSTSDKSTM32WBOTAControlFeature.swift */,
+				66F7B42921133199000FD126 /* BlueSTSDKSTM32WBOtaUploadFeature.swift */,
+				66F7B42A21133199000FD126 /* BlueSTSDKSTM32WBOTAWillRebootFeature.swift */,
+				66F7B42B21133199000FD126 /* BlueSTSDKSTM32WBRebootOtaModeFeature.swift */,
+			);
+			path = feature;
+			sourceTree = "<group>";
+		};
+		66F7B42C21133199000FD126 /* searchOtaNode */ = {
+			isa = PBXGroup;
+			children = (
+				66F7B42D21133199000FD126 /* BlueSTSDKSeachOtaNodeViewController.swift */,
+			);
+			path = searchOtaNode;
+			sourceTree = "<group>";
+		};
+		66F7B42E21133199000FD126 /* startOtaConfig */ = {
+			isa = PBXGroup;
+			children = (
+				66F7B42F21133199000FD126 /* BlueSTSDKStartOtaConfigViewController.swift */,
+			);
+			path = startOtaConfig;
+			sourceTree = "<group>";
+		};
+		66F7B43121133199000FD126 /* p2pDemo */ = {
+			isa = PBXGroup;
+			children = (
+				66F7B43221133199000FD126 /* feature */,
+				66F7B43721133199000FD126 /* STM32LedButtonViewController.swift */,
+				66F7B43821133199000FD126 /* STM32LedNetworkViewController.swift */,
+				66F7B43921133199000FD126 /* STM32RSSIUpdateViewController.swift */,
+				66F7B43A21133199000FD126 /* STM32WB_P2PDemo.storyboard */,
+			);
+			path = p2pDemo;
+			sourceTree = "<group>";
+		};
+		66F7B43221133199000FD126 /* feature */ = {
+			isa = PBXGroup;
+			children = (
+				66F7B43321133199000FD126 /* STM32WBControlLedFeature.swift */,
+				66F7B43421133199000FD126 /* STM32WBNetworkStatusFeature.swift */,
+				66F7B43521133199000FD126 /* STM32WBPeer2PeerDemoConfiguration.swift */,
+				66F7B43621133199000FD126 /* STM32WBSwitchStatusFeature.swift */,
+				66C9DFB4212AFAE9005B5633 /* STM32WBThreadRebootFeature.swift */,
+			);
+			path = feature;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -286,28 +385,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				662ED6481EC59F1D003F3710 /* BlueSTSDKMainViewController.swift in Headers */,
-				663979831E2E5D4100FBF696 /* BlueSTSDKDemoViewController.h in Headers */,
-				662ED8801F55A1C2001281B1 /* BlueSTSDKFwUpgradeConsole.h in Headers */,
-				663979C71E2E5D4100FBF696 /* UIViewController+BlueSTSDK.h in Headers */,
-				663979881E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.h in Headers */,
-				663979891E2E5D4100FBF696 /* BlueSTSDKViewControllerMenuDelegate.h in Headers */,
 				663979C51E2E5D4100FBF696 /* MBProgressHUD.h in Headers */,
-				6639798E1E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.h in Headers */,
-				663979A81E2E5D4100FBF696 /* LicenseManagerLicenseListControlView.h in Headers */,
-				663979AA1E2E5D4100FBF696 /* LicenseManagerLicenseListViewCellTableViewCell.h in Headers */,
-				663979AC1E2E5D4100FBF696 /* LicenseManagerLicenseStatus.h in Headers */,
-				663979BD1E2E5D4100FBF696 /* LicenseManagerLicenseInfo.h in Headers */,
-				663979991E2E5D4100FBF696 /* BlueSTSDKLicenseConsole.h in Headers */,
 				663FDA891F5EF568001481BC /* BlueSTSDKFwUpgradeManagerViewController.swift in Headers */,
-				6639799D1E2E5D4100FBF696 /* BlueSTSDKLicenseConsoleNucleoCleanLicenseDefaultDelegate.h in Headers */,
-				663979B91E2E5D4100FBF696 /* LicenseManagerLicenseDbEntry.h in Headers */,
 				663979191E2E5D0000FBF696 /* BlueSTSDK_Gui.h in Headers */,
-				6639798E1E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.h in Headers */,
-				6639797F1E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.h in Headers */,
-				663979901E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.h in Headers */,
-				6639798A1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.h in Headers */,
-				663979921E2E5D4100FBF696 /* BlueSTSDKStm32Crc.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,13 +419,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = STCentralLab;
 				TargetAttributes = {
 					663979131E2E5D0000FBF696 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 9L4QA9SNQK;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -397,16 +477,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				662ED8951F55A63E001281B1 /* DebugConsoleMainView.storyboard in Resources */,
-				662ED8931F55A636001281B1 /* FwUpgrade.storyboard in Resources */,
-				662ED8941F55A639001281B1 /* BlueSTSDKMainView.storyboard in Resources */,
+				66D5FDBC1EA74914005D8AE9 /* DebugConsoleMainView.storyboard in Resources */,
 				663979C31E2E5D4100FBF696 /* board_generic.png in Resources */,
-				6639798D1E2E5D4100FBF696 /* FwUpgrade.storyboard in Resources */,
-				6639797E1E2E5D4100FBF696 /* BlueSTSDKMainView.storyboard in Resources */,
-				6639798C1E2E5D4100FBF696 /* DebugConsoleMainView.storyboard in Resources */,
+				66F7B44421133199000FD126 /* STM32WBOta.storyboard in Resources */,
+				66D5FDBF1EA74920005D8AE9 /* FwUpgrade.storyboard in Resources */,
 				663979C41E2E5D4100FBF696 /* st_images_LanchScreen.xcassets in Resources */,
-				663979841E2E5D4100FBF696 /* st_images.xcassets in Resources */,
+				66F7B44C21133199000FD126 /* STM32WB_P2PDemo.storyboard in Resources */,
 				668A12711E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets in Resources */,
+				66D5FDD41EA76EA1005D8AE9 /* BlueSTSDKMainView.storyboard in Resources */,
+				66F7B45021133800000FD126 /* Assets.xcassets in Resources */,
+				66096AA5212BF4FB0079A5B1 /* images.xcassets in Resources */,
+				66F7B45221133DAD000FD126 /* st_images.xcassets in Resources */,
 				4EDA24238FE1FD4585E02A40 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,31 +499,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				666706161EC4BB5800E918EE /* BlueSTSDKMainViewController.swift in Sources */,
 				660C82E51ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift in Sources */,
 				660C82E31ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift in Sources */,
+				66F7B44B21133199000FD126 /* STM32RSSIUpdateViewController.swift in Sources */,
+				660D356920E2812400E73004 /* BlueSTSDKDemoViewController.swift in Sources */,
+				66F7B44121133199000FD126 /* BlueSTSDKSTM32WBRebootOtaModeFeature.swift in Sources */,
+				66F7B44821133199000FD126 /* STM32WBSwitchStatusFeature.swift in Sources */,
+				6614EB4E20E3743600D991B9 /* BlueSTSDKMainViewController.swift in Sources */,
+				664AD5DE215A79EC0039F417 /* BlueSTSDKNode+typeImage.swift in Sources */,
+				66C9DFB5212AFAE9005B5633 /* STM32WBThreadRebootFeature.swift in Sources */,
 				660C82DF1ECF1EBC0048F831 /* BlueSTSDKLibLicenseTableViewController.swift in Sources */,
-				663979C81E2E5D4100FBF696 /* UIViewController+BlueSTSDK.m in Sources */,
-				663979911E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsoleNucleo.m in Sources */,
-				663979861E2E5D4100FBF696 /* BlueSTSDKMainViewController.m in Sources */,
-				6639798F1E2E5D4100FBF696 /* BlueSTSDKFwUpgradeConsole.m in Sources */,
+				6614EB5020E38C5B00D991B9 /* UIViewController+BlueSTSDK.swift in Sources */,
+				66F7B43E21133199000FD126 /* BlueSTSDKSTM32WBOTAControlFeature.swift in Sources */,
+				66F7B44A21133199000FD126 /* STM32LedNetworkViewController.swift in Sources */,
+				660D356020E267E300E73004 /* BlueSTSDKNodeListViewController.swift in Sources */,
+				665A2E2920DD2557003088DD /* BlueSTSDKFwVersionReadConsole.swift in Sources */,
+				66F7B43F21133199000FD126 /* BlueSTSDKSTM32WBOtaUploadFeature.swift in Sources */,
+				666F79CC20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift in Sources */,
+				660D355C20E25B0B00E73004 /* BlueSTSDKDemoViewProtocol.swift in Sources */,
 				663FDA861F5E9670001481BC /* BlueSTSDKDownloadFileViewController.swift in Sources */,
-				663979801E2E5D4100FBF696 /* BlueSTSDKNodeListViewController.m in Sources */,
-				6639797D1E2E5D4100FBF696 /* BlueSTSDKDemoViewController.m in Sources */,
+				66F7B44621133199000FD126 /* STM32WBNetworkStatusFeature.swift in Sources */,
+				66F7B44221133199000FD126 /* BlueSTSDKSeachOtaNodeViewController.swift in Sources */,
+				665A2E2A20DD2557003088DD /* BlueSTSDKFwVersionReadConsoleNucleo.swift in Sources */,
+				66F7B44921133199000FD126 /* STM32LedButtonViewController.swift in Sources */,
+				66F7B43B21133199000FD126 /* BlueSTSDKFwReadVersionConsoleSTM32WB.swift in Sources */,
 				663979C61E2E5D4100FBF696 /* MBProgressHUD.m in Sources */,
-				6639798B1E2E5D4100FBF696 /* BlueSTSDKDebugConsoleViewController.m in Sources */,
-				663979931E2E5D4100FBF696 /* BlueSTSDKStm32Crc.m in Sources */,
-				663979A51E2E5D4100FBF696 /* LicenseManagerApproveLicenseViewController.m in Sources */,
-				663979BC1E2E5D4100FBF696 /* LicenseManagerLicenseDefines.m in Sources */,
+				666F79D020E0DBD300A482C9 /* BlueSTSDKFwUpgradeConsoleNucleo.swift in Sources */,
+				6628202320DBCAB400F8B5DE /* BlueSTSDKSTM32CRC.swift in Sources */,
+				66F7B43D21133199000FD126 /* BlueSTSDKSTM32OTAUtils.swift in Sources */,
+				66F7B43C21133199000FD126 /* BlueSTSDKFwUpgradeConsoleSTM32WB.swift in Sources */,
+				665A2E2C20DD2564003088DD /* BlueSTSDKFwConsoleUtil.swift in Sources */,
+				66F7B44021133199000FD126 /* BlueSTSDKSTM32WBOTAWillRebootFeature.swift in Sources */,
+				660D355E20E25E0300E73004 /* BlueSTSDKViewControllerMenuDelegate.swift in Sources */,
+				666A246B20EB39C300632764 /* BlueSTSDKDebugConsoleViewController.swift in Sources */,
+				66F7B44721133199000FD126 /* STM32WBPeer2PeerDemoConfiguration.swift in Sources */,
+				66F7B44321133199000FD126 /* BlueSTSDKStartOtaConfigViewController.swift in Sources */,
+				66F7B44521133199000FD126 /* STM32WBControlLedFeature.swift in Sources */,
 				665D32571F5D468700D76AEA /* BlueSTSDKFwUpgradeProgressViewController.swift in Sources */,
-				663979AD1E2E5D4100FBF696 /* LicenseManagerLicenseStatus.m in Sources */,
-				663979A91E2E5D4100FBF696 /* LicenseManagerLicenseListControlView.m in Sources */,
-				663979B61E2E5D4100FBF696 /* LicenseManagerDB.m in Sources */,
-				663979871E2E5D4100FBF696 /* BlueSTSDKNodeListViewCell.m in Sources */,
-				663979A01E2E5D4100FBF696 /* BlueSTSDKLicenseConsoleNucleoWriteLicenseDefaultDelegate.m in Sources */,
-				663979C21E2E5D4100FBF696 /* NSData+strToByte.m in Sources */,
 				665D325B1F5D80F900D76AEA /* BlueSTSDKFwUpgradeManagerViewController.swift in Sources */,
-				663979AB1E2E5D4100FBF696 /* LicenseManagerLicenseListViewCellTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +586,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -499,6 +594,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -550,6 +646,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -557,6 +654,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -602,16 +700,13 @@
 				INFOPLIST_FILE = BlueSTSDK_Gui/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/BlueSTSDK_Gui/LicenseManager/GenerateLicenseCode",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.st.clab.BlueSTSDK-Gui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -628,15 +723,12 @@
 				INFOPLIST_FILE = BlueSTSDK_Gui/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/BlueSTSDK_Gui/LicenseManager/GenerateLicenseCode",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.st.clab.BlueSTSDK-Gui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
