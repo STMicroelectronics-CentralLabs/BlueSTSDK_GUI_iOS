@@ -318,13 +318,24 @@ extension BlueSTSDKDemoViewController:MFMailComposeViewControllerDelegate{
         }else if (result == .sent){
             showAllert(title: BlueSTSDKDemoViewController.SENT_TITLE,
                        message:BlueSTSDKDemoViewController.SENT_MSG)
+            BlueSTSDKFeatureLogCSV.clearLogFolder()
         }
         
     }
 }
 
 
-extension BlueSTSDKDemoViewController:BlueSTSDKViewControllerMenuDelegate{
+ extension BlueSTSDKDemoViewController:BlueSTSDKViewControllerMenuDelegate{
+    public func addBarButton(_ item: UIBarButtonItem) {
+        navigationItem.rightBarButtonItems?.append(item)
+    }
+    
+    public func removeBarButton(_ item: UIBarButtonItem) {
+        if let index = navigationItem.rightBarButtonItems?.firstIndex(of: item){
+            navigationItem.rightBarButtonItems?.remove(at: index)
+        }
+    }
+    
     public func addMenuAction(_ action: UIAlertAction) {
         guard !mActions.contains(action) else{
             return;
@@ -335,6 +346,7 @@ extension BlueSTSDKDemoViewController:BlueSTSDKViewControllerMenuDelegate{
     public func addMenuAction(_ action: UIAlertAction, atIndex index: Int) {
         removeMenuAction(action) // if present remove the old position 
         mActions.insert(action, at: index)
+    
     }
     
     public func removeMenuAction(_ action: UIAlertAction) {

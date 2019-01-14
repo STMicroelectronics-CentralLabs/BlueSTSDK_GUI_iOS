@@ -3,10 +3,55 @@
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
+      "subtype" : "2688h",
+      "filename" : "Defalutl_splash_iOS_NEW_2018_iPhone XS Max-Portrait.png",
+      "minimum-system-version" : "12.0",
+      "orientation" : "portrait",
+      "scale" : "3x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "subtype" : "2688h",
+      "filename" : "Defalutl_splash_iOS_NEW_2018_iPhone XS Max-Landscape.png",
+      "minimum-system-version" : "12.0",
+      "orientation" : "landscape",
+      "scale" : "3x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "subtype" : "1792h",
+      "filename" : "Defalutl_splash_iOS_NEW_2018_iPhone XR-Portrait.png",
+      "minimum-system-version" : "12.0",
+      "orientation" : "portrait",
+      "scale" : "2x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "subtype" : "1792h",
+      "filename" : "Defalutl_splash_iOS_NEW_2018_iPhone XR-landascape.png",
+      "minimum-system-version" : "12.0",
+      "orientation" : "landscape",
+      "scale" : "2x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
       "subtype" : "2436h",
-      "filename" : "STLogo.png",
+      "filename" : "Defalutl_splash_iOS_NEW_2018_iPhoneX-Portrait.png",
       "minimum-system-version" : "11.0",
       "orientation" : "portrait",
+      "scale" : "3x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "subtype" : "2436h",
+      "filename" : "Defalutl_splash_iOS_NEW_2018_iPhoneX-Landscape.png",
+      "minimum-system-version" : "11.0",
+      "orientation" : "landscape",
       "scale" : "3x"
     },
     {

@@ -60,7 +60,7 @@ public class BlueSTSDKFwConsoleUtil{
         }
         
         switch node.type {
-            case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1:
+            case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1,.sensor_Tile_101:
                 return BlueSTSDKFwUpgradeReadVersionNucleo(console: console);
             default:
                 return nil;
@@ -85,7 +85,7 @@ public class BlueSTSDKFwConsoleUtil{
         }
         
         switch node.type {
-        case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1:
+        case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1, .sensor_Tile_101:
             return BlueSTSDKFwUpgradeConsoleNucleo(console: console);
         default:
             return nil;

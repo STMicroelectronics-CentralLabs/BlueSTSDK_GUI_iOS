@@ -19,7 +19,7 @@ public extension BlueSTSDKNode{
             return UIImage(named: "board_generic.png", in: currentBundle, compatibleWith: nil)
         case .STEVAL_WESU1:
             return UIImage(named: "logo_steval_wesu1", in: currentBundle, compatibleWith: nil)
-        case .sensor_Tile:
+        case .sensor_Tile, .sensor_Tile_101:
             return UIImage(named: "logo_sensorTile", in: currentBundle, compatibleWith: nil)
         case .blue_Coin:
             return UIImage(named: "logo_blueCoin", in: currentBundle, compatibleWith: nil)

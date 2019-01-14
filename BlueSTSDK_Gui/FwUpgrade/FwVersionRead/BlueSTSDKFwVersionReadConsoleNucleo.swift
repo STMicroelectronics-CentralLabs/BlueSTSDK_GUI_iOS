@@ -71,11 +71,11 @@ public class BlueSTSDKFwUpgradeReadVersionNucleo : BlueSTSDKFwReadVersionConsole
         }
         
         mConsoleDelegate = BlueSTSDKFwReadVersionConsoleDelegate{ version in
-            self.mConsole.remove(self.mConsoleDelegate)
+            self.mConsole.remove(self.mConsoleDelegate!)
             self.mConsoleDelegate = nil
             onComplete(version)
         }
-        mConsole.add(mConsoleDelegate)
+        mConsole.add(mConsoleDelegate!)
         
         mConsole.writeMessage(BlueSTSDKFwUpgradeReadVersionNucleo.GET_FW_VERSION)
         return true;

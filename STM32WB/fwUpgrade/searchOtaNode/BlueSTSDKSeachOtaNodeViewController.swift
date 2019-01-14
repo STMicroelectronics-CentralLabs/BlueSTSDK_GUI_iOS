@@ -121,17 +121,17 @@ public class BlueSTSDKSeachOtaNodeViewController : UIViewController{
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let bleManager = BlueSTSDKManager.sharedInstance()
-        bleManager?.add(self)
-        bleManager?.resetDiscovery()
-        bleManager?.discoveryStart(BlueSTSDKSeachOtaNodeViewController.BLE_SCAN_TIMEOUT_MS)
+        bleManager.add(self)
+        bleManager.resetDiscovery()
+        bleManager.discoveryStart(BlueSTSDKSeachOtaNodeViewController.BLE_SCAN_TIMEOUT_MS)
         
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         let bleManager = BlueSTSDKManager.sharedInstance()
-        bleManager?.remove(self)
-        bleManager?.discoveryStop()
+        bleManager.remove(self)
+        bleManager.discoveryStop()
     }
     
     fileprivate func moveToFwUpgrade(node:BlueSTSDKNode){

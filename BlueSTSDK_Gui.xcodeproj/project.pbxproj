@@ -24,7 +24,6 @@
 		663979C41E2E5D4100FBF696 /* st_images_LanchScreen.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 663979761E2E5D4100FBF696 /* st_images_LanchScreen.xcassets */; };
 		663979C51E2E5D4100FBF696 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979791E2E5D4100FBF696 /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		663979C61E2E5D4100FBF696 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6639797A1E2E5D4100FBF696 /* MBProgressHUD.m */; };
-		663979D41E2E5FA200FBF696 /* BlueSTSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663979D11E2E5F9600FBF696 /* BlueSTSDK.framework */; };
 		663979EA1E2E63AC00FBF696 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663979E91E2E63AC00FBF696 /* UIKit.framework */; };
 		663FDA861F5E9670001481BC /* BlueSTSDKDownloadFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663FDA851F5E9670001481BC /* BlueSTSDKDownloadFileViewController.swift */; };
 		663FDA891F5EF568001481BC /* BlueSTSDKFwUpgradeManagerViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = 665D325A1F5D80F900D76AEA /* BlueSTSDKFwUpgradeManagerViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,6 +37,7 @@
 		666F79CC20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666F79CB20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift */; };
 		666F79D020E0DBD300A482C9 /* BlueSTSDKFwUpgradeConsoleNucleo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666F79CF20E0DBD300A482C9 /* BlueSTSDKFwUpgradeConsoleNucleo.swift */; };
 		668A12711E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668A12701E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets */; };
+		66C2AB2921C3ABA000E41E73 /* BlueSTSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663979D11E2E5F9600FBF696 /* BlueSTSDK.framework */; };
 		66C9DFB5212AFAE9005B5633 /* STM32WBThreadRebootFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9DFB4212AFAE9005B5633 /* STM32WBThreadRebootFeature.swift */; };
 		66D5FDBC1EA74914005D8AE9 /* DebugConsoleMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDBE1EA74914005D8AE9 /* DebugConsoleMainView.storyboard */; };
 		66D5FDBF1EA74920005D8AE9 /* FwUpgrade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDC11EA74920005D8AE9 /* FwUpgrade.storyboard */; };
@@ -147,8 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66C2AB2921C3ABA000E41E73 /* BlueSTSDK.framework in Frameworks */,
 				663979EA1E2E63AC00FBF696 /* UIKit.framework in Frameworks */,
-				663979D41E2E5FA200FBF696 /* BlueSTSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

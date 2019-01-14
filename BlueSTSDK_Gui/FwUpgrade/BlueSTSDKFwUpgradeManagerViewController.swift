@@ -149,7 +149,7 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
     public var fwRemoteUrl:URL?;
     
     public var requireAddress:Bool=false
-    public var defaultAddress:Int?=nil
+    public var defaultAddress:UInt32?=nil
     
     private var mLoadVersionHud:MBProgressHUD?;
     private var mFwUpgradeConsole:BlueSTSDKFwUpgradeConsole?;
@@ -210,6 +210,9 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
                        message: msg)
             return;
         }
+        if let userAddress = UInt32(mAddressText.text ?? "", radix: 16){
+            defaultAddress = userAddress
+        }
         let docPicker = UIDocumentPickerViewController(documentTypes: ["public.data"], in: .import)
         docPicker.delegate = self
         docPicker.popoverPresentationController?.barButtonItem=sender
@@ -232,13 +235,17 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
     
     fileprivate func startFwUpgrade(firmware: URL){
         //onSelectFileButtonPress has check that is a valid address
-        let address = UInt32(mAddressText.text ?? "", radix: 16)
-        mUploadView.isHidden=false
-        mUploadStatusProgress.text = BlueSTSDKFwUpgradeManagerViewController.FORMATTING_MSG
-        _ = mFwUpgradeConsole?.loadFwFile(type:.applicationFirmware,
-                                          file:firmware,
-                                          delegate: mProgresViewController,
-                                          address: address)
+        DispatchQueue.main.async{
+            self.mUploadView.isHidden=false
+            self.mUploadStatusProgress.text = BlueSTSDKFwUpgradeManagerViewController.FORMATTING_MSG
+            
+        }
+        let address = defaultAddress != nil ? UInt32(defaultAddress!) : nil
+        
+        _ = self.mFwUpgradeConsole?.loadFwFile(type:.applicationFirmware,
+                                               file:firmware,
+                                               delegate: self.mProgresViewController,
+                                               address: address)
     }
     
     private func onFwVersionRead(_ version: BlueSTSDKFwVersion?){

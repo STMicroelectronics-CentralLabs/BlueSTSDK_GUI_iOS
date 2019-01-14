@@ -59,5 +59,10 @@ public protocol BlueSTSDKViewControllerMenuDelegate{
      * return the number of items in the menu
      */
     var menuActionCount:Int {get};
+    
+    func addBarButton(_ item:UIBarButtonItem)
+    
+    func removeBarButton( _ item:UIBarButtonItem)
+    
 }
 
