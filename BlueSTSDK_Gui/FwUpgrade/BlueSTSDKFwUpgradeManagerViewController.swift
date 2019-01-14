@@ -50,7 +50,7 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
     ///   - defaultAddress: default address where load the fw
     ///   - fwRemoteUrl: if present the fw will be dowloaded from this url
     /// - Returns: BlueSTSDKFwUpgradeManagerViewController instance
-    public static func instaziate(forNode node:BlueSTSDKNode, requireAddress:Bool, defaultAddress:Int?=nil, fwRemoteUrl:URL?=nil)->BlueSTSDKFwUpgradeManagerViewController{
+    public static func instaziate(forNode node:BlueSTSDKNode, requireAddress:Bool, defaultAddress:UInt32?=nil, fwRemoteUrl:URL?=nil)->BlueSTSDKFwUpgradeManagerViewController{
         let bundle = Bundle(for: BlueSTSDKFwUpgradeManagerViewController.self)
         let storyBoard = UIStoryboard(name: "FwUpgrade", bundle: bundle)
         

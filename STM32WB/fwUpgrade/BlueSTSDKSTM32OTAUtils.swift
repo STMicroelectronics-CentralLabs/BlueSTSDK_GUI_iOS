@@ -43,7 +43,7 @@ public class BlueSTSDKSTM32WBOTAUtils{
     public static let OTA_NODE_ID = UInt8(0x86)
     
     /// defautl address were load the firmware
-    public static let DEFAULT_FW_ADDRESS = 0x7000
+    public static let DEFAULT_FW_ADDRESS = UInt32(0x7000)
     
     /// tell if the node is a node where we can upload the firmware file
     ///

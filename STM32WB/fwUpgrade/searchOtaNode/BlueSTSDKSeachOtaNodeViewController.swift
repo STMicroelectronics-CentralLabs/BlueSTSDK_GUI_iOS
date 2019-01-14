@@ -50,7 +50,7 @@ public class BlueSTSDKSeachOtaNodeViewController : UIViewController{
     ///   - nodeAddress: mac address of the node where load the firmware, if not present the first ota node will be selected
     ///   - addressWhereFlash: address where the firmware will be loaded
     /// - Returns: <#return value description#>
-    public static func instanziate(nodeAddress:String?=nil,addressWhereFlash:Int?=nil)->BlueSTSDKSeachOtaNodeViewController{
+    public static func instanziate(nodeAddress:String?=nil,addressWhereFlash:UInt32?=nil)->BlueSTSDKSeachOtaNodeViewController{
         let bundle = Bundle(for: BlueSTSDKSeachOtaNodeViewController.self)
         let storyBoard = UIStoryboard(name: "STM32WBOta", bundle: bundle)
         
@@ -106,7 +106,7 @@ public class BlueSTSDKSeachOtaNodeViewController : UIViewController{
     
     
     private var mProgressDialog:MBProgressHUD?
-    public var addressWhereFlash:Int?
+    public var addressWhereFlash:UInt32?
     public var nodeAddressToSearch:String?
     
     public override func viewDidLoad() {

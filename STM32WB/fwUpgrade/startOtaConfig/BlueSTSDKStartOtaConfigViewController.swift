@@ -157,7 +157,7 @@ class BlueSTSDKStartOtaConfigViewController:UIViewController, BlueSTSDKDemoViewP
             //create the vc that will search the ota node
             let searchVc = BlueSTSDKSeachOtaNodeViewController.instanziate(
                 nodeAddress: BlueSTSDKSTM32WBOTAUtils.getOtaAddressForNode(self.node),
-                addressWhereFlash: Int(firstSector)*0x1000)
+                addressWhereFlash: UInt32(firstSector)*0x1000)
             //replace the current vc with the one for search the node
             replaceViewController(searchVc,animated: false)
         }else{
