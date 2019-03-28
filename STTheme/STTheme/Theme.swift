@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018  STMicroelectronics – All rights reserved
+ * Copyright (c) 2019  STMicroelectronics – All rights reserved
  * The STMicroelectronics corporate logo is a trademark of STMicroelectronics
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -35,48 +35,28 @@
  * OF SUCH DAMAGE.
  */
 
-import Foundation
-import BlueSTSDK
+import UIKit
 
-public class BlueSTSDKSTM32WBOTAUtils{
-    
-    public static let OTA_NODE_ID = UInt8(0x86)
-    
-    /// defautl address were load the firmware
-    public static let DEFAULT_FW_ADDRESS = UInt32(0x7000)
-    
-    /// tell if the node is a node where we can upload the firmware file
-    ///
-    /// - Parameter n: ble node
-    /// - Returns: true if it is a otaNode
-    public static func isOTANode(_ n:BlueSTSDKNode)->Bool{
-        return n.typeId ==  OTA_NODE_ID;
-    }
- 
-    
-    /// get a map of uuid/feature class neede to manage the STM32WB OTA protocol
-    ///
-    /// - Returns: map of uuid/feature class neede to manage the STM32WB OTA protocol
-    public static func getOtaCharacteristics() -> [CBUUID:[AnyClass]]{
-        var temp:[CBUUID:[BlueSTSDKFeature.Type]]=[:]
-        temp.updateValue([BlueSTSDKSTM32WBRebootOtaModeFeature.self], forKey: CBUUID(string: "0000fe11-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOTAControlFeature.self], forKey: CBUUID(string: "0000fe22-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOTAWillRebootFeature.self], forKey: CBUUID(string: "0000fe23-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOtaUploadFeature.self], forKey: CBUUID(string: "0000fe24-8e22-4541-9d4c-21edae82ed19"))
-        return temp;
-    }
-    
-    
-    /// get the mac address that the node will have after rebooting in ota mode
-    ///
-    /// - Parameter n: node that will reboot
-    /// - Returns: if the node has an address, the addres of the node when in ota mode
-    public static func getOtaAddressForNode( _ n:BlueSTSDKNode)->String?{
-        guard let address = n.address,
-            var lastDigit = Int(address.suffix(2),radix:16) else {
-            return nil
-        }
-        lastDigit = lastDigit+1
-        return address.prefix( address.count-2).appending(String(format: "%X",lastDigit))
-    }
+public protocol Theme {
+    var color: Colors { get set }
+    var font: Font { get set }
+}
+
+public protocol Color {
+    var light: UIColor { get set }
+    var dark: UIColor { get set }
+}
+
+public protocol Colors {
+    var primary: Color { get }
+    var secondary: Color { get }
+    var background: Color { get }
+    var text: Color { get }
+    var navigationBar: UIColor { get }
+    var navigationBarText: UIColor { get }
+}
+
+public protocol Font {
+    var regular: UIFont { get }
+    var bold: UIFont { get }
 }

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jcp-lJ-o4E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jcp-lJ-o4E">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,9 +27,9 @@
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHg-8K-fG4" userLabel="© Copyright  2017 STMicroelectronics. All rights reserved.">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHg-8K-fG4">
                                 <rect key="frame" x="527.5" y="987" width="220.5" height="29"/>
-                                <string key="text">© Copyright  2018 STMicroelectronics.
+                                <string key="text">© Copyright  2019 STMicroelectronics.
 All rights reserved.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,7 +45,7 @@ All rights reserved.</string>
                                     </constraint>
                                 </constraints>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="15"/>
-                                <state key="normal" backgroundImage="SearchButton">
+                                <state key="normal" backgroundImage="main_searchButton">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Start discovering">
                                             <attributes>
@@ -70,7 +68,7 @@ All rights reserved.</string>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ICY-hT-ZpW">
                                 <rect key="frame" x="309" y="620" width="150" height="150"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
-                                <state key="normal" backgroundImage="AboutButton">
+                                <state key="normal" backgroundImage="main_aboutButton">
                                     <attributedString key="attributedTitle">
                                         <fragment content="About">
                                             <attributes>
@@ -124,8 +122,10 @@ All rights reserved.</string>
                     </view>
                     <navigationItem key="navigationItem" id="Aj2-lZ-Nog"/>
                     <connections>
+                        <outlet property="mAboutButton" destination="ICY-hT-ZpW" id="Y2A-a4-cWa"/>
                         <outlet property="mAppNameLabel" destination="of2-xK-PrJ" id="fQU-GT-x96"/>
                         <outlet property="mAppVersionLabel" destination="tfX-Yc-VGm" id="Ku7-ot-0I1"/>
+                        <outlet property="mNodeListButton" destination="0df-1e-tqu" id="YVZ-BY-cwC"/>
                         <segue destination="NpG-Zu-b7a" kind="show" identifier="showAboutView" id="G2U-nH-JE5"/>
                         <segue destination="8hC-kF-n1t" kind="show" identifier="showNodeListView" id="osi-ws-pLv"/>
                     </connections>
@@ -137,7 +137,7 @@ All rights reserved.</string>
         <!--About View Controller-->
         <scene sceneID="Fw2-k8-eiw">
             <objects>
-                <viewController id="NpG-Zu-b7a" userLabel="About View Controller" customClass="BlueSTSDKAboutViewController" customModule="BlueSTSDK_Gui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutViewController" id="NpG-Zu-b7a" userLabel="About View Controller" customClass="BlueSTSDKAboutViewController" customModule="BlueSTSDK_Gui" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m5j-Kg-PxX"/>
                         <viewControllerLayoutGuide type="bottom" id="ZT5-TJ-RVm"/>
@@ -147,7 +147,7 @@ All rights reserved.</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kc-tK-MME">
-                                <rect key="frame" x="20" y="202" width="728" height="747.5"/>
+                                <rect key="frame" x="20" y="202" width="728" height="741.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </webView>
@@ -174,7 +174,7 @@ All rights reserved.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Evaluation Only" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTR-SE-TXU">
-                                <rect key="frame" x="650.5" y="957.5" width="109.5" height="14.5"/>
+                                <rect key="frame" x="650.5" y="951.5" width="109.5" height="14.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -281,7 +281,7 @@ All rights reserved.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Az8-LD-DLf">
-                                <rect key="frame" x="28" y="28" width="712" height="944"/>
+                                <rect key="frame" x="28" y="28" width="712" height="938"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -307,7 +307,7 @@ All rights reserved.</string>
         <!--Devices-->
         <scene sceneID="0nK-73-5aT">
             <objects>
-                <tableViewController title="Devices" id="8hC-kF-n1t" customClass="BlueSTSDKNodeListViewController" customModule="BlueSTSDK_Gui" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NodeListViewController" title="Devices" id="8hC-kF-n1t" customClass="BlueSTSDKNodeListViewController" customModule="BlueSTSDK_Gui" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" id="Aci-29-YcO">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -409,9 +409,9 @@ All rights reserved.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="AboutButton" width="150" height="150"/>
-        <image name="SearchButton" width="200" height="200"/>
         <image name="hasExtension" width="24" height="24"/>
+        <image name="main_aboutButton" width="150" height="150"/>
+        <image name="main_searchButton" width="200" height="200"/>
         <image name="press_contact.jpg" width="474" height="159"/>
         <image name="sleepIcon" width="24" height="24"/>
     </resources>

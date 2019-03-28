@@ -83,7 +83,7 @@ public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
  
  
  /// Implement the Fw upgrade logic on top of the DebugCosole
- class LoadFwDelegate : BlueSTSDKDebugOutputDelegate{
+ fileprivate class LoadFwDelegate : BlueSTSDKDebugOutputDelegate{
     private static let ACK_REPS = "\u{01}"
     private static let TIMEOUT_S = 1.0
     private static let MAX_MSG_SIZE = Int(16)
@@ -91,11 +91,12 @@ public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
     private static let MSG_DELAY_NS = NSEC_PER_SEC/90
     
     private let mMessageSerializer:DispatchQueue
+    private var mCurrentTimeOut:DispatchWorkItem?
+    
     private var mDelegate:BlueSTSDKFwUpgradeConsoleCallback?
     private let mConsole: BlueSTSDKDebug
     private let mFileUrl:URL
     private let mFileData:Data
-    private var mCurrentTimeOut:DispatchWorkItem?
     private var mCrc:UInt32
     
     private var mNodeReadyToReceiveFile=false;
@@ -182,11 +183,6 @@ public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
             }
         } else { //transfer complete
             mCurrentTimeOut?.cancel()
-            print(msg.debugDescription)
-            print(LoadFwDelegate.ACK_REPS.debugDescription)
-            print(msg.count)
-            print(LoadFwDelegate.ACK_REPS.count)
-            print(msg.compare(LoadFwDelegate.ACK_REPS))
             if(msg == LoadFwDelegate.ACK_REPS){
                 onLoadComplete()
             }else{

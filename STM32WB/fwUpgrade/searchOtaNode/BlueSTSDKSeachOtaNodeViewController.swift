@@ -62,7 +62,7 @@ public class BlueSTSDKSeachOtaNodeViewController : UIViewController{
         return seachOtaController;
     }
     
-    private static let BLE_SCAN_TIMEOUT_MS = Int32(10*1000)
+    private static let BLE_SCAN_TIMEOUT_MS = 10*1000
     
     private static let SEARCH_MESSAGE:String = {
         let bundle = Bundle(for: BlueSTSDKStartOtaConfigViewController.self);
@@ -120,8 +120,8 @@ public class BlueSTSDKSeachOtaNodeViewController : UIViewController{
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let bleManager = BlueSTSDKManager.sharedInstance()
-        bleManager.add(self)
+        let bleManager = BlueSTSDKManager.sharedInstance
+        bleManager.addDelegate(self)
         bleManager.resetDiscovery()
         bleManager.discoveryStart(BlueSTSDKSeachOtaNodeViewController.BLE_SCAN_TIMEOUT_MS)
         
@@ -129,8 +129,8 @@ public class BlueSTSDKSeachOtaNodeViewController : UIViewController{
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let bleManager = BlueSTSDKManager.sharedInstance()
-        bleManager.remove(self)
+        let bleManager = BlueSTSDKManager.sharedInstance
+        bleManager.removeDelegate(self)
         bleManager.discoveryStop()
     }
     
@@ -151,11 +151,11 @@ public class BlueSTSDKSeachOtaNodeViewController : UIViewController{
 /// manager delegate, used to filter out the 
 extension BlueSTSDKSeachOtaNodeViewController : BlueSTSDKManagerDelegate{
     
-    public func manager(_ manager: BlueSTSDKManager, didDiscover node: BlueSTSDKNode) {
+    public func manager(_ manager: BlueSTSDKManager, didDiscoverNode node: BlueSTSDKNode) {
         if(BlueSTSDKSTM32WBOTAUtils.isOTANode(node)){
             if nodeAddressToSearch == nil ||
                 nodeAddressToSearch! == node.address{
-                manager.remove(self)
+                manager.removeDelegate(self)
                 node.addExternalCharacteristics(BlueSTSDKSTM32WBOTAUtils.getOtaCharacteristics())
                 node.addStatusDelegate(self)
                 DispatchQueue.main.async {

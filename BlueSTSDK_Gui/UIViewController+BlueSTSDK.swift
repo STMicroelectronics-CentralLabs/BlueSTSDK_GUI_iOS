@@ -41,10 +41,19 @@ extension UIViewController{
     
     @objc public func changeViewController(_ newView:UIViewController){
         //check if we have a navigation controller
-        if(navigationController != nil){
-            navigationController?.pushViewController(newView, animated: true)
+        if let nav = navigationController {
+            nav.pushViewController(newView, animated: true)
         }else{
             present(newView, animated: true, completion: nil)
+        }//if-else
+    }
+    
+    public func removeCurrentViewController(){
+        //check if we have a navigation controller
+        if let nav = navigationController {
+            nav.popViewController(animated: true)
+        }else{
+            dismiss(animated: true, completion: nil)
         }//if-else
     }
     

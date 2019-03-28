@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018  STMicroelectronics – All rights reserved
+ * Copyright (c) 2019  STMicroelectronics – All rights reserved
  * The STMicroelectronics corporate logo is a trademark of STMicroelectronics
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -38,45 +38,58 @@
 import Foundation
 import BlueSTSDK
 
-public class BlueSTSDKSTM32WBOTAUtils{
+class BlueNRGFwUpgradeDataTransferFeature : BlueSTSDKDeviceTimestampFeature {
     
-    public static let OTA_NODE_ID = UInt8(0x86)
+    private static let FEATURE_NAME = "FwUpgradeDataTransfer";
     
-    /// defautl address were load the firmware
-    public static let DEFAULT_FW_ADDRESS = UInt32(0x7000)
+    private static let FIELDS:[BlueSTSDKFeatureField] = [];
     
-    /// tell if the node is a node where we can upload the firmware file
-    ///
-    /// - Parameter n: ble node
-    /// - Returns: true if it is a otaNode
-    public static func isOTANode(_ n:BlueSTSDKNode)->Bool{
-        return n.typeId ==  OTA_NODE_ID;
-    }
- 
-    
-    /// get a map of uuid/feature class neede to manage the STM32WB OTA protocol
-    ///
-    /// - Returns: map of uuid/feature class neede to manage the STM32WB OTA protocol
-    public static func getOtaCharacteristics() -> [CBUUID:[AnyClass]]{
-        var temp:[CBUUID:[BlueSTSDKFeature.Type]]=[:]
-        temp.updateValue([BlueSTSDKSTM32WBRebootOtaModeFeature.self], forKey: CBUUID(string: "0000fe11-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOTAControlFeature.self], forKey: CBUUID(string: "0000fe22-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOTAWillRebootFeature.self], forKey: CBUUID(string: "0000fe23-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOtaUploadFeature.self], forKey: CBUUID(string: "0000fe24-8e22-4541-9d4c-21edae82ed19"))
-        return temp;
+    public override func getFieldsDesc() -> [BlueSTSDKFeatureField] {
+        return BlueNRGFwUpgradeDataTransferFeature.FIELDS;
     }
     
+    public override init(whitNode node: BlueSTSDKNode) {
+        super.init(whitNode: node, name: BlueNRGFwUpgradeDataTransferFeature.FEATURE_NAME)
+    }
     
-    /// get the mac address that the node will have after rebooting in ota mode
-    ///
-    /// - Parameter n: node that will reboot
-    /// - Returns: if the node has an address, the addres of the node when in ota mode
-    public static func getOtaAddressForNode( _ n:BlueSTSDKNode)->String?{
-        guard let address = n.address,
-            var lastDigit = Int(address.suffix(2),radix:16) else {
-            return nil
+    public func send(sequenceId:UInt16, data:Data, needAck:Bool) -> Bool{
+        guard data.count + 4 <= parentNode.maximumWriteValueLength() else {
+            return false
         }
-        lastDigit = lastDigit+1
-        return address.prefix( address.count-2).appending(String(format: "%X",lastDigit))
+        guard data.count % 16 == 0 else{
+            return false
+        }
+        var dataToSend = Data(capacity: data.count+4)
+        dataToSend.append(0) //crc
+        dataToSend.append(contentsOf: data)
+        dataToSend.append(needAck ? 1 : 0)
+        var seqeunceIdLe = sequenceId.littleEndian
+        dataToSend.append(UnsafeBufferPointer(start: &seqeunceIdLe, count: 1))
+        dataToSend[0] = dataToSend.xor
+        // print("Data: \((dataToSend as NSData).description) size:\(dataToSend.count)")
+        write(dataToSend)
+        return true
     }
+    
+    public func getMaxDataLength() -> UInt{
+        // -4 for the crc + sequence + ack
+        let maxDataLenght = UInt(parentNode.maximumWriteValueLength()) - 4
+        let (nBlock,_) = maxDataLenght.quotientAndRemainder(dividingBy: 16)
+        return 16*nBlock
+    }
+    
+    override func extractData(_ timestamp: UInt64, data: Data, dataOffset offset: UInt32) -> BlueSTSDKExtractResult {
+        return BlueSTSDKExtractResult(whitSample: nil, nReadData: 0)
+    }
+    
+}
+
+fileprivate extension Data {
+    
+    fileprivate var xor : UInt8 {
+        get {
+            return self.reduce(UInt8(0)){ xorSum, value in xorSum ^ value}
+        }
+    }
+    
 }

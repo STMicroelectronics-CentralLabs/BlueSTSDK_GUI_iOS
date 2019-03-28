@@ -93,7 +93,7 @@ public class BlueSTSDKDemoViewController: UIViewController{
     public var demoViewController:UIViewController!
     @IBOutlet weak var demoView:UIView!
  
-    private var mIsLogging:Bool = false
+    public private(set) var isLogging:Bool = false
     private var mLogger:BlueSTSDKFeatureLogCSV? = nil
     private var mActions:[UIAlertAction] = []
     
@@ -200,6 +200,17 @@ public class BlueSTSDKDemoViewController: UIViewController{
         }
     }
     
+    public static var logDirectoryPath:URL {
+        get{
+            return BlueSTSDKFeatureLogCSV.getDumpFileDirectoryUrl()
+        }
+    }
+    
+    public var logFilePrefix:String? {
+        get {
+            return mLogger?.sessionPrefix();
+        }
+    }
     
     private func startLogging(){
         guard let logger = mLogger else{
@@ -226,12 +237,12 @@ public class BlueSTSDKDemoViewController: UIViewController{
     }
    
     public func changeLoggingStatus(){
-        if(mIsLogging){
+        if(isLogging){
             stopLogging()
         }else{
             startLogging()
         }
-        mIsLogging = !mIsLogging
+        isLogging = !isLogging
     }
     
     @objc public func showPopupMenu(_ sender:UIBarButtonItem){

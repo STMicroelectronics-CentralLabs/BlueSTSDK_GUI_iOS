@@ -18,6 +18,14 @@
 		660D356920E2812400E73004 /* BlueSTSDKDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D356820E2812400E73004 /* BlueSTSDKDemoViewController.swift */; };
 		6614EB4E20E3743600D991B9 /* BlueSTSDKMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614EB4D20E3743600D991B9 /* BlueSTSDKMainViewController.swift */; };
 		6614EB5020E38C5B00D991B9 /* UIViewController+BlueSTSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614EB4F20E38C5B00D991B9 /* UIViewController+BlueSTSDK.swift */; };
+		662734C1221ED84B00405839 /* BlueNRGOtaAdvertiseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662734C0221ED84B00405839 /* BlueNRGOtaAdvertiseParser.swift */; };
+		662734C3221ED91700405839 /* BlueNRGFwUpgradeConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662734C2221ED91700405839 /* BlueNRGFwUpgradeConsole.swift */; };
+		662734C5221ED93300405839 /* BlueNRGFwVersionConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662734C4221ED93300405839 /* BlueNRGFwVersionConsole.swift */; };
+		662734CA221EDF7500405839 /* BlueNRGMemoryInfoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662734C9221EDF7500405839 /* BlueNRGMemoryInfoFeature.swift */; };
+		662734CC221EDFA100405839 /* BlueNRGOtaUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662734CB221EDFA100405839 /* BlueNRGOtaUtils.swift */; };
+		662734DE2220235300405839 /* BlueNRGFwUpgradeSettingsFature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662734DD2220235300405839 /* BlueNRGFwUpgradeSettingsFature.swift */; };
+		662734E02220406D00405839 /* BlueNRGFwUpgradeAckFature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662734DF2220406D00405839 /* BlueNRGFwUpgradeAckFature.swift */; };
+		662734E22220408300405839 /* BlueNRGFwUpgradeDataTransferFature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662734E12220408300405839 /* BlueNRGFwUpgradeDataTransferFature.swift */; };
 		6628202320DBCAB400F8B5DE /* BlueSTSDKSTM32CRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6628202220DBCAB400F8B5DE /* BlueSTSDKSTM32CRC.swift */; };
 		663979191E2E5D0000FBF696 /* BlueSTSDK_Gui.h in Headers */ = {isa = PBXBuildFile; fileRef = 663979171E2E5D0000FBF696 /* BlueSTSDK_Gui.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		663979C31E2E5D4100FBF696 /* board_generic.png in Resources */ = {isa = PBXBuildFile; fileRef = 663979751E2E5D4100FBF696 /* board_generic.png */; };
@@ -93,6 +101,14 @@
 		660D356820E2812400E73004 /* BlueSTSDKDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKDemoViewController.swift; sourceTree = "<group>"; };
 		6614EB4D20E3743600D991B9 /* BlueSTSDKMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlueSTSDKMainViewController.swift; path = BlueSTSDK_Gui/BlueSTSDKMainViewController.swift; sourceTree = SOURCE_ROOT; };
 		6614EB4F20E38C5B00D991B9 /* UIViewController+BlueSTSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BlueSTSDK.swift"; sourceTree = "<group>"; };
+		662734C0221ED84B00405839 /* BlueNRGOtaAdvertiseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueNRGOtaAdvertiseParser.swift; sourceTree = "<group>"; };
+		662734C2221ED91700405839 /* BlueNRGFwUpgradeConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueNRGFwUpgradeConsole.swift; sourceTree = "<group>"; };
+		662734C4221ED93300405839 /* BlueNRGFwVersionConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueNRGFwVersionConsole.swift; sourceTree = "<group>"; };
+		662734C9221EDF7500405839 /* BlueNRGMemoryInfoFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueNRGMemoryInfoFeature.swift; sourceTree = "<group>"; };
+		662734CB221EDFA100405839 /* BlueNRGOtaUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueNRGOtaUtils.swift; sourceTree = "<group>"; };
+		662734DD2220235300405839 /* BlueNRGFwUpgradeSettingsFature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueNRGFwUpgradeSettingsFature.swift; sourceTree = "<group>"; };
+		662734DF2220406D00405839 /* BlueNRGFwUpgradeAckFature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueNRGFwUpgradeAckFature.swift; sourceTree = "<group>"; };
+		662734E12220408300405839 /* BlueNRGFwUpgradeDataTransferFature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueNRGFwUpgradeDataTransferFature.swift; sourceTree = "<group>"; };
 		6628202220DBCAB400F8B5DE /* BlueSTSDKSTM32CRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKSTM32CRC.swift; sourceTree = "<group>"; };
 		663979141E2E5D0000FBF696 /* BlueSTSDK_Gui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSTSDK_Gui.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		663979171E2E5D0000FBF696 /* BlueSTSDK_Gui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueSTSDK_Gui.h; sourceTree = "<group>"; };
@@ -155,10 +171,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		662734BE221ED84B00405839 /* BlueNRG */ = {
+			isa = PBXGroup;
+			children = (
+				662734BF221ED84B00405839 /* fwUpgrade */,
+			);
+			path = BlueNRG;
+			sourceTree = "<group>";
+		};
+		662734BF221ED84B00405839 /* fwUpgrade */ = {
+			isa = PBXGroup;
+			children = (
+				662734C8221EDF7500405839 /* feature */,
+				662734C2221ED91700405839 /* BlueNRGFwUpgradeConsole.swift */,
+				662734C4221ED93300405839 /* BlueNRGFwVersionConsole.swift */,
+				662734C0221ED84B00405839 /* BlueNRGOtaAdvertiseParser.swift */,
+				662734CB221EDFA100405839 /* BlueNRGOtaUtils.swift */,
+			);
+			path = fwUpgrade;
+			sourceTree = "<group>";
+		};
+		662734C8221EDF7500405839 /* feature */ = {
+			isa = PBXGroup;
+			children = (
+				662734C9221EDF7500405839 /* BlueNRGMemoryInfoFeature.swift */,
+				662734DD2220235300405839 /* BlueNRGFwUpgradeSettingsFature.swift */,
+				662734DF2220406D00405839 /* BlueNRGFwUpgradeAckFature.swift */,
+				662734E12220408300405839 /* BlueNRGFwUpgradeDataTransferFature.swift */,
+			);
+			path = feature;
+			sourceTree = "<group>";
+		};
 		6639790A1E2E5D0000FBF696 = {
 			isa = PBXGroup;
 			children = (
 				66F7B45121133DAC000FD126 /* st_images.xcassets */,
+				662734BE221ED84B00405839 /* BlueNRG */,
 				66F7B42221133199000FD126 /* STM32WB */,
 				663979161E2E5D0000FBF696 /* BlueSTSDK_Gui */,
 				663979151E2E5D0000FBF696 /* Products */,
@@ -499,11 +547,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				662734C5221ED93300405839 /* BlueNRGFwVersionConsole.swift in Sources */,
 				660C82E51ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift in Sources */,
 				660C82E31ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift in Sources */,
 				66F7B44B21133199000FD126 /* STM32RSSIUpdateViewController.swift in Sources */,
 				660D356920E2812400E73004 /* BlueSTSDKDemoViewController.swift in Sources */,
 				66F7B44121133199000FD126 /* BlueSTSDKSTM32WBRebootOtaModeFeature.swift in Sources */,
+				662734CC221EDFA100405839 /* BlueNRGOtaUtils.swift in Sources */,
 				66F7B44821133199000FD126 /* STM32WBSwitchStatusFeature.swift in Sources */,
 				6614EB4E20E3743600D991B9 /* BlueSTSDKMainViewController.swift in Sources */,
 				664AD5DE215A79EC0039F417 /* BlueSTSDKNode+typeImage.swift in Sources */,
@@ -514,13 +564,17 @@
 				66F7B44A21133199000FD126 /* STM32LedNetworkViewController.swift in Sources */,
 				660D356020E267E300E73004 /* BlueSTSDKNodeListViewController.swift in Sources */,
 				665A2E2920DD2557003088DD /* BlueSTSDKFwVersionReadConsole.swift in Sources */,
+				662734E22220408300405839 /* BlueNRGFwUpgradeDataTransferFature.swift in Sources */,
 				66F7B43F21133199000FD126 /* BlueSTSDKSTM32WBOtaUploadFeature.swift in Sources */,
+				662734E02220406D00405839 /* BlueNRGFwUpgradeAckFature.swift in Sources */,
 				666F79CC20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift in Sources */,
+				662734DE2220235300405839 /* BlueNRGFwUpgradeSettingsFature.swift in Sources */,
 				660D355C20E25B0B00E73004 /* BlueSTSDKDemoViewProtocol.swift in Sources */,
 				663FDA861F5E9670001481BC /* BlueSTSDKDownloadFileViewController.swift in Sources */,
 				66F7B44621133199000FD126 /* STM32WBNetworkStatusFeature.swift in Sources */,
 				66F7B44221133199000FD126 /* BlueSTSDKSeachOtaNodeViewController.swift in Sources */,
 				665A2E2A20DD2557003088DD /* BlueSTSDKFwVersionReadConsoleNucleo.swift in Sources */,
+				662734CA221EDF7500405839 /* BlueNRGMemoryInfoFeature.swift in Sources */,
 				66F7B44921133199000FD126 /* STM32LedButtonViewController.swift in Sources */,
 				66F7B43B21133199000FD126 /* BlueSTSDKFwReadVersionConsoleSTM32WB.swift in Sources */,
 				663979C61E2E5D4100FBF696 /* MBProgressHUD.m in Sources */,
@@ -535,8 +589,10 @@
 				66F7B44721133199000FD126 /* STM32WBPeer2PeerDemoConfiguration.swift in Sources */,
 				66F7B44321133199000FD126 /* BlueSTSDKStartOtaConfigViewController.swift in Sources */,
 				66F7B44521133199000FD126 /* STM32WBControlLedFeature.swift in Sources */,
+				662734C1221ED84B00405839 /* BlueNRGOtaAdvertiseParser.swift in Sources */,
 				665D32571F5D468700D76AEA /* BlueSTSDKFwUpgradeProgressViewController.swift in Sources */,
 				665D325B1F5D80F900D76AEA /* BlueSTSDKFwUpgradeManagerViewController.swift in Sources */,
+				662734C3221ED91700405839 /* BlueNRGFwUpgradeConsole.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +757,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.st.clab.BlueSTSDK-Gui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

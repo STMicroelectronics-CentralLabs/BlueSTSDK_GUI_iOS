@@ -76,7 +76,7 @@ class BlueSTSDKFwUpgradeConsoleSTM32WB : BlueSTSDKFwUpgradeConsole{
         let willRebootDelegate = WillRebootDelegate(delegate: delegate, file: file);
         do{
             mWillReboot.add(willRebootDelegate)
-            mWillReboot.parentNode.enableNotification(mWillReboot)
+            mWillReboot.enableNotification()
             let fileHandler = try FileHandle(forReadingFrom: file)
             let data = fileHandler.readDataToEndOfFile()
             let fileSize = UInt(data.count)

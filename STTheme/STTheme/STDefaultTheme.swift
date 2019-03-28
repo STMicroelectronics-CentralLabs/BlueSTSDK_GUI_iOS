@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018  STMicroelectronics – All rights reserved
+ * Copyright (c) 2019  STMicroelectronics – All rights reserved
  * The STMicroelectronics corporate logo is a trademark of STMicroelectronics
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -35,48 +35,37 @@
  * OF SUCH DAMAGE.
  */
 
-import Foundation
-import BlueSTSDK
+import UIKit
 
-public class BlueSTSDKSTM32WBOTAUtils{
+struct STDefaultTheme: Theme {
+    var color: Colors = STDefaultColors()
+    var font: Font = STDefaultFont()
+}
+
+struct STDefaultColor: Color {
+    var light: UIColor
+    var dark: UIColor
     
-    public static let OTA_NODE_ID = UInt8(0x86)
-    
-    /// defautl address were load the firmware
-    public static let DEFAULT_FW_ADDRESS = UInt32(0x7000)
-    
-    /// tell if the node is a node where we can upload the firmware file
-    ///
-    /// - Parameter n: ble node
-    /// - Returns: true if it is a otaNode
-    public static func isOTANode(_ n:BlueSTSDKNode)->Bool{
-        return n.typeId ==  OTA_NODE_ID;
+    init(light: String?, dark: String?) {
+        self.light = UIColor(hexString: light ?? "#000000")
+        self.dark = UIColor(hexString: dark ?? "#000000")
     }
- 
-    
-    /// get a map of uuid/feature class neede to manage the STM32WB OTA protocol
-    ///
-    /// - Returns: map of uuid/feature class neede to manage the STM32WB OTA protocol
-    public static func getOtaCharacteristics() -> [CBUUID:[AnyClass]]{
-        var temp:[CBUUID:[BlueSTSDKFeature.Type]]=[:]
-        temp.updateValue([BlueSTSDKSTM32WBRebootOtaModeFeature.self], forKey: CBUUID(string: "0000fe11-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOTAControlFeature.self], forKey: CBUUID(string: "0000fe22-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOTAWillRebootFeature.self], forKey: CBUUID(string: "0000fe23-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOtaUploadFeature.self], forKey: CBUUID(string: "0000fe24-8e22-4541-9d4c-21edae82ed19"))
-        return temp;
+}
+
+struct STDefaultColors: Colors {
+    var primary: Color = STDefaultColor(light: "#19b2e8", dark: "#002052")
+    var secondary: Color = STDefaultColor(light: "#d81484", dark: nil)
+    var background: Color = STDefaultColor(light: "#edf2f4", dark: nil)
+    var text: Color = STDefaultColor(light: "#7c898e", dark: "#424749")
+    var navigationBar: UIColor {
+        get { return primary.light }
     }
-    
-    
-    /// get the mac address that the node will have after rebooting in ota mode
-    ///
-    /// - Parameter n: node that will reboot
-    /// - Returns: if the node has an address, the addres of the node when in ota mode
-    public static func getOtaAddressForNode( _ n:BlueSTSDKNode)->String?{
-        guard let address = n.address,
-            var lastDigit = Int(address.suffix(2),radix:16) else {
-            return nil
-        }
-        lastDigit = lastDigit+1
-        return address.prefix( address.count-2).appending(String(format: "%X",lastDigit))
+    var navigationBarText: UIColor{
+        get { return primary.dark }
     }
+}
+
+struct STDefaultFont: Font {
+    var regular: UIFont = UIFont.systemFont(ofSize: 15.0)
+    var bold: UIFont = UIFont.boldSystemFont(ofSize: 15.0)
 }

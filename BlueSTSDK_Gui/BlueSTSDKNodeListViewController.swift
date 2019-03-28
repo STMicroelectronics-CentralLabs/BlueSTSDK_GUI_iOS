@@ -65,9 +65,18 @@ import BlueSTSDK
   *  @return view controller to display after the seleciton.
   */
   func demoViewController( with node: BlueSTSDKNode, menuManager:BlueSTSDKViewControllerMenuDelegate)->UIViewController;
+    
+  var advertiseFilters:[BlueSTSDKAdvertiseFilter] {get}
 
  }
  
+ public extension BlueSTSDKNodeListViewControllerDelegate{
+    public var advertiseFilters:[BlueSTSDKAdvertiseFilter] {
+        get {
+            return BlueSTSDKManager.DEFAULT_ADVERTISE_FILTER;
+        }
+    }
+ }
  
  public class BlueSTSDKNodeListViewCell : UITableViewCell{
     
@@ -82,7 +91,7 @@ import BlueSTSDK
  public class BlueSTSDKNodeListViewController : UITableViewController{
     private static let SEGUE_DEMO_VIEW = "showDemoView"
     //stop the discovery after 10s
-    private static let DISCOVERY_TIMEOUT = Int32(10*1000)
+    private static let DISCOVERY_TIMEOUT_MS = 10*1000
     
     private static let CONNECTIONG:String = {
         let bundle = Bundle(for: BlueSTSDKNodeListViewController.self);
@@ -112,13 +121,13 @@ import BlueSTSDK
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        mManager = BlueSTSDKManager.sharedInstance()
+        mManager = BlueSTSDKManager.sharedInstance
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mNodes.removeAll()
-        mManager.nodes().forEach{ node in
+        mManager.nodes.forEach{ node in
             if(node.isConnected()){
                 node.disconnect()
             }//if
@@ -135,9 +144,10 @@ import BlueSTSDK
      */
     public override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        mManager.add(self)
+        mManager.addDelegate(self)
         //if some node are already discovered show it, and we disconnect
-        mManager.discoveryStart(BlueSTSDKNodeListViewController.DISCOVERY_TIMEOUT)
+        mManager.discoveryStart(BlueSTSDKNodeListViewController.DISCOVERY_TIMEOUT_MS,
+                                advertiseFilters: delegate.advertiseFilters)
         #if targetEnvironment(simulator)
             mManager.addVirtualNode()
         #endif
@@ -152,7 +162,7 @@ import BlueSTSDK
      *  @param animated <#animated description#>
      */
     public override func viewWillDisappear(_ animated: Bool) {
-        mManager.remove(self)
+        mManager.removeDelegate(self)
         mManager.discoveryStop()
         super.viewWillDisappear(animated)
     }
@@ -162,14 +172,15 @@ import BlueSTSDK
      * it change the status of the discovery
      */
     @objc public func manageDiscoveryButton(){
-        if(mManager.isDiscovering()){
+        if(mManager.isDiscovering){
             mManager.discoveryStop()
         }else{
             mManager.resetDiscovery()
             mNodes.removeAll()
-            mNodes.append(contentsOf: mManager.nodes())
+            mNodes.append(contentsOf: mManager.nodes)
             tableView.reloadData()
-            mManager.discoveryStart(BlueSTSDKNodeListViewController.DISCOVERY_TIMEOUT)
+            mManager.discoveryStart(BlueSTSDKNodeListViewController.DISCOVERY_TIMEOUT_MS,
+                                    advertiseFilters: delegate.advertiseFilters)
         }
     }
     
@@ -178,7 +189,7 @@ import BlueSTSDK
      * have a search icon if the manager is NOT searching for new nodes, or an X othewise
      */
     private func setNavigationDiscoveryButton() {
-        let icon:UIBarButtonItem.SystemItem = mManager.isDiscovering() ? .stop : .search
+        let icon:UIBarButtonItem.SystemItem = mManager.isDiscovering ? .stop : .search
         self.navigationItem.rightBarButtonItem =
             UIBarButtonItem(barButtonSystemItem: icon, target: self, action: #selector(manageDiscoveryButton))
     }
@@ -254,7 +265,8 @@ import BlueSTSDK
  }
  
  extension BlueSTSDKNodeListViewController : BlueSTSDKManagerDelegate{
-    public func manager(_ manager: BlueSTSDKManager, didDiscover node: BlueSTSDKNode) {
+    
+    public func manager(_ manager: BlueSTSDKManager, didDiscoverNode node: BlueSTSDKNode) {
         if(self.delegate.display(node: node)){
             DispatchQueue.main.async {
                 self.mNodes.append(node)

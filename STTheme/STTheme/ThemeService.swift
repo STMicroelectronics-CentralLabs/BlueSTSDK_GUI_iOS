@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018  STMicroelectronics – All rights reserved
+ * Copyright (c) 2019  STMicroelectronics – All rights reserved
  * The STMicroelectronics corporate logo is a trademark of STMicroelectronics
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -35,48 +35,44 @@
  * OF SUCH DAMAGE.
  */
 
-import Foundation
-import BlueSTSDK
+import UIKit
 
-public class BlueSTSDKSTM32WBOTAUtils{
+public class ThemeService {
+    public static let shared: ThemeService = ThemeService()
     
-    public static let OTA_NODE_ID = UInt8(0x86)
+    public private(set) var currentTheme: Theme = STDefaultTheme()
     
-    /// defautl address were load the firmware
-    public static let DEFAULT_FW_ADDRESS = UInt32(0x7000)
-    
-    /// tell if the node is a node where we can upload the firmware file
-    ///
-    /// - Parameter n: ble node
-    /// - Returns: true if it is a otaNode
-    public static func isOTANode(_ n:BlueSTSDKNode)->Bool{
-        return n.typeId ==  OTA_NODE_ID;
-    }
- 
-    
-    /// get a map of uuid/feature class neede to manage the STM32WB OTA protocol
-    ///
-    /// - Returns: map of uuid/feature class neede to manage the STM32WB OTA protocol
-    public static func getOtaCharacteristics() -> [CBUUID:[AnyClass]]{
-        var temp:[CBUUID:[BlueSTSDKFeature.Type]]=[:]
-        temp.updateValue([BlueSTSDKSTM32WBRebootOtaModeFeature.self], forKey: CBUUID(string: "0000fe11-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOTAControlFeature.self], forKey: CBUUID(string: "0000fe22-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOTAWillRebootFeature.self], forKey: CBUUID(string: "0000fe23-8e22-4541-9d4c-21edae82ed19"))
-        temp.updateValue([BlueSTSDKSTM32WBOtaUploadFeature.self], forKey: CBUUID(string: "0000fe24-8e22-4541-9d4c-21edae82ed19"))
-        return temp;
+    public func update(with theme: Theme) {
+        currentTheme = theme
     }
     
+    public func applyToAllViewType(){
+        
+        applyTabBarTheme(UITabBar.appearance())
+        applyButtonTheme(UIButton.appearance())
+        applyUINavigatorBarTheme(UINavigationBar.appearance())
+    }
     
-    /// get the mac address that the node will have after rebooting in ota mode
-    ///
-    /// - Parameter n: node that will reboot
-    /// - Returns: if the node has an address, the addres of the node when in ota mode
-    public static func getOtaAddressForNode( _ n:BlueSTSDKNode)->String?{
-        guard let address = n.address,
-            var lastDigit = Int(address.suffix(2),radix:16) else {
-            return nil
-        }
-        lastDigit = lastDigit+1
-        return address.prefix( address.count-2).appending(String(format: "%X",lastDigit))
+    public func applyUINavigatorBarTheme(_ navigatiorBar: UINavigationBar){
+        navigatiorBar.barTintColor = currentTheme.color.navigationBar
+        navigatiorBar.tintColor = currentTheme.color.navigationBarText
+        
+        navigatiorBar.titleTextAttributes = [
+            .foregroundColor : currentTheme.color.navigationBarText
+        ]
+        
+        let navigationBarButton = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self] )
+        navigationBarButton.tintColor = currentTheme.color.navigationBarText
+    }
+    
+    public func applyTabBarTheme(_ tabBar: UITabBar){
+        tabBar.barTintColor = currentTheme.color.navigationBar
+        tabBar.tintColor = currentTheme.color.navigationBarText
+        tabBar.unselectedItemTintColor = UIColor.white
+    }
+    
+    public func applyButtonTheme(_ button: UIButton ){
+        button.tintColor = currentTheme.color.secondary.light
+        //button.setTitleColor(currentTheme.color.secondary.light, for: .normal)
     }
 }

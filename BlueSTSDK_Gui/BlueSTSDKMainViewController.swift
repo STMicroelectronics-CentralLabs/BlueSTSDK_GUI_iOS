@@ -37,7 +37,7 @@
 
 import Foundation
 
-@objc public protocol BlueSTSDKMainViewControllerDelegate {
+public protocol BlueSTSDKMainViewControllerDelegate {
 
     
     /// method called when the start scanning button is pressed,
@@ -79,30 +79,42 @@ extension BlueSTSDKMainViewControllerDelegate {
 
 }
 
-@objc public class BlueSTSDKMainViewController: UIViewController {
+open class BlueSTSDKMainViewController: UIViewController {
 
     private static let PRIVACY_DIALOG_SHOWN = "BlueSTSDKMainViewController.PrivacyDialogShown";
-    private static let SHOW_ABOUT_SEGUE = "showAboutView";
-    private static let SHOW_NODE_LIST_SEGUE = "showNodeListView";
+    private static let ABOUT_VIEWCONTROLLER_ID = "AboutViewController";
+    private static let SHOW_NODE_LIST_VIEWCONTROLLER_ID = "NodeListViewController";
 
-    @IBOutlet weak var mAppNameLabel: UILabel!
+    @IBOutlet open weak var mAppNameLabel: UILabel!
+    @IBOutlet open weak var mAppVersionLabel: UILabel!
+    
+    @IBOutlet open weak var mAboutButton: UIButton!
+    @IBOutlet open weak var mNodeListButton: UIButton!
 
-    @IBOutlet weak var mAppVersionLabel: UILabel!
 
-
-    @objc public var delegateAbout:BlueSTSDKAboutViewControllerDelegate?=nil;
-    @objc public var delegateMain: BlueSTSDKMainViewControllerDelegate?=nil;
+    public var delegateAbout:BlueSTSDKAboutViewControllerDelegate?=nil;
+    public var delegateMain: BlueSTSDKMainViewControllerDelegate?=nil;
     public var delegateNodeList:BlueSTSDKNodeListViewControllerDelegate?=nil;
 
-    override public func viewDidLoad(){
-        super.viewDidLoad();
-
-        let bundle = Bundle.main;
-        let version = bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String;
-        let appName = bundle.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String;
+    private func displayAppNameInfo(){
+        let appBudle = Bundle.main;
+        let version = appBudle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String;
+        let appName = appBudle.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String;
         mAppNameLabel.text = appName;
         mAppVersionLabel.text?.append(version);
+    }
+    
+    private func displayButtonImages(){
+        let currentBundle = Bundle.init(for: BlueSTSDKMainViewController.self)
+        mAboutButton.setBackgroundImage(UIImage(named:"main_aboutButton", in: currentBundle,compatibleWith:nil), for: .normal)
+        mNodeListButton.setBackgroundImage(UIImage(named:"main_searchButton", in: currentBundle,compatibleWith:nil), for: .normal)
+    }
+    
+    override open func viewDidLoad(){
+        super.viewDidLoad();
 
+        displayAppNameInfo()
+        displayButtonImages()
     }
 
     /**
@@ -110,7 +122,7 @@ extension BlueSTSDKMainViewControllerDelegate {
     *
     *  @param animated true if the system is doing an animation
     */
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden=true;
         if(needPrivacyDialog()){
@@ -124,47 +136,52 @@ extension BlueSTSDKMainViewControllerDelegate {
     *
     * @param animated true if the system is doing an animation
     */
-    override public func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.isHidden=false;
     }
 
-    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-
-        guard let senderView = sender as? BlueSTSDKMainViewController else{
-            return;
-        }
-
-        if( segue.identifier ==  BlueSTSDKMainViewController.SHOW_ABOUT_SEGUE && senderView == self){
-            let aboutView = segue.destination as? BlueSTSDKAboutViewController;
-            aboutView?.delegate = delegateAbout;
-            return;
-        }
-
-        if( segue.identifier ==  BlueSTSDKMainViewController.SHOW_NODE_LIST_SEGUE && senderView == self){
-            let nodeListView = segue.destination as? BlueSTSDKNodeListViewController;
-            nodeListView?.delegate = delegateNodeList;
-            return;
-        }
-    }
-
-
-    @IBAction func onAboutClick(_ sender: UIButton) {
-
+    @IBAction open func onAboutClick(_ sender: UIButton) {
         if(delegateMain != nil && !delegateMain!.onAboutClicked(currentViewController: self)) {
             return;
         }else{
-            performSegue(withIdentifier: BlueSTSDKMainViewController.SHOW_ABOUT_SEGUE, sender: self);
+            showAboutViewController()
         }
-
+    }
+    
+    private func loadViewController(withIdentifier id:String) -> UIViewController{
+        let storyboard = UIStoryboard(name: "BlueSTSDKMainView", bundle: Bundle(for: BlueSTSDKMainViewController.self))
+        
+        return storyboard.instantiateViewController(withIdentifier: id)
     }
 
-    @IBAction func onStartDiscoveryClick(_ sender: UIButton) {
+    private func showAboutViewController(){
+        
+        let aboutView = loadViewController(withIdentifier: BlueSTSDKMainViewController.ABOUT_VIEWCONTROLLER_ID) as? BlueSTSDKAboutViewController
+        
+        aboutView?.delegate = delegateAbout
+        if let vc = aboutView {
+            changeViewController(vc)
+        }
+        
+    }
+    
+    private func showNodeListViewController(){
+        
+        let nodeListView = loadViewController(withIdentifier: BlueSTSDKMainViewController.SHOW_NODE_LIST_VIEWCONTROLLER_ID)
+            as? BlueSTSDKNodeListViewController
+        
+        nodeListView?.delegate = delegateNodeList
+        if let vc = nodeListView {
+            changeViewController(vc)
+        }
+    }
+    
+    @IBAction open func onStartDiscoveryClick(_ sender: UIButton) {
         if(delegateMain != nil && !delegateMain!.onStartDiscoverClicked(currentViewController: self)) {
             return;
         }else{
-            performSegue(withIdentifier: BlueSTSDKMainViewController.SHOW_NODE_LIST_SEGUE, sender: self);
+            showNodeListViewController()
         }
     }
     

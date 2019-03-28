@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018  STMicroelectronics – All rights reserved
+ * Copyright (c) 2019  STMicroelectronics – All rights reserved
  * The STMicroelectronics corporate logo is a trademark of STMicroelectronics
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -38,68 +38,26 @@
 import Foundation
 import BlueSTSDK
 
-/// Utility class with factory method for obtaining the console object to interact with the fw
-public class BlueSTSDKFwConsoleUtil{
+public class BlueNRGOtaUtils{
     
-    
-    /// build the class used to retrive the firmware version running on the board
+    /// tell if the node is a node where we can upload the firmware file
     ///
-    /// - Parameter node: node to query
-    /// - Returns: object to use for query the firmware version, null if not available
-    public static func getFwReadVersionConsoleForNode(node:BlueSTSDKNode?)->BlueSTSDKFwReadVersionConsole?{
-        guard let node = node else{
-            return nil
-        }
-        
-        if let stm32WbConsole = BlueSTSDKFwReadVersionConsoleSTM32WB(node: node){
-            return stm32WbConsole;
-        }
-        
-        if let blueNRGConsole = BlueNRGFwVersionConsole(node: node){
-            return blueNRGConsole;
-        }
-        
-        guard let console = node.debugConsole else {
-            return nil
-        }
-        
-        switch node.type {
-            case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1,.sensor_Tile_101,
-                .discovery_IOT01A:
-                return BlueSTSDKFwUpgradeReadVersionNucleo(console: console);
-            default:
-                return nil;
-        }
+    /// - Parameter n: ble node
+    /// - Returns: true if it is a otaNode
+    public static func isOTANode(_ n:BlueSTSDKNode)->Bool{
+        return n.advertiseInfo is BlueNRGOtaAdvertiseParser.BlueNRGAdvertiseInfo;
     }
     
-    /// build the class used to retrive the firmware version running on the board
-    ///
-    /// - Parameter node: node to query
-    /// - Returns: object to use for query the firmware version, null if not available
-    public static func getFwUploadConsoleForNode(node:BlueSTSDKNode?)->BlueSTSDKFwUpgradeConsole?{
-        guard let node = node else{
-            return nil
-        }
-        
-        if let stm32WbConsole = BlueSTSDKFwUpgradeConsoleSTM32WB(node: node){
-            return stm32WbConsole;
-        }
-        
-        if let blueNRGConsole = BlueNRGFwUpgradeConsole(node:node){
-            return blueNRGConsole;
-        }
-        
-        guard let console = node.debugConsole else {
-            return nil
-        }
-        
-        switch node.type {
-        case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1, .sensor_Tile_101,
-             .discovery_IOT01A:
-            return BlueSTSDKFwUpgradeConsoleNucleo(console: console);
-        default:
-            return nil;
-        }
-    }
     
+    /// get a map of uuid/feature class neede to manage the BlueNRG OTA protocol
+    ///
+    /// - Returns: map of uuid/feature class neede to manage the BlueNRG OTA protocol
+    public static func getOtaCharacteristics() -> [CBUUID:[AnyClass]]{
+        var temp:[CBUUID:[BlueSTSDKFeature.Type]]=[:]
+        temp.updateValue([BlueNRGMemoryInfoFeature.self], forKey: CBUUID(string: "122e8cc0-8508-11e3-baa7-0800200c9a66"))
+        temp.updateValue([BlueNRGFwUpgradeSettingsFeature.self], forKey: CBUUID(string: "210f99f0-8508-11e3-baa7-0800200c9a66"))
+        temp.updateValue([BlueNRGFwUpgradeDataTransferFeature.self], forKey: CBUUID(string: "2691aa80-8508-11e3-baa7-0800200c9a66"))
+        temp.updateValue([BlueNRGFwUpgradeAckFeature.self], forKey: CBUUID(string: "2bdc5760-8508-11e3-baa7-0800200c9a66"))
+        return temp;
+    }
 }

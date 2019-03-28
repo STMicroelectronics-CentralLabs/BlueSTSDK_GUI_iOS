@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018  STMicroelectronics – All rights reserved
+ * Copyright (c) 2019  STMicroelectronics – All rights reserved
  * The STMicroelectronics corporate logo is a trademark of STMicroelectronics
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -38,67 +38,53 @@
 import Foundation
 import BlueSTSDK
 
-/// Utility class with factory method for obtaining the console object to interact with the fw
-public class BlueSTSDKFwConsoleUtil{
+
+/// implementation of the fw read version for STM32WB Ota
+/// in this implementation we don't request any verison, just check if the node is valid and return a
+/// fixed version
+public class BlueNRGFwVersionConsole:BlueSTSDKFwReadVersionConsole{
     
+    private let boardInfoFeature:BlueNRGMemoryInfoFeature
     
-    /// build the class used to retrive the firmware version running on the board
-    ///
-    /// - Parameter node: node to query
-    /// - Returns: object to use for query the firmware version, null if not available
-    public static func getFwReadVersionConsoleForNode(node:BlueSTSDKNode?)->BlueSTSDKFwReadVersionConsole?{
-        guard let node = node else{
+    init?(node:BlueSTSDKNode){
+        if let f = node.getFeatureOfType(BlueNRGMemoryInfoFeature.self) as? BlueNRGMemoryInfoFeature{
+            boardInfoFeature = f
+        }else{
             return nil
         }
+    }//init
+    
+    public func readFwVersion(onComplete:@escaping (BlueSTSDKFwVersion?)->())->Bool{
         
-        if let stm32WbConsole = BlueSTSDKFwReadVersionConsoleSTM32WB(node: node){
-            return stm32WbConsole;
-        }
+        boardInfoFeature.add(BlueNRGFwVersionInfoDelegate(onComplete: onComplete))
+        boardInfoFeature.parentNode.read(boardInfoFeature)
         
-        if let blueNRGConsole = BlueNRGFwVersionConsole(node: node){
-            return blueNRGConsole;
-        }
-        
-        guard let console = node.debugConsole else {
-            return nil
-        }
-        
-        switch node.type {
-            case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1,.sensor_Tile_101,
-                .discovery_IOT01A:
-                return BlueSTSDKFwUpgradeReadVersionNucleo(console: console);
-            default:
-                return nil;
-        }
+        return true;
     }
     
-    /// build the class used to retrive the firmware version running on the board
-    ///
-    /// - Parameter node: node to query
-    /// - Returns: object to use for query the firmware version, null if not available
-    public static func getFwUploadConsoleForNode(node:BlueSTSDKNode?)->BlueSTSDKFwUpgradeConsole?{
-        guard let node = node else{
-            return nil
-        }
-        
-        if let stm32WbConsole = BlueSTSDKFwUpgradeConsoleSTM32WB(node: node){
-            return stm32WbConsole;
-        }
-        
-        if let blueNRGConsole = BlueNRGFwUpgradeConsole(node:node){
-            return blueNRGConsole;
-        }
-        
-        guard let console = node.debugConsole else {
-            return nil
-        }
-        
-        switch node.type {
-        case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1, .sensor_Tile_101,
-             .discovery_IOT01A:
-            return BlueSTSDKFwUpgradeConsoleNucleo(console: console);
-        default:
-            return nil;
+    
+}
+
+fileprivate class BlueNRGFwVersionInfoDelegate : NSObject, BlueSTSDKFeatureDelegate {
+    
+    private static let DEFAULT_BOARD_NAME = "BLUENRG OTA";
+    private static let DEFAULT_MCU_NAME = "BLUENRG";
+    
+    private let onComplete:(BlueSTSDKFwVersion?)->()
+    
+    fileprivate init(onComplete:@escaping (BlueSTSDKFwVersion?)->()){
+        self.onComplete = onComplete
+    }
+    
+    func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
+        feature.remove(self)
+        if let version = BlueNRGMemoryInfoFeature.getProtocolVersion(sample){
+            let fullVersion = BlueSTSDKFwVersion(name: BlueNRGFwVersionInfoDelegate.DEFAULT_BOARD_NAME,
+                                                 mcuType: BlueNRGFwVersionInfoDelegate.DEFAULT_MCU_NAME,
+                                                 major: version.major, minor: version.minor, patch: version.patch)
+            onComplete(fullVersion)
+        }else{
+            onComplete(nil)
         }
     }
     

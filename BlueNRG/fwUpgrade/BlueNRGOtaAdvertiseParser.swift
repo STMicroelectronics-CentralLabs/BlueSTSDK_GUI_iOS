@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018  STMicroelectronics – All rights reserved
+ * Copyright (c) 2019  STMicroelectronics – All rights reserved
  * The STMicroelectronics corporate logo is a trademark of STMicroelectronics
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -38,67 +38,37 @@
 import Foundation
 import BlueSTSDK
 
-/// Utility class with factory method for obtaining the console object to interact with the fw
-public class BlueSTSDKFwConsoleUtil{
+public class BlueNRGOtaAdvertiseParser : BlueSTSDKAdvertiseFilter {
     
+    private static let OTA_SERVICE_UUID = CBUUID(string: "669A0C20-0008-A7BA-E311-0685C0F7978A")
+    private static let DEFAULT_NAME = "BlueNRG OTA"
     
-    /// build the class used to retrive the firmware version running on the board
-    ///
-    /// - Parameter node: node to query
-    /// - Returns: object to use for query the firmware version, null if not available
-    public static func getFwReadVersionConsoleForNode(node:BlueSTSDKNode?)->BlueSTSDKFwReadVersionConsole?{
-        guard let node = node else{
-            return nil
-        }
-        
-        if let stm32WbConsole = BlueSTSDKFwReadVersionConsoleSTM32WB(node: node){
-            return stm32WbConsole;
-        }
-        
-        if let blueNRGConsole = BlueNRGFwVersionConsole(node: node){
-            return blueNRGConsole;
-        }
-        
-        guard let console = node.debugConsole else {
-            return nil
-        }
-        
-        switch node.type {
-            case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1,.sensor_Tile_101,
-                .discovery_IOT01A:
-                return BlueSTSDKFwUpgradeReadVersionNucleo(console: console);
-            default:
-                return nil;
-        }
+    public init() {
+        //needed to be able to build this class from outisde the module.. 
     }
     
-    /// build the class used to retrive the firmware version running on the board
-    ///
-    /// - Parameter node: node to query
-    /// - Returns: object to use for query the firmware version, null if not available
-    public static func getFwUploadConsoleForNode(node:BlueSTSDKNode?)->BlueSTSDKFwUpgradeConsole?{
-        guard let node = node else{
+    public class BlueNRGAdvertiseInfo : BlueSTSDKAdvertiseInfo {
+        
+        public let services: [CBUUID]
+        
+        init(name:String, txPower:UInt8, services:[CBUUID]){
+            self.services = services
+            super.init(name: name, address: nil, featureMap: 0, deviceId: 0x04, protocolVersion: 1, boardType: .STEVAL_IDB008VX, isSleeping: false, hasGeneralPurpose: false, txPower: txPower)
+        }
+        
+    }
+    
+    public func filter(_ data: [String : Any]) -> BlueSTSDKAdvertiseInfo? {
+        let txPower = (data[CBAdvertisementDataTxPowerLevelKey] as? UInt8) ?? 0
+        let name = (data[CBAdvertisementDataLocalNameKey] as? String)
+        let services = data[CBAdvertisementDataServiceUUIDsKey] as? [CBUUID]
+        
+        if (services?.first == BlueNRGOtaAdvertiseParser.OTA_SERVICE_UUID ){
+            return BlueNRGAdvertiseInfo(name: name ?? BlueNRGOtaAdvertiseParser.DEFAULT_NAME,
+                                        txPower: txPower,
+                                        services: services!)
+        }else{
             return nil
-        }
-        
-        if let stm32WbConsole = BlueSTSDKFwUpgradeConsoleSTM32WB(node: node){
-            return stm32WbConsole;
-        }
-        
-        if let blueNRGConsole = BlueNRGFwUpgradeConsole(node:node){
-            return blueNRGConsole;
-        }
-        
-        guard let console = node.debugConsole else {
-            return nil
-        }
-        
-        switch node.type {
-        case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1, .sensor_Tile_101,
-             .discovery_IOT01A:
-            return BlueSTSDKFwUpgradeConsoleNucleo(console: console);
-        default:
-            return nil;
         }
     }
     
