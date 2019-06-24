@@ -95,12 +95,12 @@ public class BlueSTSDKDownloadFileViewController : NSObject, URLSessionTaskDeleg
         mCompleteCallback=onComplete;
         
         let config = URLSessionConfiguration.default;
-        let urlSession = URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue());
+        let urlSession = URLSession(configuration: config, delegate: self, delegateQueue: nil);
         let task = urlSession.downloadTask(with: url);
         task.resume();
         let downloadStr = String(format:BlueSTSDKDownloadFileViewController.DOWNLOADING_STATUS_FORMAT,url.lastPathComponent);
-        DispatchQueue.main.async {
-            self.mDownloadStatusProgress.text = downloadStr;
+        DispatchQueue.main.async { [weak self] in
+            self?.mDownloadStatusProgress.text = downloadStr;
         }
     }
     
@@ -110,9 +110,9 @@ public class BlueSTSDKDownloadFileViewController : NSObject, URLSessionTaskDeleg
             let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
             let progressStr = String(format:BlueSTSDKDownloadFileViewController.PROGRESS_FORMAT,
                                      totalBytesWritten,totalBytesExpectedToWrite);
-            DispatchQueue.main.async {
-                self.mDownloadProgressView.progress=progress;
-                self.mDownloadProgressLabel.text = progressStr;
+            DispatchQueue.main.async { [weak self] in
+                self?.mDownloadProgressView.progress=progress;
+                self?.mDownloadProgressLabel.text = progressStr;
             }
         }
     }
@@ -120,7 +120,22 @@ public class BlueSTSDKDownloadFileViewController : NSObject, URLSessionTaskDeleg
     public func urlSession(_ session: URLSession,
                            downloadTask: URLSessionDownloadTask,
                            didFinishDownloadingTo location: URL) {
-        mCompleteCallback?(location);
+            let fm = FileManager()
+            let newLocation = URL(fileURLWithPath: "Fw.tmp", relativeTo: fm.temporaryDirectory)
+            do{
+                if(fm.fileExists(atPath: newLocation.path)){
+                    try fm.removeItem(at: newLocation)
+                }
+                try fm.copyItem(at: location, to: newLocation)
+                mCompleteCallback?(newLocation);
+            }catch{
+                DispatchQueue.main.async { [weak self] in
+                    self?.mDownloadStatusProgress.text = "Error downloading the file";
+                }
+        }
+        
+        
+
     }
     
     public func urlSession(_ session: URLSession,
@@ -128,8 +143,8 @@ public class BlueSTSDKDownloadFileViewController : NSObject, URLSessionTaskDeleg
                            didCompleteWithError error: Error?) {
         if let err = error{
             let errorStr = String(format: "Error: %@", err.localizedDescription);
-            DispatchQueue.main.async {
-                self.mDownloadStatusProgress.text = errorStr;
+            DispatchQueue.main.async { [weak self] in
+                self?.mDownloadStatusProgress.text = errorStr;
             }
         }
     }

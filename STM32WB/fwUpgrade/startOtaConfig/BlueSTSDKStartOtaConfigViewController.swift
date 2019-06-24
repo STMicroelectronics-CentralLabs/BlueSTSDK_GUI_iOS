@@ -41,7 +41,7 @@ import BlueSTSDK
 
 /// ViewController that will reboot the board in ota mode
 class BlueSTSDKStartOtaConfigViewController:UIViewController, BlueSTSDKDemoViewProtocol{
-    
+    private static let DISCONNECT_DELAY = TimeInterval(0.3) //0.3s
     private static let SEARCH_OTA_NODE_SEGUE = "searchOtaNodeSegue";
     
     private static let INVALID_ARGS_TITLE:String = {
@@ -64,30 +64,24 @@ class BlueSTSDKStartOtaConfigViewController:UIViewController, BlueSTSDKDemoViewP
     var node: BlueSTSDKNode!
     var menuDelegate: BlueSTSDKViewControllerMenuDelegate?
     
-    var boardIsRebooting = false;
-    
     private struct MemoryLayout{
         let startSector:UInt8
         let numSecotor:UInt8
     }
     
-    private static let VALID_MEMORY_SECOTR_RANGE = UInt8(0x07)..<UInt8(0x7F)
-    private static let APPLICATION_MEMORY = MemoryLayout(startSector: 7, numSecotor: 0x7F-7-1)
-    private static let RADIO_MEMORY = MemoryLayout(startSector: 8, numSecotor: 0x7F-8-1)
+    private static let VALID_MEMORY_SECOTR_RANGE = UInt8(0x07)..<UInt8(0x40)
+    private static let APPLICATION_MEMORY = MemoryLayout(startSector: 0x07, numSecotor: 0x40-0x07-1)
+    private static let RADIO_MEMORY = MemoryLayout(startSector: 0x0F, numSecotor: 0x40-0x0F-1)
     
     @IBOutlet weak var mFirstSectorText: UITextField!
     @IBOutlet weak var mNumSectorText: UITextField!
-    
+    @IBOutlet weak var mFwTypeSelector: UISegmentedControl!
+    override func viewDidLoad() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         onApplicationMemorySelected()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if(boardIsRebooting){
-            node.disconnect()
-        }
     }
     
     @IBAction func onMemoryTypeSelected(_ sender: UISegmentedControl) {
@@ -95,9 +89,9 @@ class BlueSTSDKStartOtaConfigViewController:UIViewController, BlueSTSDKDemoViewP
         case 0:
             return onApplicationMemorySelected()
         case 1:
+            return onRadioMemorySelected()
+        case 2:
             return onCustomMemorySelected()
-//        case 1:
-//            return onRadioMemorySelected()
         default:
             return
         }
@@ -115,6 +109,9 @@ class BlueSTSDKStartOtaConfigViewController:UIViewController, BlueSTSDKDemoViewP
     }
     
     private func onCustomMemorySelected(){
+        let layout = BlueSTSDKStartOtaConfigViewController.APPLICATION_MEMORY;
+        mFirstSectorText.text = String(format:"%d",layout.startSector)
+        mNumSectorText.text = String(format:"%d",layout.numSecotor)
         mFirstSectorText.isEnabled=true
         mNumSectorText.isEnabled=true
     }
@@ -152,12 +149,16 @@ class BlueSTSDKStartOtaConfigViewController:UIViewController, BlueSTSDKDemoViewP
             let nSector = getNumSector(firstSector: firstSector){
             feature?.rebootToFlash(sectorOffset: firstSector,
                                    numSector: nSector)
-            boardIsRebooting=true;//avoid to disconnect here to give the time to send the message
+            //wait 1/3s to send the message and then disconnect the node
+            DispatchQueue.main.asyncAfter(deadline: .now() + BlueSTSDKStartOtaConfigViewController.DISCONNECT_DELAY){ [node = self.node] in
+                    node?.disconnect()
+            }
             
             //create the vc that will search the ota node
             let searchVc = BlueSTSDKSeachOtaNodeViewController.instanziate(
                 nodeAddress: BlueSTSDKSTM32WBOTAUtils.getOtaAddressForNode(self.node),
-                addressWhereFlash: UInt32(firstSector)*0x1000)
+                addressWhereFlash: UInt32(firstSector)*0x1000,
+                fwType: mFwTypeSelector.selectedFwType)
             //replace the current vc with the one for search the node
             replaceViewController(searchVc,animated: false)
         }else{
@@ -173,4 +174,12 @@ class BlueSTSDKStartOtaConfigViewController:UIViewController, BlueSTSDKDemoViewP
                    message: message)
     }
     
+}
+
+fileprivate extension UISegmentedControl {
+    var selectedFwType : BlueSTSDKFwUpgradeType{
+        get{
+            return selectedSegmentIndex == 1 ? .radioFirmware : .applicationFirmware
+        }
+    }
 }

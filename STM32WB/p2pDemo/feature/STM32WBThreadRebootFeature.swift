@@ -60,7 +60,7 @@ public class STM32WBThreadRebootFeature : BlueSTSDKFeature{
     }
     
     public func rebootToThreadRadio(device:DeviceID){
-        let data = Data(bytes: [device.rawValue,STM32WBThreadRebootFeature.THREAD_REBOOT_COMMAND])
+        let data = Data([device.rawValue,STM32WBThreadRebootFeature.THREAD_REBOOT_COMMAND])
         write(data)
     }
     

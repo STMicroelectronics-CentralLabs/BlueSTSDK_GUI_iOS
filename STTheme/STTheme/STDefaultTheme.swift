@@ -57,6 +57,10 @@ struct STDefaultColors: Colors {
     var secondary: Color = STDefaultColor(light: "#d81484", dark: nil)
     var background: Color = STDefaultColor(light: "#edf2f4", dark: nil)
     var text: Color = STDefaultColor(light: "#7c898e", dark: "#424749")
+    var error: Color = STDefaultColor(light: "#F75343", dark: nil)
+    var cardPrimary: Color = STDefaultColor(light: "#A4C5D0", dark: nil)
+    var cardSecondary: Color = STDefaultColor(light: "#DBDBDB", dark: nil)
+
     var navigationBar: UIColor {
         get { return primary.light }
     }

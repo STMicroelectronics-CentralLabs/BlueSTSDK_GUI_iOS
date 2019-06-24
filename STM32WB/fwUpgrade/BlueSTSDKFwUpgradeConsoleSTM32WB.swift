@@ -43,7 +43,7 @@ import BlueSTSDK
 /// Fw Uograde protocol implemented for the STM32WB
 class BlueSTSDKFwUpgradeConsoleSTM32WB : BlueSTSDKFwUpgradeConsole{
     
-    var validAddressRange: Range<UInt32> = UInt32(0x7000)..<UInt32(0xFFFF)
+    var validAddressRange: Range<UInt32> = UInt32(0x7000)..<UInt32(0x089000)
     
     private let mControl : BlueSTSDKSTM32WBOTAControlFeature
     private let mUpload: BlueSTSDKSTM32WBOtaUploadFeature

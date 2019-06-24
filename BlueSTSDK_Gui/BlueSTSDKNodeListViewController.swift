@@ -71,7 +71,7 @@ import BlueSTSDK
  }
  
  public extension BlueSTSDKNodeListViewControllerDelegate{
-    public var advertiseFilters:[BlueSTSDKAdvertiseFilter] {
+    var advertiseFilters:[BlueSTSDKAdvertiseFilter] {
         get {
             return BlueSTSDKManager.DEFAULT_ADVERTISE_FILTER;
         }

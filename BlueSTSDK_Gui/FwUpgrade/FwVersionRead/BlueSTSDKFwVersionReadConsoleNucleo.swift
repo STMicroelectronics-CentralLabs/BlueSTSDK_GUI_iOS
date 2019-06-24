@@ -71,7 +71,6 @@ public class BlueSTSDKFwUpgradeReadVersionNucleo : BlueSTSDKFwReadVersionConsole
         }
         
         mConsoleDelegate = BlueSTSDKFwReadVersionConsoleDelegate{ version in
-            self.mConsole.remove(self.mConsoleDelegate!)
             self.mConsoleDelegate = nil
             onComplete(version)
         }
@@ -90,15 +89,21 @@ fileprivate class BlueSTSDKFwReadVersionConsoleDelegate :BlueSTSDKDebugOutputDel
     private static let COMMAND_TIMEOUT_S = 1.0
     
     //serial queue where post the timeout item
-    private let mTimeoutQueue:DispatchQueue = DispatchQueue(label: "BlueSTSDKFwReadVersionConsoleDelegate")
+    private let mTimeoutQueue = DispatchQueue(label: "BlueSTSDKFwReadVersionConsoleDelegate")
     //timeout callback
     private var mTimeoutCall:DispatchWorkItem?
     
     private var mResponse = "";
-    private let mOnCompleteCallback:(BlueSTSDKFwVersion?) -> ()
+    private var mOnCompleteCallback:((BlueSTSDKFwVersion?) -> ())?
     
     init(onComplete:@escaping (BlueSTSDKFwVersion?) -> ()) {
         mOnCompleteCallback = onComplete
+    }
+    
+    private func callUserCallback(version: BlueSTSDKFwVersion?){
+        self.mOnCompleteCallback?(version)
+        //set it to null to be secure to do only one callback to the user
+        self.mOnCompleteCallback = nil
     }
     
     /// set the timeout
@@ -106,10 +111,12 @@ fileprivate class BlueSTSDKFwReadVersionConsoleDelegate :BlueSTSDKDebugOutputDel
         if(mTimeoutCall != nil){
             removeTimeout()
         }
-        mTimeoutCall = DispatchWorkItem{
+        mTimeoutCall = DispatchWorkItem{ [weak self] in
+            guard let self = self else{
+                return
+            }
             //lets try to dectect the version form the data that we have
-            let version = BlueSTSDKFwVersion(self.mResponse)
-            self.mOnCompleteCallback(version)
+            self.callUserCallback(version: BlueSTSDKFwVersion(self.mResponse))
         }
         mTimeoutQueue.asyncAfter(deadline: .now() + BlueSTSDKFwReadVersionConsoleDelegate.COMMAND_TIMEOUT_S,
                                  execute: mTimeoutCall!)
@@ -123,12 +130,20 @@ fileprivate class BlueSTSDKFwReadVersionConsoleDelegate :BlueSTSDKDebugOutputDel
     
     ///call when we receve and answare
     func debug(_ debug: BlueSTSDKDebug, didStdOutReceived msg: String) {
-        mResponse.append(msg)
-        if(BlueSTSDKFwReadVersionConsoleDelegate.isCompeteLine(mResponse)){
-            removeTimeout()
-            let version = BlueSTSDKFwVersion(mResponse)
-            mOnCompleteCallback(version)
+        //we serialize the execution of the function to be secure to elaborate only the first line
+        // in case the console will print also ther things.. 
+        mTimeoutQueue.sync { [weak self] in
+            guard let self = self else{
+                 return
+            }
+            self.mResponse.append(msg)
+            if(BlueSTSDKFwReadVersionConsoleDelegate.isCompeteLine(mResponse)){
+                removeTimeout()
+                debug.remove(self)
+                self.callUserCallback(version: BlueSTSDKFwVersion(self.mResponse))
+            }
         }
+        
     }
     
     ///call when the message is sent, start the timeout and reset the buffer string

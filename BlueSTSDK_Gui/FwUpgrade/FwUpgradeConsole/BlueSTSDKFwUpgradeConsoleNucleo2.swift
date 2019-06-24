@@ -34,27 +34,23 @@
   * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
   * OF SUCH DAMAGE.
   */
-
-import Foundation
-import BlueSTSDK
-
  
-/// Upload a firmware in the Nucleo Boards, using the debug console.
-public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
+ import Foundation
+ import BlueSTSDK
+ 
+ 
+ /// Upload a firmware in the Nucleo Boards, using the debug console.
+ public class BlueSTSDKFwUpgradeConsoleNucleo2:BlueSTSDKFwUpgradeConsole{
     
     private let mConsole:BlueSTSDKDebug;
     private let mPackageDelayMs:UInt;
+
     private var mConsoleDelegate:LoadFwDelegate?;
     private var mFwUploadDelegate:BlueSTSDKFwUpgradeConsoleCallback?;
     
-    /**
-     * to avoid to stress the BLE Stack the message are send each 13ms that corrisponding to a connection
-     * inteval of 12.5 ms.
-     */
     init(console:BlueSTSDKDebug, packageDelayMs:UInt = 13){
         mConsole = console;
         mPackageDelayMs = packageDelayMs
-        
     }
     
     public func loadFwFile(type: BlueSTSDKFwUpgradeType,
@@ -86,7 +82,7 @@ public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
         
         return true;
     }
-}
+ }
  
  
  /// Implement the Fw upgrade logic on top of the DebugCosole
@@ -94,9 +90,10 @@ public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
     private static let ACK_REPS = "\u{01}"
     private static let TIMEOUT_S = 1.0
     private static let MAX_MSG_SIZE = Int(16)
-    private static let N_BLOCK_PACKAGE = 10
-        
+    private static let N_BLOCK_PACKAGE = UInt32(10)
+    
     private let mPackageDelayNs:UInt64
+
     private let mMessageSerializer:DispatchQueue
     private var mCurrentTimeOut:DispatchWorkItem?
     
@@ -106,24 +103,24 @@ public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
     private let mFileData:Data
     private var mCrc:UInt32
     
-    private var mNodeReadyToReceiveFile=false;
-    private var mNPackageReceived:Int=0;
-    private var mByteSend:Int=0;
-    private var mWriteError = false;
+    private var mNodeReadyToReceiveFile=false
+    private var mWriteError = false
+    private var mByteSend:Int=0
     
     private func setUpTimer(){
         mCurrentTimeOut?.cancel()
+        //print("cancel:",mCurrentTimeOut)
         mCurrentTimeOut = DispatchWorkItem{ [weak self] in
-            let currentStatus = DispatchQueue.main.sync{UIApplication.shared.applicationState}
-            if(currentStatus == .active){
-                //if the app go in background the timer could be fired, but it is becouse the ble is off..
-                self?.onLoadFailWithError(.trasmissionError)
-            }
+            //print("fire:",self)
+            
+            self?.onLoadFailWithError(.trasmissionError)
         }
+        //print("SetTimer:",mCurrentTimeOut)
         mMessageSerializer.asyncAfter(deadline: .now()+LoadFwDelegate.TIMEOUT_S, execute: mCurrentTimeOut!)
     }
     
     private func onLoadFailWithError(_ error:BlueSTSDKFwUpgradeError){
+        mWriteError=true
         mDelegate?.onLoadError(file: mFileUrl, error: error)
         mConsole.remove(self)
         mDelegate=nil
@@ -166,6 +163,7 @@ public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
         mConsole = console
         mCrc = BlueSTSDKSTM32CRC.getCrc(mFileData);
         mPackageDelayNs = UInt64(packageDelayMs)*UInt64(1000000)
+
     }
     
     private func checkCrc(response:String)->Bool{
@@ -179,24 +177,25 @@ public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
     public func startLoading(){
         mNodeReadyToReceiveFile=false;
         mByteSend=0
-        mNPackageReceived=0
+        nPackage = 0
         mConsole.add(self)
-        NSLog("Start startLoading")
         let commandData = LoadFwDelegate.buildLoadCommand(fileLength: mFileData.count, crc: mCrc)
         mConsole.writeMessageData(commandData)
     }
     
     func debug(_ debug: BlueSTSDKDebug, didStdOutReceived msg: String) {
+        print(msg)
         if (!mNodeReadyToReceiveFile) {
             if (checkCrc(response: msg)) {
                 mNodeReadyToReceiveFile = true;
-                mNPackageReceived = 0;
+                nPackage = 0
                 sendNextFwPackage()
             } else{
                 onLoadFailWithError(.trasmissionError)
             }
         } else { //transfer complete
             mCurrentTimeOut?.cancel()
+            print(nPackage)
             if(msg == LoadFwDelegate.ACK_REPS){
                 onLoadComplete()
             }else{
@@ -205,25 +204,22 @@ public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
         }//if
     }
     
+    
+    var nPackage = UInt32(0)
 
-    var lastCall:Date = Date()
     private func sendFwPackage()->Bool{
-        
+        mByteSend = Int(nPackage) * LoadFwDelegate.MAX_MSG_SIZE
         let packageSize = min(mFileData.count-mByteSend, LoadFwDelegate.MAX_MSG_SIZE)
-        guard packageSize != 0 else {
+        guard packageSize > 0 else {
             return false; // nothing to send
         }
         
-        let dataToSend = mFileData[mByteSend..<mByteSend+packageSize]
-        
+        var dataToSend = mFileData[mByteSend..<mByteSend+packageSize]
+        dataToSend.append(Data(bytes: &nPackage, count: 4))
+        print(packageSize)
         mByteSend = mByteSend + packageSize
-        let diff = -lastCall.timeIntervalSinceNow
-        if(diff<0.013){
-            NSLog("Error: %f",diff)
-        }
-        lastCall = Date()
-
-        return mConsole.writeMessageDataFast(dataToSend)        
+        nPackage += 1
+        return mConsole.writeMessageDataFast(dataToSend)
     }
     
     /**
@@ -232,27 +228,38 @@ public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
     private func sendNextFwPackage(){
         let when = DispatchTime(uptimeNanoseconds: DispatchTime.now().uptimeNanoseconds+mPackageDelayNs)
         mMessageSerializer.asyncAfter(deadline: when){
-            //mDelegate is set to nil in case of error
             if(self.sendFwPackage() && !self.mWriteError){
                 self.sendNextFwPackage()
             }
         }
-    } 
+    }
     
     func debug(_ debug: BlueSTSDKDebug, didStdErrReceived msg: String) {
-        
+        guard let msgData = msg.data(using: .isoLatin1) else{
+            //invalid message
+            return
+        }
+        guard msgData[0] == 0x01 else{
+            //unknown message type
+            return
+        }
+        mCurrentTimeOut?.cancel()
+        let lastPacakgeReceved = (msgData as NSData).extractLeUInt32(fromOffset: 1)
+        mMessageSerializer.async { [weak self] in
+            print("error ->",self?.nPackage,"to ",lastPacakgeReceved)
+            self?.nPackage = lastPacakgeReceved + 1
+            
+        }
     }
     
     private func notifyNodeReceivedFwMessage(){
-        mNPackageReceived=mNPackageReceived+1
-        if(mNPackageReceived % LoadFwDelegate.N_BLOCK_PACKAGE == 0){
+        if(nPackage % LoadFwDelegate.N_BLOCK_PACKAGE == 0){
             mDelegate?.onLoadProgres(file: mFileUrl, remainingBytes: UInt(mFileData.count - mByteSend))
         }
     }
     
     func debug(_ debug: BlueSTSDKDebug, didStdInSend msg: String, error: Error?) {
         guard error==nil else {
-            mWriteError = true
             onLoadFailWithError(.trasmissionError)
             return
         }
@@ -266,4 +273,4 @@ public class BlueSTSDKFwUpgradeConsoleNucleo:BlueSTSDKFwUpgradeConsole{
     }
     
  }
-
+ 

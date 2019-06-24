@@ -52,6 +52,9 @@ public protocol Colors {
     var secondary: Color { get }
     var background: Color { get }
     var text: Color { get }
+    var error: Color  { get }
+    var cardPrimary: Color { get }
+    var cardSecondary: Color { get }
     var navigationBar: UIColor { get }
     var navigationBarText: UIColor { get }
 }

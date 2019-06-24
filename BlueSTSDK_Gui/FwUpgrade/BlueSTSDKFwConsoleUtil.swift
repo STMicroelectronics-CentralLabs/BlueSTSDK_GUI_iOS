@@ -55,7 +55,8 @@ public class BlueSTSDKFwConsoleUtil{
             return stm32WbConsole;
         }
         
-        if let blueNRGConsole = BlueNRGFwVersionConsole(node: node){
+        if let blueNRGConsole = BlueNRGFwVersionConsole(node: node),
+            node.type == .STEVAL_IDB008VX{
             return blueNRGConsole;
         }
         
@@ -64,7 +65,7 @@ public class BlueSTSDKFwConsoleUtil{
         }
         
         switch node.type {
-            case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1,.sensor_Tile_101,
+            case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1,.sensor_Tile_Box,
                 .discovery_IOT01A:
                 return BlueSTSDKFwUpgradeReadVersionNucleo(console: console);
             default:
@@ -72,11 +73,19 @@ public class BlueSTSDKFwConsoleUtil{
         }
     }
     
+    private static func stBoxHasNewFwUpgrade(version:BlueSTSDKFwVersion?) -> Bool{
+        guard let version = version else{
+            return false
+        }
+        let compareVersion = version.compare(BlueSTSDKFwVersion(major: 3, minor: 0, patch: 15))
+        return compareVersion == .orderedSame || compareVersion == .orderedDescending
+    }
+    
     /// build the class used to retrive the firmware version running on the board
     ///
     /// - Parameter node: node to query
     /// - Returns: object to use for query the firmware version, null if not available
-    public static func getFwUploadConsoleForNode(node:BlueSTSDKNode?)->BlueSTSDKFwUpgradeConsole?{
+    public static func getFwUploadConsoleForNode(node:BlueSTSDKNode?, version:BlueSTSDKFwVersion?=nil)->BlueSTSDKFwUpgradeConsole?{
         guard let node = node else{
             return nil
         }
@@ -94,7 +103,16 @@ public class BlueSTSDKFwConsoleUtil{
         }
         
         switch node.type {
-        case .nucleo,.blue_Coin,.sensor_Tile,.STEVAL_BCN002V1, .sensor_Tile_101,
+        case .sensor_Tile_Box:
+            if stBoxHasNewFwUpgrade(version: version) {
+                return BlueSTSDKFwUpgradeConsoleNucleo2(console: console, packageDelayMs: 15);
+            }else{
+                return BlueSTSDKFwUpgradeConsoleNucleo(console: console, packageDelayMs: 30);
+            }
+        case .nucleo,
+             .blue_Coin,
+             .sensor_Tile,
+             .STEVAL_BCN002V1,
              .discovery_IOT01A:
             return BlueSTSDKFwUpgradeConsoleNucleo(console: console);
         default:

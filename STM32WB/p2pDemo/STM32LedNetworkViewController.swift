@@ -255,7 +255,7 @@ extension Array where Element:DeviceStatus{
     /// - Parameter deviceId: device id to remove
     /// - Returns: device status removed or nil if the deviceId doesn't exist
     fileprivate mutating func removeStatusFor(_ deviceId:DeviceID) -> DeviceStatus?{
-        let deviceIndex = self.index(where:hasDeviceId(deviceId))
+        let deviceIndex = self.firstIndex(where:hasDeviceId(deviceId))
         if let idx = deviceIndex{
             return remove(at: idx)
         }

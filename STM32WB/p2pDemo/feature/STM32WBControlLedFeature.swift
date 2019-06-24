@@ -69,7 +69,7 @@ public class STM32WBControlLedFeature : BlueSTSDKFeature{
     ///
     /// - Parameter device: remote node where switch off the led
     public func switchOffLed(device:DeviceID){
-        let data = Data(bytes: [device.rawValue,STM32WBControlLedFeature.SWITCH_OFF_COMMAND])
+        let data = Data([device.rawValue,STM32WBControlLedFeature.SWITCH_OFF_COMMAND])
         write(data)
     }
     
@@ -77,7 +77,7 @@ public class STM32WBControlLedFeature : BlueSTSDKFeature{
     ///
     /// - Parameter device: remote node where switch on the led
     public func switchOnLed(device:DeviceID){
-        let data = Data(bytes: [device.rawValue,STM32WBControlLedFeature.SWITCH_ON_COMMAND])
+        let data = Data([device.rawValue,STM32WBControlLedFeature.SWITCH_ON_COMMAND])
         write(data)
     }
 

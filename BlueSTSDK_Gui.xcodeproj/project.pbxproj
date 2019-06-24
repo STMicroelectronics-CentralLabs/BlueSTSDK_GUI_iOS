@@ -18,6 +18,7 @@
 		660D356920E2812400E73004 /* BlueSTSDKDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D356820E2812400E73004 /* BlueSTSDKDemoViewController.swift */; };
 		6614EB4E20E3743600D991B9 /* BlueSTSDKMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614EB4D20E3743600D991B9 /* BlueSTSDKMainViewController.swift */; };
 		6614EB5020E38C5B00D991B9 /* UIViewController+BlueSTSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614EB4F20E38C5B00D991B9 /* UIViewController+BlueSTSDK.swift */; };
+		661F5372228081FA00E342DB /* BlueSTSDKAskFwUpgradeDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F5371228081FA00E342DB /* BlueSTSDKAskFwUpgradeDialog.swift */; };
 		662734C1221ED84B00405839 /* BlueNRGOtaAdvertiseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662734C0221ED84B00405839 /* BlueNRGOtaAdvertiseParser.swift */; };
 		662734C3221ED91700405839 /* BlueNRGFwUpgradeConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662734C2221ED91700405839 /* BlueNRGFwUpgradeConsole.swift */; };
 		662734C5221ED93300405839 /* BlueNRGFwVersionConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662734C4221ED93300405839 /* BlueNRGFwVersionConsole.swift */; };
@@ -45,6 +46,7 @@
 		666F79CC20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666F79CB20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift */; };
 		666F79D020E0DBD300A482C9 /* BlueSTSDKFwUpgradeConsoleNucleo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666F79CF20E0DBD300A482C9 /* BlueSTSDKFwUpgradeConsoleNucleo.swift */; };
 		668A12711E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668A12701E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets */; };
+		66C252C422B7D620007C8D3C /* BlueSTSDKFwUpgradeConsoleNucleo2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C252C122B7D620007C8D3C /* BlueSTSDKFwUpgradeConsoleNucleo2.swift */; };
 		66C2AB2921C3ABA000E41E73 /* BlueSTSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663979D11E2E5F9600FBF696 /* BlueSTSDK.framework */; };
 		66C9DFB5212AFAE9005B5633 /* STM32WBThreadRebootFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9DFB4212AFAE9005B5633 /* STM32WBThreadRebootFeature.swift */; };
 		66D5FDBC1EA74914005D8AE9 /* DebugConsoleMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDBE1EA74914005D8AE9 /* DebugConsoleMainView.storyboard */; };
@@ -101,6 +103,7 @@
 		660D356820E2812400E73004 /* BlueSTSDKDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKDemoViewController.swift; sourceTree = "<group>"; };
 		6614EB4D20E3743600D991B9 /* BlueSTSDKMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlueSTSDKMainViewController.swift; path = BlueSTSDK_Gui/BlueSTSDKMainViewController.swift; sourceTree = SOURCE_ROOT; };
 		6614EB4F20E38C5B00D991B9 /* UIViewController+BlueSTSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BlueSTSDK.swift"; sourceTree = "<group>"; };
+		661F5371228081FA00E342DB /* BlueSTSDKAskFwUpgradeDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKAskFwUpgradeDialog.swift; sourceTree = "<group>"; };
 		662734C0221ED84B00405839 /* BlueNRGOtaAdvertiseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueNRGOtaAdvertiseParser.swift; sourceTree = "<group>"; };
 		662734C2221ED91700405839 /* BlueNRGFwUpgradeConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueNRGFwUpgradeConsole.swift; sourceTree = "<group>"; };
 		662734C4221ED93300405839 /* BlueNRGFwVersionConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueNRGFwVersionConsole.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 		666F79CB20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwUpgradeConsole.swift; sourceTree = "<group>"; };
 		666F79CF20E0DBD300A482C9 /* BlueSTSDKFwUpgradeConsoleNucleo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwUpgradeConsoleNucleo.swift; sourceTree = "<group>"; };
 		668A12701E3A369A00D99490 /* BlueSTSDK_GUI_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BlueSTSDK_GUI_images.xcassets; sourceTree = "<group>"; };
+		66C252C122B7D620007C8D3C /* BlueSTSDKFwUpgradeConsoleNucleo2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTSDKFwUpgradeConsoleNucleo2.swift; sourceTree = "<group>"; };
 		66C9DFB4212AFAE9005B5633 /* STM32WBThreadRebootFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STM32WBThreadRebootFeature.swift; sourceTree = "<group>"; };
 		66D5FDC81EA74ADF005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DebugConsoleMainView.storyboard; sourceTree = "<group>"; };
 		66D5FDC91EA74ADF005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FwUpgrade.storyboard; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				665D325A1F5D80F900D76AEA /* BlueSTSDKFwUpgradeManagerViewController.swift */,
 				665D32561F5D468700D76AEA /* BlueSTSDKFwUpgradeProgressViewController.swift */,
 				663FDA851F5E9670001481BC /* BlueSTSDKDownloadFileViewController.swift */,
+				661F5371228081FA00E342DB /* BlueSTSDKAskFwUpgradeDialog.swift */,
 			);
 			path = FwUpgrade;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				663979371E2E5D4100FBF696 /* util */,
 				666F79CB20E0D80600A482C9 /* BlueSTSDKFwUpgradeConsole.swift */,
 				666F79CF20E0DBD300A482C9 /* BlueSTSDKFwUpgradeConsoleNucleo.swift */,
+				66C252C122B7D620007C8D3C /* BlueSTSDKFwUpgradeConsoleNucleo2.swift */,
 			);
 			path = FwUpgradeConsole;
 			sourceTree = "<group>";
@@ -473,14 +479,14 @@
 					663979131E2E5D0000FBF696 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 9L4QA9SNQK;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 6639790E1E2E5D0000FBF696 /* Build configuration list for PBXProject "BlueSTSDK_Gui" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -549,7 +555,9 @@
 			files = (
 				662734C5221ED93300405839 /* BlueNRGFwVersionConsole.swift in Sources */,
 				660C82E51ECF1FFD0048F831 /* BlueSTSDKAboutViewController.swift in Sources */,
+				66C252C422B7D620007C8D3C /* BlueSTSDKFwUpgradeConsoleNucleo2.swift in Sources */,
 				660C82E31ECF1F5F0048F831 /* BlueSTSDKLibLicenseDetailsViewController.swift in Sources */,
+				661F5372228081FA00E342DB /* BlueSTSDKAskFwUpgradeDialog.swift in Sources */,
 				66F7B44B21133199000FD126 /* STM32RSSIUpdateViewController.swift in Sources */,
 				660D356920E2812400E73004 /* BlueSTSDKDemoViewController.swift in Sources */,
 				66F7B44121133199000FD126 /* BlueSTSDKSTM32WBRebootOtaModeFeature.swift in Sources */,
@@ -755,6 +763,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = BlueSTSDK_Gui/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
@@ -763,7 +772,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -779,13 +788,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = BlueSTSDK_Gui/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.st.clab.BlueSTSDK-Gui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

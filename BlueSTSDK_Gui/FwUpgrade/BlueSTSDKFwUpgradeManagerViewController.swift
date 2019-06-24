@@ -50,21 +50,37 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
     ///   - defaultAddress: default address where load the fw
     ///   - fwRemoteUrl: if present the fw will be dowloaded from this url
     /// - Returns: BlueSTSDKFwUpgradeManagerViewController instance
-    public static func instaziate(forNode node:BlueSTSDKNode, requireAddress:Bool, defaultAddress:UInt32?=nil, fwRemoteUrl:URL?=nil)->BlueSTSDKFwUpgradeManagerViewController{
+    public static func instaziate(forNode node:BlueSTSDKNode,
+                                  requireAddress:Bool,
+                                  defaultAddress:UInt32?=nil,
+                                  requireFwType:Bool = false,
+                                  defaultFwType:BlueSTSDKFwUpgradeType = .applicationFirmware,
+                                  fwRemoteUrl:URL?=nil)
+            ->BlueSTSDKFwUpgradeManagerViewController{
+                
         let bundle = Bundle(for: BlueSTSDKFwUpgradeManagerViewController.self)
         let storyBoard = UIStoryboard(name: "FwUpgrade", bundle: bundle)
         
         let fwUpgradeController = storyBoard.instantiateInitialViewController() as! BlueSTSDKFwUpgradeManagerViewController
         
         fwUpgradeController.node=node
+        
         fwUpgradeController.requireAddress=requireAddress
         fwUpgradeController.defaultAddress=defaultAddress
+  
+        fwUpgradeController.requireFwType = requireFwType
+        fwUpgradeController.defaultFwType = defaultFwType
+
         fwUpgradeController.fwRemoteUrl=fwRemoteUrl
-        
+
         return fwUpgradeController;
     }
     
-    
+    public static func instaziate(forNode node:BlueSTSDKNode,
+                                  fwRemoteUrl:URL)
+        ->BlueSTSDKFwUpgradeManagerViewController{
+            return instaziate(forNode: node, requireAddress: false, defaultAddress: nil, requireFwType: false, defaultFwType: .applicationFirmware, fwRemoteUrl: fwRemoteUrl)
+    }
     
     private static let ERROR_TITLE_MSG:String = {
         let bundle = Bundle(for: BlueSTSDKFwUpgradeManagerViewController.self);
@@ -82,6 +98,23 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
                                  comment: "The address is not in the range: [0x%x,0x%x]");
     }();
 
+    private static let WARNING_TITLE_MSG:String = {
+        let bundle = Bundle(for: BlueSTSDKFwUpgradeManagerViewController.self);
+        return NSLocalizedString("Warning", tableName: nil,
+                                 bundle: bundle,
+                                 value: "Warning",
+                                 comment: "Warning");
+    }();
+    
+    private static let WARNING_ADDRESS_START_NOT_MULTIPLE:String = {
+        let bundle = Bundle(for: BlueSTSDKFwUpgradeManagerViewController.self);
+        return NSLocalizedString("The address should be multiple of 0x1000", tableName: nil,
+                                 bundle: bundle,
+                                 value: "The address should be multiple of 0x1000",
+                                 comment: "The address should be multiple of 0x1000");
+    }();
+
+    
     private static let FW_UPGRADE_NOT_AVAILABLE_ERR:String = {
         let bundle = Bundle(for: BlueSTSDKFwUpgradeManagerViewController.self);
         return NSLocalizedString("Firmware upgrade not available", tableName: nil,
@@ -135,6 +168,7 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
     @IBOutlet weak var mFwVersionLabel: UILabel!
     @IBOutlet weak var mFwTypeLabel: UILabel!
 
+    @IBOutlet weak var mConfigView: UIStackView!
     @IBOutlet weak var mUploadView: UIView!
     @IBOutlet weak var mUploadProgressView: UIProgressView!
     @IBOutlet weak var mUploadProgressLabel: UILabel!
@@ -145,17 +179,24 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
     @IBOutlet weak var mAddressView: UIStackView!
     @IBOutlet weak var mAddressText: UITextField!
     
+    @IBOutlet weak var mFwTypeView: UIStackView!
+    @IBOutlet weak var mFwTypeSelector: UISegmentedControl!
+    
     public var node:BlueSTSDKNode?;
     public var fwRemoteUrl:URL?;
     
     public var requireAddress:Bool=false
     public var defaultAddress:UInt32?=nil
     
-    private var mLoadVersionHud:MBProgressHUD?;
-    private var mFwUpgradeConsole:BlueSTSDKFwUpgradeConsole?;
-    private var mReadVersionConsole:BlueSTSDKFwReadVersionConsole?;
-    private var mProgresViewController:BlueSTSDKFwUpgradeProgressViewController!;
-    private var mDownloadProgressViewController:BlueSTSDKDownloadFileViewController!;
+    public var requireFwType:Bool=false
+    public var defaultFwType:BlueSTSDKFwUpgradeType = .applicationFirmware
+    
+    private var mCurrentFwVersion:BlueSTSDKFwVersion? = nil
+    private var mLoadVersionHud:MBProgressHUD? = nil
+    private var mFwUpgradeConsole:BlueSTSDKFwUpgradeConsole? = nil
+    private var mReadVersionConsole:BlueSTSDKFwReadVersionConsole? = nil
+    private var mProgresViewController:BlueSTSDKFwUpgradeProgressViewController!
+    private var mDownloadProgressViewController:BlueSTSDKDownloadFileViewController!
     
     private func showHud(){
         mLoadVersionHud = MBProgressHUD.showAdded(to: self.view, animated: true);
@@ -186,19 +227,34 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
                                                  progressView: mUploadProgressView)
     }
     
+    private func loadFwVersion(){
+        if(mCurrentFwVersion == nil){
+            _ = mReadVersionConsole?.readFwVersion{ [weak self] version in
+                guard let self = self else{
+                    return
+                }
+                self.mCurrentFwVersion = version
+                self.onFwVersionRead(version)
+                self.mFwUpgradeConsole = BlueSTSDKFwConsoleUtil.getFwUploadConsoleForNode(node: self.node, version:version)
+            }
+        }else{
+            onFwVersionRead(mCurrentFwVersion)
+        }
+    }
+    
     public override func viewWillAppear(_ animated: Bool) {
         showHud();
         mReadVersionConsole = BlueSTSDKFwConsoleUtil.getFwReadVersionConsoleForNode(node: self.node)
-        mFwUpgradeConsole = BlueSTSDKFwConsoleUtil.getFwUploadConsoleForNode(node: self.node)
-        _ = mReadVersionConsole?.readFwVersion{ [weak self] version in
-            self?.onFwVersionRead(version)
-        }
+        loadFwVersion()
         
         mAddressView.isHidden = !requireAddress;
         if let address = defaultAddress{
             mAddressText.text = String(format:"%X",address)
         }
         
+        mFwTypeView.isHidden = !requireFwType;
+        mFwTypeSelector.selectedFwType = defaultFwType
+
     }
     
     @IBAction func onSelectFileButtonPress(_ sender: UIBarButtonItem) {
@@ -213,6 +269,9 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
         if let userAddress = UInt32(mAddressText.text ?? "", radix: 16){
             defaultAddress = userAddress
         }
+        
+        
+        
         let docPicker = UIDocumentPickerViewController(documentTypes: ["public.data"], in: .import)
         docPicker.delegate = self
         docPicker.popoverPresentationController?.barButtonItem=sender
@@ -238,14 +297,16 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
         DispatchQueue.main.async{
             self.mUploadView.isHidden=false
             self.mUploadStatusProgress.text = BlueSTSDKFwUpgradeManagerViewController.FORMATTING_MSG
+            let address = self.defaultAddress != nil ? UInt32(self.defaultAddress!) : nil
+            let fwType = self.mFwTypeSelector.selectedFwType
+            DispatchQueue.global(qos: .background).async {
+                _ = self.mFwUpgradeConsole?.loadFwFile(type:fwType,
+                                                       file:firmware,
+                                                       delegate: self.mProgresViewController,
+                                                       address: address)
+            }
             
         }
-        let address = defaultAddress != nil ? UInt32(defaultAddress!) : nil
-        
-        _ = self.mFwUpgradeConsole?.loadFwFile(type:.applicationFirmware,
-                                               file:firmware,
-                                               delegate: self.mProgresViewController,
-                                               address: address)
     }
     
     private func onFwVersionRead(_ version: BlueSTSDKFwVersion?){
@@ -330,4 +391,22 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
     
     
  
+ }
+
+ fileprivate extension UISegmentedControl{
+    
+    var selectedFwType:BlueSTSDKFwUpgradeType{
+        get{
+            return self.selectedSegmentIndex == 0 ? .applicationFirmware : .radioFirmware
+        }
+        set( newValue){
+            switch newValue {
+                case .applicationFirmware:
+                    self.selectedSegmentIndex = 0
+                case .radioFirmware:
+                    self.selectedSegmentIndex = 1
+            }
+        }
+    }
+    
  }

@@ -47,18 +47,30 @@ public class BlueNRGOtaAdvertiseParser : BlueSTSDKAdvertiseFilter {
         //needed to be able to build this class from outisde the module.. 
     }
     
-    public class BlueNRGAdvertiseInfo : BlueSTSDKAdvertiseInfo {
+    public class BlueNRGAdvertiseInfo : NSObject,BleAdvertiseInfo {
         
         public let services: [CBUUID]
+        public let name:String?
+        public let address:String? = nil
+        public let featureMap:UInt32 = 0
+        public let deviceId:UInt8 = 0x04
+        public let protocolVersion:UInt8 = 1
+        public let boardType:BlueSTSDKNodeType = .STEVAL_IDB008VX
+        public let isSleeping:Bool = false
+        public let hasGeneralPurpose:Bool = false
+        public let txPower:UInt8
+        
         
         init(name:String, txPower:UInt8, services:[CBUUID]){
             self.services = services
-            super.init(name: name, address: nil, featureMap: 0, deviceId: 0x04, protocolVersion: 1, boardType: .STEVAL_IDB008VX, isSleeping: false, hasGeneralPurpose: false, txPower: txPower)
+            self.name = name
+            self.txPower = txPower
+            
         }
         
     }
     
-    public func filter(_ data: [String : Any]) -> BlueSTSDKAdvertiseInfo? {
+    public func filter(_ data: [String : Any]) -> BleAdvertiseInfo? {
         let txPower = (data[CBAdvertisementDataTxPowerLevelKey] as? UInt8) ?? 0
         let name = (data[CBAdvertisementDataLocalNameKey] as? String)
         let services = data[CBAdvertisementDataServiceUUIDsKey] as? [CBUUID]

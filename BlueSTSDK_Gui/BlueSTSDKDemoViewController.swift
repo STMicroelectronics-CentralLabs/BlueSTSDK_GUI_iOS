@@ -160,7 +160,7 @@ public class BlueSTSDKDemoViewController: UIViewController{
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        mLogger = BlueSTSDKFeatureLogCSV(timestamp: Date(), nodes: [self.node])
+        mLogger = BlueSTSDKFeatureLogCSV(timestamp: Date(), nodes: [self.node!])
         
         if(node.debugConsole==nil){
             removeMenuAction(mActionDebug)
@@ -361,7 +361,7 @@ extension BlueSTSDKDemoViewController:MFMailComposeViewControllerDelegate{
     }
     
     public func removeMenuAction(_ action: UIAlertAction) {
-        if let index = mActions.index(of: action){
+        if let index = mActions.firstIndex(of: action){
             mActions.remove(at: index)
         }
     }

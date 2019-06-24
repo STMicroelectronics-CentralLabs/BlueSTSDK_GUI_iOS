@@ -71,11 +71,11 @@ public class BlueSTSDKSTM32CRC{
     /// that is not a multiple of 4 bytes the last bytes will be ingored.
     /// - Parameter data: new bytes to add at the crc computation
     public func upgrade(_ data:Data){
-        (0..<data.count/4).forEach{ i in
-            let valueIndex = i*4
-            let value:UInt32 = { data[valueIndex..<(valueIndex+4)]
-                .withUnsafeBytes{ $0.pointee } }()
-            crcValue = BlueSTSDKSTM32CRC.crc32fast(crcValue, value)
+        data.withUnsafeBytes{ (ptr:UnsafeRawBufferPointer) in
+            let uint32Ptr = ptr.bindMemory(to: UInt32.self)
+            uint32Ptr.forEach{
+                crcValue = BlueSTSDKSTM32CRC.crc32fast(crcValue, $0)
+            }
         }
     }
     

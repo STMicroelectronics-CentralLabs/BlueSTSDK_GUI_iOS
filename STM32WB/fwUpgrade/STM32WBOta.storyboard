@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XWt-od-Qkx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XWt-od-Qkx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,10 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sector to update" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhi-Ws-1HX">
+                                <rect key="frame" x="32" y="28" width="128.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rX7-fY-gUq">
-                                <rect key="frame" x="16" y="36" width="343" height="29"/>
+                                <rect key="frame" x="40" y="57" width="319" height="29"/>
                                 <segments>
                                     <segment title="Application"/>
+                                    <segment title="Radio"/>
                                     <segment title="Custom"/>
                                 </segments>
                                 <connections>
@@ -29,31 +36,31 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of sector to delete:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dor-XV-QLc">
-                                <rect key="frame" x="24" y="146.5" width="211" height="21"/>
+                                <rect key="frame" x="32" y="168" width="211" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1HX-t0-1yo">
-                                <rect key="frame" x="32" y="108.5" width="327" height="30"/>
+                                <rect key="frame" x="40" y="130" width="319" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qdx-YR-sAp">
-                                <rect key="frame" x="32" y="175" width="327" height="30"/>
+                                <rect key="frame" x="40" y="197" width="319" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Sector to delete:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaI-9n-TwL">
-                                <rect key="frame" x="24" y="80" width="165" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First sector to delete:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaI-9n-TwL">
+                                <rect key="frame" x="32" y="101" width="163" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01l-QS-cR1">
-                                <rect key="frame" x="309" y="572" width="50" height="30"/>
+                                <rect key="frame" x="309" y="243" width="50" height="30"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                 <state key="normal" title="Reboot"/>
                                 <connections>
@@ -63,21 +70,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="rX7-fY-gUq" firstAttribute="top" secondItem="Bhi-Ws-1HX" secondAttribute="bottom" constant="8" id="2Kt-GA-xxl"/>
+                            <constraint firstItem="rX7-fY-gUq" firstAttribute="leading" secondItem="Bhi-Ws-1HX" secondAttribute="leading" constant="8" id="6Ts-yM-1ea"/>
                             <constraint firstItem="1HX-t0-1yo" firstAttribute="top" secondItem="qaI-9n-TwL" secondAttribute="bottom" constant="8" id="Axh-Qx-int"/>
-                            <constraint firstItem="rX7-fY-gUq" firstAttribute="top" secondItem="1OI-J6-DRA" secondAttribute="top" constant="16" id="FDa-8y-eeG"/>
                             <constraint firstItem="Dor-XV-QLc" firstAttribute="leading" secondItem="qaI-9n-TwL" secondAttribute="leading" id="G8E-9X-VjT"/>
-                            <constraint firstItem="1OI-J6-DRA" firstAttribute="bottom" secondItem="01l-QS-cR1" secondAttribute="bottom" constant="16" id="Lnv-9u-tKg"/>
-                            <constraint firstItem="rX7-fY-gUq" firstAttribute="leading" secondItem="1OI-J6-DRA" secondAttribute="leading" constant="16" id="M6W-xM-XU9"/>
+                            <constraint firstItem="1HX-t0-1yo" firstAttribute="leading" secondItem="rX7-fY-gUq" secondAttribute="leading" id="HJf-ca-Pdz"/>
                             <constraint firstItem="qaI-9n-TwL" firstAttribute="top" secondItem="rX7-fY-gUq" secondAttribute="bottom" constant="16" id="Or8-jK-Gij"/>
                             <constraint firstItem="Qdx-YR-sAp" firstAttribute="top" secondItem="Dor-XV-QLc" secondAttribute="bottom" constant="8" id="PTs-jn-dfn"/>
+                            <constraint firstItem="Bhi-Ws-1HX" firstAttribute="leading" secondItem="1OI-J6-DRA" secondAttribute="leading" constant="32" id="Sdl-s6-xQB"/>
+                            <constraint firstItem="1OI-J6-DRA" firstAttribute="top" secondItem="Bhi-Ws-1HX" secondAttribute="bottom" constant="-29" id="VuH-6Q-2cn"/>
                             <constraint firstItem="Dor-XV-QLc" firstAttribute="top" secondItem="1HX-t0-1yo" secondAttribute="bottom" constant="8" id="X9X-0U-m2o"/>
+                            <constraint firstItem="01l-QS-cR1" firstAttribute="top" secondItem="Qdx-YR-sAp" secondAttribute="bottom" constant="16" id="XgW-av-SDT"/>
                             <constraint firstItem="1OI-J6-DRA" firstAttribute="trailing" secondItem="rX7-fY-gUq" secondAttribute="trailing" constant="16" id="h27-zk-8Lk"/>
                             <constraint firstItem="1OI-J6-DRA" firstAttribute="trailing" secondItem="01l-QS-cR1" secondAttribute="trailing" constant="16" id="hMb-93-LTB"/>
                             <constraint firstItem="1HX-t0-1yo" firstAttribute="trailing" secondItem="rX7-fY-gUq" secondAttribute="trailing" id="jAA-5F-CTY"/>
                             <constraint firstItem="Qdx-YR-sAp" firstAttribute="trailing" secondItem="rX7-fY-gUq" secondAttribute="trailing" id="sN7-Uj-50J"/>
                             <constraint firstItem="Qdx-YR-sAp" firstAttribute="leading" secondItem="1HX-t0-1yo" secondAttribute="leading" id="sYJ-NA-94c"/>
-                            <constraint firstItem="qaI-9n-TwL" firstAttribute="leading" secondItem="rX7-fY-gUq" secondAttribute="leading" constant="8" id="uF1-2z-CLD"/>
-                            <constraint firstItem="1HX-t0-1yo" firstAttribute="leading" secondItem="qaI-9n-TwL" secondAttribute="leading" constant="8" id="uiy-eT-Oxs"/>
+                            <constraint firstItem="qaI-9n-TwL" firstAttribute="leading" secondItem="Bhi-Ws-1HX" secondAttribute="leading" id="tkn-7G-M4g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1OI-J6-DRA"/>
                     </view>
@@ -85,6 +94,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mFirstSectorText" destination="1HX-t0-1yo" id="Obj-FB-XNs"/>
+                        <outlet property="mFwTypeSelector" destination="rX7-fY-gUq" id="PM7-vp-7dn"/>
                         <outlet property="mNumSectorText" destination="Qdx-YR-sAp" id="gwf-dT-lH2"/>
                         <segue destination="azl-He-HV9" kind="show" identifier="searchOtaNodeSegue" animates="NO" id="HtJ-4H-Iwg"/>
                     </connections>

@@ -86,7 +86,7 @@ class BlueNRGFwUpgradeDataTransferFeature : BlueSTSDKDeviceTimestampFeature {
 
 fileprivate extension Data {
     
-    fileprivate var xor : UInt8 {
+    var xor : UInt8 {
         get {
             return self.reduce(UInt8(0)){ xorSum, value in xorSum ^ value}
         }

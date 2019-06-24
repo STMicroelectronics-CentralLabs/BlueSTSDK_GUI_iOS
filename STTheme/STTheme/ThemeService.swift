@@ -34,7 +34,6 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
  * OF SUCH DAMAGE.
  */
-
 import UIKit
 
 public class ThemeService {
@@ -63,6 +62,7 @@ public class ThemeService {
         
         let navigationBarButton = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self] )
         navigationBarButton.tintColor = currentTheme.color.navigationBarText
+        navigationBarButton.setTitleColor(currentTheme.color.navigationBarText, for: .normal)
     }
     
     public func applyTabBarTheme(_ tabBar: UITabBar){
@@ -73,6 +73,6 @@ public class ThemeService {
     
     public func applyButtonTheme(_ button: UIButton ){
         button.tintColor = currentTheme.color.secondary.light
-        //button.setTitleColor(currentTheme.color.secondary.light, for: .normal)
+        button.setTitleColor(currentTheme.color.secondary.light, for: .normal)
     }
 }
