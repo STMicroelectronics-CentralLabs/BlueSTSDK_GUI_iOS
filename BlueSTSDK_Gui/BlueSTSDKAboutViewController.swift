@@ -219,13 +219,14 @@ extension BlueSTSDKAboutViewControllerDelegate {
         let bundle = Bundle(for: type(of: self));
 
         //create the privacy policy item
-        if(delegate?.privacyInfoUrl() != nil){
+        let privacyUrl = delegate?.privacyInfoUrl()
+        if( privacyUrl != nil){
             let privacyText = NSLocalizedString("Privacy Policy", tableName: nil,
                     bundle: bundle,
                     value: "Privacy Policy", comment: "Privacy Policy");
 
             let privacyAction = UIAlertAction(title: privacyText, style: .default) { action in
-                UIApplication.shared.openURL(self.delegate!.privacyInfoUrl()!);
+                UIApplication.shared.open(privacyUrl!);
              }
             mDetailsMenuController.addAction(privacyAction);
         }
@@ -296,7 +297,7 @@ extension BlueSTSDKAboutViewControllerDelegate {
     /// - Returns: <#return value description#>
     public func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         if ( navigationType == UIWebView.NavigationType.linkClicked){
-            UIApplication.shared.openURL(request.url!);
+            UIApplication.shared.open(request.url!)
             return false;
         }
         return true;

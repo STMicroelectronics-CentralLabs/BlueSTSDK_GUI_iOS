@@ -57,7 +57,7 @@ public class BlueSTSDKDebugConsoleViewController : UIViewController{
     ]
     
     private static let IN_TEXT_ATT = [
-        NSAttributedString.Key.foregroundColor : UIColor.green
+        NSAttributedString.Key.foregroundColor : UIColor.black
     ]
     
     private static let CANCEL:String = {

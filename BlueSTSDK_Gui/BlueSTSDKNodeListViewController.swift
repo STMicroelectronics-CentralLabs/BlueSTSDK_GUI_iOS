@@ -49,23 +49,38 @@ import BlueSTSDK
   *  @return true for display the node, false otherwise.
   */
   func display(node:BlueSTSDKNode)->Bool
- 
- /**
-  *  Call before connecting the node
-  *
-  *  @param node node seleceted by the user.
-  */
+     
+  /// Call when the user select a node, but before start the connection procedure
+  ///
+  /// - Parameter node: node that theu se select
+  /// - Note: default implementation is an empty function
   func prepareToConnect(node : BlueSTSDKNode)
  
- /**
-  *  Get the view controller to display when the node is selected.
-  *
-  *  @param node node seleceted by the user.
-  *
-  *  @return view controller to display after the seleciton.
-  */
-  func demoViewController( with node: BlueSTSDKNode, menuManager:BlueSTSDKViewControllerMenuDelegate)->UIViewController;
     
+  /// Call after the node complete the connection
+  ///
+  /// - Parameter node: node that the user selected and it is now connected
+  /// - Note: its default implementation is an empty function
+  func onConnected(node:BlueSTSDKNode)
+  
+    
+  /// Tell if you want to move to the demoViewController after the connection
+  /// default value = true
+  var moveToDemoViewController:Bool {get}
+    
+  /// Get the view controller to display inside the DemoViewController after the node connects
+  ///
+  /// - Parameters:
+  ///   - node: node selected by the user and in connected state
+  ///   - menuManager: delegate to use to add items from the top right menu
+  /// - Returns: viewController to display inside the DemoViewController
+  /// - Note: this method is called only if moveToDemoViewController is set to true
+  /// - Note: its default implementation return nil
+  func demoViewController( with node: BlueSTSDKNode, menuManager:BlueSTSDKViewControllerMenuDelegate)->UIViewController?
+    
+
+  /// list of advevertise filter to use during the discovery,
+  /// default value = BlueSTSDKManager.DEFAULT_ADVERTISE_FILTER
   var advertiseFilters:[BlueSTSDKAdvertiseFilter] {get}
 
  }
@@ -76,6 +91,19 @@ import BlueSTSDK
             return BlueSTSDKManager.DEFAULT_ADVERTISE_FILTER;
         }
     }
+    
+    var moveToDemoViewController:Bool {
+        get {
+            return true
+        }
+    }
+    
+    func demoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate) -> UIViewController? {
+        return nil
+    }
+    
+    func onConnected(node: BlueSTSDKNode){}
+    func prepareToConnect(node : BlueSTSDKNode){}
  }
  
  public class BlueSTSDKNodeListViewCell : UITableViewCell{
@@ -89,6 +117,15 @@ import BlueSTSDK
  }
  
  public class BlueSTSDKNodeListViewController : UITableViewController{
+    
+    public static func buildWith(delegate: BlueSTSDKNodeListViewControllerDelegate) -> UIViewController{
+        let bundle = Bundle(for: BlueSTSDKNodeListViewController.self);
+        let storyboard = UIStoryboard(name: "BlueSTSDKMainView", bundle: bundle)
+        let vc = storyboard.instantiateViewController(withIdentifier: "NodeListViewController") as? BlueSTSDKNodeListViewController
+        vc?.delegate = delegate
+        return vc!
+    }
+    
     private static let SEGUE_DEMO_VIEW = "showDemoView"
     //stop the discovery after 10s
     private static let DISCOVERY_TIMEOUT_MS = 10*1000
@@ -254,8 +291,8 @@ import BlueSTSDK
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == BlueSTSDKNodeListViewController.SEGUE_DEMO_VIEW,
             let node = sender as? BlueSTSDKNode,
-            let demoView = segue.destination as? BlueSTSDKDemoViewController{
-                let demoController = delegate.demoViewController(with: node, menuManager: demoView)
+            let demoView = segue.destination as? BlueSTSDKDemoViewController,
+            let demoController = delegate.demoViewController(with: node, menuManager: demoView){
                 demoView.demoViewController=demoController;
                 demoView.node=node;
         }//if
@@ -307,7 +344,10 @@ import BlueSTSDK
     private func onNodeConnected(_ node:BlueSTSDKNode){
         networkCheckConnHud?.hide(animated: true)
         networkCheckConnHud=nil
-        performSegue(withIdentifier: BlueSTSDKNodeListViewController.SEGUE_DEMO_VIEW, sender: node)
+        delegate.onConnected(node: node)
+        if delegate.moveToDemoViewController {
+            performSegue(withIdentifier: BlueSTSDKNodeListViewController.SEGUE_DEMO_VIEW, sender: node)
+        }
     }
     
     private func onNodeError(_ node:BlueSTSDKNode){

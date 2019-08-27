@@ -34,7 +34,6 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
  * OF SUCH DAMAGE.
  */
-
 import Foundation
 import BlueSTSDK
 
@@ -92,7 +91,12 @@ public class BlueSTSDKAskFwUpgradeDialog {
                 }
             }
         
+        let cancel = UIAlertAction(title: BlueSTSDKAskFwUpgradeDialog.NEW_FW_ALERT_NO,
+                                   style: .cancel,
+                                   handler: nil)
+        
         question.addAction(upgrade)
+        question.addAction(cancel)
         
         vc.present(question, animated: true, completion: nil)
     }

@@ -182,8 +182,8 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
     @IBOutlet weak var mFwTypeView: UIStackView!
     @IBOutlet weak var mFwTypeSelector: UISegmentedControl!
     
-    public var node:BlueSTSDKNode?;
-    public var fwRemoteUrl:URL?;
+    public var node:BlueSTSDKNode?
+    public var fwRemoteUrl:URL?
     
     public var requireAddress:Bool=false
     public var defaultAddress:UInt32?=nil
@@ -199,10 +199,10 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
     private var mDownloadProgressViewController:BlueSTSDKDownloadFileViewController!
     
     private func showHud(){
-        mLoadVersionHud = MBProgressHUD.showAdded(to: self.view, animated: true);
-        mLoadVersionHud?.mode = .indeterminate;
-        mLoadVersionHud?.removeFromSuperViewOnHide=true;
-        mLoadVersionHud?.label.text = BlueSTSDKFwUpgradeManagerViewController.READ_VERSION;
+        mLoadVersionHud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        mLoadVersionHud?.mode = .indeterminate
+        mLoadVersionHud?.removeFromSuperViewOnHide=true
+        mLoadVersionHud?.label.text = BlueSTSDKFwUpgradeManagerViewController.READ_VERSION
     }
 
     private func setRightBarButton(){
@@ -247,14 +247,20 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
         mReadVersionConsole = BlueSTSDKFwConsoleUtil.getFwReadVersionConsoleForNode(node: self.node)
         loadFwVersion()
         
-        mAddressView.isHidden = !requireAddress;
+        mAddressView.isHidden = !requireAddress
         if let address = defaultAddress{
             mAddressText.text = String(format:"%X",address)
         }
         
-        mFwTypeView.isHidden = !requireFwType;
+        mFwTypeView.isHidden = !requireFwType
         mFwTypeSelector.selectedFwType = defaultFwType
-
+        //avoid the system to go idle, since we are using the ble to send the data
+        //when the system go in idle the ble transfers are suspended
+        UIApplication.shared.isIdleTimerDisabled=true
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        UIApplication.shared.isIdleTimerDisabled=false
     }
     
     @IBAction func onSelectFileButtonPress(_ sender: UIBarButtonItem) {
@@ -376,9 +382,11 @@ public class BlueSTSDKFwUpgradeManagerViewController: UIViewController{
     }();
     
     public func onLoadComplite(file: URL) {
-        self.showAllert(title: BlueSTSDKFwUpgradeManagerViewController.UPLOAD_COMPLETE_TITLE,
-                        message: BlueSTSDKFwUpgradeManagerViewController.UPLOAD_COMPLETE_CONTENT,
-                        closeController: true)
+        DispatchQueue.main.async {
+            self.showAllert(title: BlueSTSDKFwUpgradeManagerViewController.UPLOAD_COMPLETE_TITLE,
+                            message: BlueSTSDKFwUpgradeManagerViewController.UPLOAD_COMPLETE_CONTENT,
+                            closeController: true)
+        }
     }
     
     public func onLoadError(file: URL, error: BlueSTSDKFwUpgradeError) {

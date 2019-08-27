@@ -207,7 +207,9 @@ open class BlueSTSDKMainViewController: UIViewController {
         };
         
         let showPrivacyLink = UIAlertAction(title: title, style: .default) { (dialog) in
-            UIApplication.shared.openURL(self.delegateAbout!.privacyInfoUrl()!);
+            if let privacyUrl = self.delegateAbout?.privacyInfoUrl() {
+                UIApplication.shared.open(privacyUrl)
+            }
             UserDefaults.standard.set(true, forKey: BlueSTSDKMainViewController.PRIVACY_DIALOG_SHOWN)
             UserDefaults.standard.synchronize();
         };

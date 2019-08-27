@@ -216,7 +216,6 @@
         
         var dataToSend = mFileData[mByteSend..<mByteSend+packageSize]
         dataToSend.append(Data(bytes: &nPackage, count: 4))
-        print(packageSize)
         mByteSend = mByteSend + packageSize
         nPackage += 1
         return mConsole.writeMessageDataFast(dataToSend)
@@ -246,7 +245,7 @@
         mCurrentTimeOut?.cancel()
         let lastPacakgeReceved = (msgData as NSData).extractLeUInt32(fromOffset: 1)
         mMessageSerializer.async { [weak self] in
-            print("error ->",self?.nPackage,"to ",lastPacakgeReceved)
+            print("error ->",(self?.nPackage ?? -1) ,"to ",lastPacakgeReceved)
             self?.nPackage = lastPacakgeReceved + 1
             
         }

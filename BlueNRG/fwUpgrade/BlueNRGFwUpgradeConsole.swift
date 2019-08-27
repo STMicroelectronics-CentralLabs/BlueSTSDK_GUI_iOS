@@ -287,6 +287,12 @@ fileprivate class WriteDataAckListener : NSObject , BlueSTSDKFeatureDelegate{
         nWrongSequence = 0
     }
     
+    private func abortTransmission(_ feature: BlueSTSDKFeature){
+        self.removeTimer()
+        feature.remove(self)
+        feature.disableNotification()
+    }
+    
     private func manageError( _ feature: BlueSTSDKFeature, error:BlueNRGFwUpgradeAckFeature.Error, requestPacakge:UInt16){
         switch error {
         case .writeFail_1:
@@ -302,18 +308,15 @@ fileprivate class WriteDataAckListener : NSObject , BlueSTSDKFeatureDelegate{
         if( nWrongCrc > WriteDataAckListener.MAX_ERROR_RETRY ||
             nWrongWrite1 > WriteDataAckListener.MAX_ERROR_RETRY ||
             nWrongWrite2 > WriteDataAckListener.MAX_ERROR_RETRY){
-            feature.remove(self)
-            removeTimer()
+            abortTransmission(feature)
             mConsole.currentState = .error(mParam.file, .trasmissionError)
         }else if(nWrongSequence > WriteDataAckListener.MAX_ERROR_RETRY){
             if(requestPacakge == 0 ){ // the upload never starts
-                feature.remove(self)
-                removeTimer()
+                abortTransmission(feature)
                 //restart with the safe parameters
                 mConsole.currentState = .checkMemory(BlueNRGFwUpgradeConsole.FwUpgradeParam.buildSafeParamFrom(param: mConsole.mStartingParam))
             }else{
-                feature.remove(self)
-                removeTimer()
+                abortTransmission(feature)
                 mConsole.currentState = .error(mParam.file, .trasmissionError)
             }
         }else{
