@@ -42,31 +42,53 @@ struct STDefaultTheme: Theme {
     var font: Font = STDefaultFont()
 }
 
-struct STDefaultColor: Color {
-    var light: UIColor
-    var dark: UIColor
-    
-    init(light: String?, dark: String?) {
-        self.light = UIColor(hexString: light ?? "#000000")
-        self.dark = UIColor(hexString: dark ?? "#000000")
-    }
+private func assetColor(named: String) -> UIColor{
+    return UIColor(named: named, in: Bundle(for: ThemeService.self),compatibleWith:nil)!
 }
 
 struct STDefaultColors: Colors {
-    var primary: Color = STDefaultColor(light: "#19b2e8", dark: "#002052")
-    var secondary: Color = STDefaultColor(light: "#d81484", dark: nil)
-    var background: Color = STDefaultColor(light: "#edf2f4", dark: nil)
-    var text: Color = STDefaultColor(light: "#7c898e", dark: "#424749")
-    var error: Color = STDefaultColor(light: "#F75343", dark: nil)
-    var cardPrimary: Color = STDefaultColor(light: "#A4C5D0", dark: nil)
-    var cardSecondary: Color = STDefaultColor(light: "#DBDBDB", dark: nil)
+    let primary = assetColor(named: "primary")
+    let secondary = assetColor(named: "accent")
+    var background:UIColor {
+        if #available(iOS 13, *){
+            return UIColor.systemBackground
+        }
+        return assetColor(named: "background")
+    }
+    
+    let text = assetColor(named: "text")
+    
+    let textDark = assetColor(named: "textDark")
+    
+    let error = assetColor(named: "error")
+    
+    var cardPrimary:UIColor {
+        if #available(iOS 13, *){
+            return UIColor{ uiTrait in
+                if(uiTrait.userInterfaceStyle == .dark){
+                    return UIColor.secondarySystemGroupedBackground
+                }else{
+                    return .white
+                }
+            }//ui color
+        }//ios 13
+        return .white
+    }
+    var cardSecondary:UIColor {
+        if #available(iOS 13, *){
+           return UIColor{ uiTrait in
+               if(uiTrait.userInterfaceStyle == .dark){
+                   return UIColor.tertiarySystemGroupedBackground
+               }else{
+                   return assetColor(named: "card_secondary")
+               }
+           }//ui color
+       }//ios 13
+       return assetColor(named: "card_secondary")
+    }
 
-    var navigationBar: UIColor {
-        get { return primary.light }
-    }
-    var navigationBarText: UIColor{
-        get { return primary.dark }
-    }
+    let navigationBar = assetColor(named: "primary")
+    let navigationBarText = assetColor(named: "primary_dark")
 }
 
 struct STDefaultFont: Font {

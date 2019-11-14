@@ -14,6 +14,7 @@
 		6677188221FA0493006230B6 /* STDefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677187F21FA0493006230B6 /* STDefaultTheme.swift */; };
 		6677188321FA0493006230B6 /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677188021FA0493006230B6 /* ThemeService.swift */; };
 		6677189F21FA1C1E006230B6 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677189E21FA1C1E006230B6 /* UIColor+Hex.swift */; };
+		66FA21022355BC7B0001B19E /* STTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66FA21012355BC7B0001B19E /* STTheme.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		6677187F21FA0493006230B6 /* STDefaultTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STDefaultTheme.swift; sourceTree = "<group>"; };
 		6677188021FA0493006230B6 /* ThemeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
 		6677189E21FA1C1E006230B6 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		66FA21012355BC7B0001B19E /* STTheme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = STTheme.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		6677187221FA037C006230B6 /* STTheme */ = {
 			isa = PBXGroup;
 			children = (
+				66FA21012355BC7B0001B19E /* STTheme.xcassets */,
 				6677187B21FA0489006230B6 /* Extension */,
 				6677187F21FA0493006230B6 /* STDefaultTheme.swift */,
 				6677187E21FA0492006230B6 /* Theme.swift */,
@@ -157,6 +160,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66FA21022355BC7B0001B19E /* STTheme.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +316,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = STTheme/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,8 +327,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -340,7 +346,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = STTheme/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -350,8 +356,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};

@@ -73,7 +73,7 @@ public class ThemeService {
     }
     
     public func applyButtonTheme(_ button: UIButton ){
-        button.tintColor = currentTheme.color.secondary.light
-        button.setTitleColor(currentTheme.color.secondary.light, for: .normal)
+        button.tintColor = currentTheme.color.secondary
+    button.setTitleColor(currentTheme.color.secondary, for: .normal)
     }
 }

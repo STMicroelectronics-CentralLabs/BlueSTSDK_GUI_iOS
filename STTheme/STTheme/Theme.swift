@@ -42,19 +42,15 @@ public protocol Theme {
     var font: Font { get set }
 }
 
-public protocol Color {
-    var light: UIColor { get set }
-    var dark: UIColor { get set }
-}
-
 public protocol Colors {
-    var primary: Color { get }
-    var secondary: Color { get }
-    var background: Color { get }
-    var text: Color { get }
-    var error: Color  { get }
-    var cardPrimary: Color { get }
-    var cardSecondary: Color { get }
+    var primary: UIColor { get }
+    var secondary: UIColor { get }
+    var background: UIColor { get }
+    var text: UIColor { get }
+    var textDark: UIColor { get }
+    var error: UIColor  { get }
+    var cardPrimary: UIColor { get }
+    var cardSecondary: UIColor { get }
     var navigationBar: UIColor { get }
     var navigationBarText: UIColor { get }
 }

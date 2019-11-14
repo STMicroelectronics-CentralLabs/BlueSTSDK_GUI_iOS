@@ -102,4 +102,13 @@ extension UIViewController{
     @objc public func showErrorMsg(_ msg:String, title:String, closeController:Bool){
         showAllert(title: title,message: msg,closeController: closeController)
     }
+    
+    public func hasDarkTheme() -> Bool{
+        if #available(iOS 13, *){
+            return self.traitCollection.userInterfaceStyle == .dark
+        }else{
+            return false
+        }
+    }
+    
 }

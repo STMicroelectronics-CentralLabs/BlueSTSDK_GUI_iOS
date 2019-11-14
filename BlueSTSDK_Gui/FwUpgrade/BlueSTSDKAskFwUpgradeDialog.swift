@@ -84,11 +84,15 @@ public class BlueSTSDKAskFwUpgradeDialog {
             style: .default){ _ in
                 let fwUpgradeVc = BlueSTSDKFwUpgradeManagerViewController.instaziate(forNode: node,fwRemoteUrl: file)
                 
-                if let navVC = vc.navigationController {
-                    navVC.pushViewController(fwUpgradeVc, animated: true)
+                if let navVc = vc as? UINavigationController{
+                    navVc.pushViewController(fwUpgradeVc, animated: true)
                 }else{
-                    vc.present(fwUpgradeVc, animated: false, completion: nil)
-                }
+                    if let navVC = vc.navigationController {
+                        navVC.pushViewController(fwUpgradeVc, animated: true)
+                    }else{
+                        vc.present(fwUpgradeVc, animated: false, completion: nil)
+                    }// if has nav controller
+                }// if is navController
             }
         
         let cancel = UIAlertAction(title: BlueSTSDKAskFwUpgradeDialog.NEW_FW_ALERT_NO,

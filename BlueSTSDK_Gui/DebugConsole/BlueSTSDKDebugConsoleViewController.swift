@@ -44,9 +44,13 @@ public class BlueSTSDKDebugConsoleViewController : UIViewController{
     private static let MAX_MESSAGE_LENGTH_BYTE = 20
     private typealias TextColorAtt_t = [NSAttributedString.Key : UIColor]
     
-    private static let GENERIC_TEXT_ATT = [
-        NSAttributedString.Key.foregroundColor : UIColor.black
-    ]
+    private static let GENERIC_TEXT_ATT:[NSAttributedString.Key : UIColor] = {
+        if #available(iOS 13, *) {
+            return [NSAttributedString.Key.foregroundColor : UIColor.label]
+        }else{
+            return [NSAttributedString.Key.foregroundColor : UIColor.black]
+        }
+    }()
     
     private static let ERROR_TEXT_ATT = [
         NSAttributedString.Key.foregroundColor : UIColor.red
@@ -56,9 +60,14 @@ public class BlueSTSDKDebugConsoleViewController : UIViewController{
         NSAttributedString.Key.foregroundColor : UIColor.blue
     ]
     
-    private static let IN_TEXT_ATT = [
-        NSAttributedString.Key.foregroundColor : UIColor.black
-    ]
+    
+    private static let IN_TEXT_ATT:[NSAttributedString.Key : UIColor] = {
+        if #available(iOS 13, *) {
+            return [NSAttributedString.Key.foregroundColor : UIColor.label]
+        }else{
+            return [NSAttributedString.Key.foregroundColor : UIColor.black]
+        }
+    }()
     
     private static let CANCEL:String = {
         let bundle = Bundle(for: BlueSTSDKDebugConsoleViewController.self);
