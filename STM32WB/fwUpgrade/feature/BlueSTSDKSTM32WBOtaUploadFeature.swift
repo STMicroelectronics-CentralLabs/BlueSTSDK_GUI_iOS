@@ -69,7 +69,8 @@ public class BlueSTSDKSTM32WBOtaUploadFeature : BlueSTSDKFeature{
     ///   - onWrite: callback function called each time a chunk is sent. the parameters is the number of
     ///     byte sent
     public func upload(file:Data, onWrite:@escaping (UInt)->()){
-        let nChank = (file.count + BlueSTSDKSTM32WBOtaUploadFeature.CHUNK_LENGTH)/BlueSTSDKSTM32WBOtaUploadFeature.CHUNK_LENGTH
+        let (quotient, rem) = file.count.quotientAndRemainder(dividingBy: BlueSTSDKSTM32WBOtaUploadFeature.CHUNK_LENGTH)
+        let nChank = quotient + (rem == 0 ? 0 : 1)
         for i in 0..<nChank{
             writeQueue.async {
                 let start = i*BlueSTSDKSTM32WBOtaUploadFeature.CHUNK_LENGTH;
