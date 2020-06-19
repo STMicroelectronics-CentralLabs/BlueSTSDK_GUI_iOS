@@ -61,8 +61,16 @@ import BlueSTSDK
   ///
   /// - Parameter node: node that the user selected and it is now connected
   /// - Note: its default implementation is an empty function
+  @available(*, deprecated, message: "use onConnected(node:BlueSTSDKNode, currentViewController:UIViewController)")
   func onConnected(node:BlueSTSDKNode)
   
+   /// Call after the node complete the connection
+   ///
+   /// - Parameter node: node that the user selected and it is now connected
+   /// - Parameter curentViewController: current view controller, can be used to change vc
+   /// - Note: its default implementation is an empty function
+  func onConnected(node:BlueSTSDKNode, currentViewController:UIViewController)
+    
     
   /// Tell if you want to move to the demoViewController after the connection
   /// default value = true
@@ -103,6 +111,9 @@ import BlueSTSDK
     }
     
     func onConnected(node: BlueSTSDKNode){}
+    func onConnected(node: BlueSTSDKNode, currentViewController:UIViewController){
+        onConnected(node: node)
+    }
     func prepareToConnect(node : BlueSTSDKNode){}
  }
  
@@ -344,7 +355,7 @@ import BlueSTSDK
     private func onNodeConnected(_ node:BlueSTSDKNode){
         networkCheckConnHud?.hide(animated: true)
         networkCheckConnHud=nil
-        delegate.onConnected(node: node)
+        delegate.onConnected(node: node,currentViewController:self)
         if delegate.moveToDemoViewController {
             performSegue(withIdentifier: BlueSTSDKNodeListViewController.SEGUE_DEMO_VIEW, sender: node)
         }

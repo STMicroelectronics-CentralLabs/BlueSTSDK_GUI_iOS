@@ -63,12 +63,12 @@ public class STM32WBLedButtonViewController : STM32WBRSSIUpdateViewController{
                        compatibleWith: nil)
     }();
     
-    private static let THREAD_REBOOT_MENU_ITEM = {
-        return  NSLocalizedString("Switch to Thread radio",
+    private static let RADIO_REBOOT_MENU_ITEM = {
+        return  NSLocalizedString("Switch Protocol Radio",
                                   tableName: nil,
                                   bundle: Bundle(for: STM32WBLedButtonViewController.self),
-                                  value: "Switch to Thread radio",
-                                  comment: "Switch to Thread radio");
+                                  value: "Switch Protocol Radio",
+                                  comment: "Switch Protocol Radio");
     }();
     
     @IBOutlet weak var mAllarmLablel: UILabel!
@@ -134,11 +134,11 @@ public class STM32WBLedButtonViewController : STM32WBRSSIUpdateViewController{
             return
         }
         
-        mRebootActionMenu = UIAlertAction(title: STM32WBLedButtonViewController.THREAD_REBOOT_MENU_ITEM,
+        mRebootActionMenu = UIAlertAction(title: STM32WBLedButtonViewController.RADIO_REBOOT_MENU_ITEM,
                                           style: .default){ action in
-            if let rebootFeature = self.node.getFeatureOfType(STM32WBThreadRebootFeature.self) as? STM32WBThreadRebootFeature,
+            if let rebootFeature = self.node.getFeatureOfType(STM32WBProtocolRadioRebootFeature.self) as? STM32WBProtocolRadioRebootFeature,
                 let deviceId = self.mCurrentDevice{
-                rebootFeature.rebootToThreadRadio(device: deviceId)
+                rebootFeature.rebootToNewProtocolRadio(device: deviceId)
             }//if
         }
         

@@ -81,7 +81,7 @@ public class STM32WBPeer2PeerDemoConfiguration{
     /// - Returns: map containing the characteristics and feature used by this demo
     public static func getCharacteristicMapping() -> [CBUUID:[AnyClass]]{
         var temp:[CBUUID:[AnyClass]]=[:]
-        temp.updateValue([STM32WBControlLedFeature.self,STM32WBThreadRebootFeature.self],
+        temp.updateValue([STM32WBControlLedFeature.self,STM32WBProtocolRadioRebootFeature.self],
                          forKey: CBUUID(string: "0000fe41-8e22-4541-9d4c-21edae82ed19"))
         temp.updateValue([STM32WBSwitchStatusFeature.self], forKey: CBUUID(string: "0000fe42-8e22-4541-9d4c-21edae82ed19"))
         temp.updateValue([STM32WBNetworkStatusFeature.self], forKey: CBUUID(string: "0000fe51-8e22-4541-9d4c-21edae82ed19"))

@@ -39,16 +39,16 @@ import Foundation
 import BlueSTSDK
 
 /// Write feature used to switch on and off the board led
-public class STM32WBThreadRebootFeature : BlueSTSDKFeature{
+public class STM32WBProtocolRadioRebootFeature : BlueSTSDKFeature{
     public typealias DeviceID = STM32WBPeer2PeerDemoConfiguration.DeviceID
     
-    public static let FEATURE_NAME = "ThreadReboot";
+    public static let FEATURE_NAME = "RadioProtocolReboot";
     
-    private static let THREAD_REBOOT_COMMAND:UInt8 = 0x02;
+    private static let RADIO_REBOOT_COMMAND:UInt8 = 0x02;
     
     
     public override init(whitNode node: BlueSTSDKNode) {
-        super.init(whitNode: node, name: STM32WBThreadRebootFeature.FEATURE_NAME)
+        super.init(whitNode: node, name: STM32WBProtocolRadioRebootFeature.FEATURE_NAME)
     }
     
     public override func extractData(_ timestamp: UInt64, data: Data, dataOffset offset: UInt32) -> BlueSTSDKExtractResult {
@@ -59,8 +59,8 @@ public class STM32WBThreadRebootFeature : BlueSTSDKFeature{
         return []
     }
     
-    public func rebootToThreadRadio(device:DeviceID){
-        let data = Data([device.rawValue,STM32WBThreadRebootFeature.THREAD_REBOOT_COMMAND])
+    public func rebootToNewProtocolRadio(device:DeviceID){
+        let data = Data([device.rawValue,STM32WBProtocolRadioRebootFeature.RADIO_REBOOT_COMMAND])
         write(data)
     }
     

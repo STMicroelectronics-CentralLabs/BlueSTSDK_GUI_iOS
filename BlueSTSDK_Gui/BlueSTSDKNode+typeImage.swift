@@ -45,7 +45,7 @@ public extension BlueSTSDKNode{
         let currentBundle = Bundle(for: BlueSTSDKNodeListViewController.self)
         switch type {
         case .generic, .discovery_IOT01A:
-            return UIImage(named: "board_generic.png", in: currentBundle, compatibleWith: nil)
+            return UIImage(named: "generic_board", in: currentBundle, compatibleWith: nil)
         case .STEVAL_WESU1:
             return UIImage(named: "logo_steval_wesu1", in: currentBundle, compatibleWith: nil)
         case .sensor_Tile, .sensor_Tile_Box:

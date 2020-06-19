@@ -162,13 +162,12 @@ public class BlueSTSDKDemoViewController: UIViewController{
         super.viewWillAppear(animated)
         mLogger = BlueSTSDKFeatureLogCSV(timestamp: Date(), nodes: [self.node!])
         
-        if(node.debugConsole==nil){
-            removeMenuAction(mActionDebug)
-            removeMenuAction(mActionFwUpgradeManager)
-        }else if(node.type == .STEVAL_WESU1){
+        if(BlueSTSDKFwConsoleUtil.getFwUploadConsoleForNode(node: node)==nil){
             removeMenuAction(mActionFwUpgradeManager)
         }
-        
+        if(node.debugConsole==nil){
+            removeMenuAction(mActionDebug)
+        }
         node.addStatusDelegate(self)
     }
     

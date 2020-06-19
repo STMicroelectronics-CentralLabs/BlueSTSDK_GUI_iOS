@@ -51,6 +51,7 @@ public class ThemeService {
         applyTabBarTheme(UITabBar.appearance())
         applyButtonTheme(UIButton.appearance())
         applyUINavigatorBarTheme(UINavigationBar.appearance())
+        applyPageTheme(UIPageControl.appearance())
     }
     
     public func applyUINavigatorBarTheme(_ navigatiorBar: UINavigationBar){
@@ -74,6 +75,11 @@ public class ThemeService {
     
     public func applyButtonTheme(_ button: UIButton ){
         button.tintColor = currentTheme.color.secondary
-    button.setTitleColor(currentTheme.color.secondary, for: .normal)
+        button.setTitleColor(currentTheme.color.secondary, for: .normal)
+    }
+    
+    public func applyPageTheme(_ pageControl: UIPageControl ){
+        pageControl.pageIndicatorTintColor = UIColor.lightGray
+        pageControl.currentPageIndicatorTintColor = currentTheme.color.secondary
     }
 }
